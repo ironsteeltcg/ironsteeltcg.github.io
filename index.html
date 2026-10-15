@@ -1,7 +1,9 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pokémon TCG Digital Binders | Iron &amp; Steel</title>
 <meta name="description" content="Free Pokémon TCG digital binders: tap to rip cards into your binder, see what it costs to finish each set, and grab the gaps from us.">
-<meta name="theme-color" content="#0c0a14"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%223%22 fill=%22%23ffd166%22/%3E%3Crect x=%229%22 y=%226%22 width=%2214%22 height=%2220%22 rx=%222%22 fill=%22%238b5cf6%22/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c0a14"><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta name="p:domain_verify" content="63e039d3435f40c25026a56bc3aaa9b3"/>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Iron &amp; Steel TCG"><meta property="og:title" content="Pokémon TCG Digital Binders | Iron &amp; Steel"><meta property="og:description" content="Free Pokémon TCG digital binders: tap to rip cards into your binder, see what it costs to finish each set, and grab the gaps from us."><meta property="og:image" content="https://ironsteeltcg.github.io/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Iron &amp; Steel TCG logo"><meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--ink-900:#0c0a14;--ink-800:#15121f;--ink-700:#1e1a2c;--ink-600:#2a2540;--ink-400:#6f6890;--ink-200:#b9b3d1;--ink-50:#f5f3ff;--gold-300:#ffe08a;--gold-400:#ffd166;--gold-600:#e9a800;--flare-500:#ff5d8f;--aqua-400:#47d7ff;--ease-out:cubic-bezier(.2,.8,.2,1);--ease-spring:cubic-bezier(.34,1.56,.64,1)}
 @view-transition{navigation:auto}
@@ -32,9 +34,11 @@ footer{font-size:11px;color:var(--ink-400);padding:24px 20px;text-align:center;m
 @media (max-width:600px){main{padding:18px 12px}.g{grid-template-columns:repeat(2,1fr);gap:10px}.t{padding:12px;gap:8px;border-radius:14px}.t .lw{height:52px}.t .lw img{max-height:52px}.t b{font-size:14px}.badge{font-size:10px}.tabs{flex:1 1 100%}.tabs button{flex:1}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}@view-transition{navigation:none}}
 footer .dc{display:inline-block;margin-bottom:8px;color:var(--gold-400);font-weight:700;font-size:12px;text-decoration:none}footer .dc:hover{text-decoration:underline}
+.brandhd{display:flex;align-items:center;gap:16px;margin-bottom:6px}.brandhd .mark{height:84px;width:auto;flex:0 0 auto;filter:drop-shadow(0 6px 14px #0009)}.brandhd h1{margin:4px 0 0}
+@media (max-width:600px){.brandhd{gap:10px}.brandhd .mark{height:56px}}
 </style></head><body><main>
-<div class="eyebrow">Iron &amp; Steel · free tools</div>
-<h1>Digital Binders</h1>
+<header class="brandhd"><img class="mark" src="assets/logo-160.webp" width="191" height="160" alt="Iron &amp; Steel TCG" decoding="async" fetchpriority="high"><div><div class="eyebrow">Iron &amp; Steel · free tools</div>
+<h1>Digital Binders</h1></div></header>
 <p class="lead">Tap a missing card, tear it into your binder, and watch the set fill up. Every binder shows what it costs to finish, and which gaps we have in stock right now.</p>
 <div class="tools"><input class="search" id="q" type="search" placeholder="Find a set…" aria-label="Find a set">
 <div class="tabs" role="tablist" id="tabs"><span class="pill" id="pill"></span><button role="tab" data-s="stock" aria-selected="true">Featured</button><button role="tab" data-s="new" aria-selected="false">Newest</button><button role="tab" data-s="mine" aria-selected="false">My progress</button></div></div>
