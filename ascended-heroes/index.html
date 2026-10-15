@@ -802,7 +802,8 @@ $('cx').onclick=closeSheet;$('scrim').onclick=closeSheet;addEventListener('keydo
  const up=e=>{if(y0==null)return;const dy=e.clientY-y0;y0=null;s.style.transition='';if(dy>90)closeSheet();else s.style.setProperty('--dy','0px')};h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up)})();
 function rarityLabel(c){return c.r||'Card'}
 function ebaySearch(c){return 'https://www.ebay.com/sch/i.html?_nkw='+encodeURIComponent(c.name+' '+pad(c)+' '+CFG.q+' pokemon')}
-function gcBuy(x){return x.pf=='tcgplayer'?'out-tcgplayer-store/'+CFG.slug:x.l?'out-ebay-lot/'+x.l:'out-ebay-single/'+CFG.slug}
+function gcNum(c){return String(c&&c.id!=null?c.id:'').trim().replace(/^\/+/,'').split('/')[0].replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'na'}
+function gcBuy(x,c){return x.pf=='tcgplayer'?'out-tcgplayer-store/'+CFG.slug+'/'+gcNum(c):x.l?'out-ebay-lot/'+x.l:'out-ebay-single/'+CFG.slug+'/'+gcNum(c)}
 function gcT(c,x){return CFG.set+' #'+c.id+' '+c.name+(x?' | '+x:'')}
 /* ===== BUY (swap point) =====
    Missing card, in stock: ONE centered cyan 'Buy this card' button with the lowest price in a dark chip. With 2+ listings it opens
@@ -819,7 +820,7 @@ const BUY_BTN=({tag,cls,attrs,price,lg})=>`<${tag} class="btn buy${cls?' '+cls:'
 const STORE_BTN=({cls,attrs,s,price,deal,lot})=>`<a class="btn store ${cls}" ${attrs} aria-label="Buy on ${s.n}${price?', '+price:''}${lot?', lot':''}, opens ${s.n}"><span class="tarr" aria-hidden="true">↗</span><span class="lgw">${logo(s)}</span><span class="spr">${price}${lot?' <small>lot</small>':''}</span>${deal?'<span class="dtag">Deal</span>':''}</a>`;
 function buyLinks(c,opts={}){const filtered=opts.noLot?c.buy.filter(x=>!x.l):c.buy, listings=filtered.length?filtered:c.buy;const P=x=>{const v=parseFloat(String(x.pr||'').replace(/[^0-9.]/g,''));return isNaN(v)?Infinity:v},
  L=listings.slice().sort((a,b)=>P(a)-P(b)||(b.pf=='tcgplayer')-(a.pf=='tcgplayer')),m=L[0],
- at=x=>`target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"`,cls=x=>x.pf=='tcgplayer'?'btn--tcg':'btn--shop';
+ at=x=>`target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x,c))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"`,cls=x=>x.pf=='tcgplayer'?'btn--tcg':'btn--shop';
  if(L.length==1){const s=storeOf(m);return BUY_BTN({tag:'a',cls:cls(m),attrs:`${at(m)} aria-label="${BUY_LABEL} on ${s.n}${m.pr?', '+esc(m.pr):''}, opens ${s.n}"`,price:m.pr?esc(m.pr):'',lg:logo(s)})}
  return BUY_BTN({tag:'button',cls:'',attrs:'type="button" id="buyb" aria-expanded="false" aria-controls="picker"',price:m.pr?esc(m.pr):''})+
   `<div class="picker" id="picker" role="group" aria-label="Choose a store" hidden><div class="pk-row" style="--n:${L.length}">`+
@@ -829,8 +830,8 @@ function buyLinks(c,opts={}){const filtered=opts.noLot?c.buy.filter(x=>!x.l):c.b
 function wireBuy(){const b=$('buyb'),pk=$('picker');if(!b||!pk)return;
  b.onclick=()=>{b.setAttribute('aria-expanded','true');b.hidden=true;const pr=b.closest('.pair');if(pr)pr.hidden=true;pk.hidden=false;pk.classList.remove('in');void pk.offsetWidth;pk.classList.add('in');const a=pk.querySelector('a');if(a)a.focus({preventScroll:true})}}
 function shopHTML(c,opts={}){if(c.buy.length)return `<div class="stack">${buyLinks(c,opts)}</div>`;
- return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" data-gc-event="out-affiliate/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
- `<a class="btn btn--ghost" target="_blank" rel="noopener" data-gc-event="out-ebay-search/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
+ return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" data-gc-event="out-affiliate/${esc(CFG.slug)}/${esc(gcNum(c))}" data-gc-title="${esc(gcT(c))}" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
+ `<a class="btn btn--ghost" target="_blank" rel="noopener" data-gc-event="out-ebay-search/${esc(CFG.slug)}/${esc(gcNum(c))}" data-gc-title="${esc(gcT(c))}" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
 function bigCard(c,extra=''){const o=own.has(c.k),t=tier(c.r);return `<div class="big"><div class="slot ${o?'own':''} r${t}" data-k="${esc(c.k)}" id="bigslot"><div class="card sk"><img src="${esc(c.big||c.img)}" alt="${esc(c.name)}" width="245" height="342" decoding="async"><div class="foil"></div><div class="glare"></div></div></div></div>`}
 function wireBigTilt(){const s=$('bigslot');if(!s||RM)return;if(FINE){s.addEventListener('pointermove',e=>{if(e.pointerType!='touch')tilt(s,e,18)});s.addEventListener('pointerleave',()=>untilt(s))}else setTimeout(()=>showcase(s),380)}
 /* card sheet: coloured art panel (set accent) on top, then a rounded surface with Price (default) / Details / Variants tabs.
