@@ -1,0 +1,43 @@
+{
+  "review_date": "2026-10-15",
+  "window": {"from": "2026-10-01", "to": "2027-06-30"},
+  "categories": {"Pokémon": 3, "One Piece": 68, "Lorcana": 71, "Naruto": 93},
+  "ignore_groups": {
+    "note": "Older Pokémon catalog groups whose publishedOn was re-stamped 2026-10-15T20:00:06; not new releases (SEO brief 2026-10-15).",
+    "ids": [1543, 1542, 1423, 1422, 1447, 1442, 1452, 1439, 1432, 1414, 1450, 1446, 1938, 2289, 2175, 2776, 2374, 2205, 2332]
+  },
+  "rows": [
+    {"id": "lorcana-great-hunny-rescue", "game": "Lorcana", "product": "Illumineer's Quest: The Great Hunny Rescue", "type": "Boxed adventure (not a booster)",
+     "dates": [{"label": "Release", "date": "2026-10-02", "precision": "day"}], "status": "Confirmed",
+     "region": "US / English", "source_url": "https://www.disneylorcana.com/en-US/product/great-hunny-rescue", "source_name": "Ravensburger product page", "checked": "2026-10-15",
+     "tcgcsv_group": 24734, "catalog_date": "2026-10-02", "stocked": false, "store_url": null},
+    {"id": "lorcana-hyperia-city", "game": "Lorcana", "product": "Hyperia City", "type": "Set",
+     "dates": [{"label": "Hobby stores", "date": "2026-10-16", "precision": "day"}, {"label": "Wide retail", "date": "2026-10-23", "precision": "day"}], "status": "Confirmed",
+     "region": "US / English", "source_url": "https://www.disneylorcana.com/en-US/news/2026/09/hyp-press-release", "source_name": "Ravensburger press release", "checked": "2026-10-15",
+     "tcgcsv_group": 24740, "catalog_date": "2026-10-16", "stocked": false, "store_url": null},
+    {"id": "op-eb05", "game": "One Piece", "product": "Extra Booster: Heroines Edition Vol. 2 (EB05)", "type": "Set (extra booster)",
+     "dates": [{"label": "Release", "date": "2026-10-30", "precision": "day"}], "status": "Confirmed",
+     "region": "English", "source_url": "https://en.onepiece-cardgame.com/products/eb05.html", "source_name": "Bandai product page", "checked": "2026-10-15",
+     "tcgcsv_group": 24820, "catalog_date": "2026-10-30", "stocked": false, "store_url": null},
+    {"id": "pkmn-me06-delta-reign", "game": "Pokémon", "product": "Mega Evolution: Delta Reign (ME06)", "type": "Set",
+     "dates": [{"label": "Release", "date": "2026-11-06", "precision": "day"}], "status": "Confirmed",
+     "region": "US / English", "source_url": "https://www.pokemon.com/us/features/heat-rotom-ex-delibird-and-more-from-pokemon-tcg-mega-evolution-delta-reign", "source_name": "Pokémon official article", "checked": "2026-10-15",
+     "tcgcsv_group": 24831, "catalog_date": "2026-11-06", "stocked": false, "store_url": null},
+    {"id": "op-op18-event-cards", "game": "One Piece", "product": "The Dominance of God (OP18) release event cards", "type": "Promo",
+     "dates": [{"label": "Release", "date": null, "precision": "none", "text": "No official date"}], "status": "Unconfirmed",
+     "region": "US hobby-store events", "source_url": "https://en.onepiece-cardgame.com/products/op18.html", "source_name": "Bandai OP-18 page (no event date given)", "checked": "2026-10-15",
+     "tcgcsv_group": 24834, "catalog_date": "2026-11-13", "stocked": false, "store_url": null},
+    {"id": "op-op18", "game": "One Piece", "product": "The Dominance of God (OP18)", "type": "Set",
+     "dates": [{"label": "Release", "date": "2026-11-20", "precision": "day"}], "status": "Confirmed",
+     "region": "English", "source_url": "https://en.onepiece-cardgame.com/products/op18.html", "source_name": "Bandai product page", "checked": "2026-10-15",
+     "tcgcsv_group": 24833, "catalog_date": "2026-11-20", "stocked": false, "store_url": null},
+    {"id": "lorcana-into-the-inkdark", "game": "Lorcana", "product": "Into the Inkdark", "type": "Set",
+     "dates": [{"label": "Prerelease", "date": "2027-02-05", "precision": "day"}, {"label": "Release", "date": "2027-02-12", "precision": "day"}], "status": "Confirmed",
+     "region": "US / English", "source_url": "https://www.disneylorcana.com/en-US/product/into-the-inkdark", "source_name": "Ravensburger product page", "checked": "2026-10-15",
+     "tcgcsv_group": 24890, "catalog_date": "2027-02-05", "stocked": false, "store_url": null},
+    {"id": "naruto-card-game-launch", "game": "Naruto", "product": "NARUTO CARD GAME (Bandai) launch", "type": "New game launch",
+     "dates": [{"label": "Worldwide launch", "date": "2027-06", "precision": "month"}], "status": "Announced",
+     "region": "Worldwide", "source_url": "https://www.prnewswire.com/news-releases/naruto-card-game-sets-june-2027-worldwide-launch-at-new-york-comic-con-302905097.html", "source_name": "Bandai announcement (PR Newswire, Oct 10, 2026)", "checked": "2026-10-15",
+     "tcgcsv_group": null, "catalog_date": null, "stocked": false, "store_url": null}
+  ]
+}
