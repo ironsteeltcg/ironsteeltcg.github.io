@@ -3,6 +3,9 @@
 <meta name="description" content="Free Journey Together digital binder: track the set, see what it costs to finish, and grab the cards you're missing.">
 <meta name="theme-color" content="#0c0a14"><link rel="icon" href="../favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png"><link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png"><link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 <meta name="p:domain_verify" content="63e039d3435f40c25026a56bc3aaa9b3"/>
+<link rel="canonical" href="https://ironsteeltcg.github.io/journey-together/"><meta property="og:url" content="https://ironsteeltcg.github.io/journey-together/">
+<script>window.goatcounter=Object.assign(window.goatcounter||{},{path:function(p){return String(p||"/").split("?")[0].split("#")[0]||"/"}});window.ISGC=function(n,t){try{var g=window.goatcounter;if(n&&g&&typeof g.count==="function")g.count({path:String(n),title:String(t||n),event:true})}catch(_){}};(function(){function h(e){if(e.type==="auxclick"&&e.button!==1)return;var a=e.target&&e.target.closest&&e.target.closest("[data-gc-event]");if(a)ISGC(a.getAttribute("data-gc-event"),a.getAttribute("data-gc-title"))}document.addEventListener("click",h,true);document.addEventListener("auxclick",h,true)})();</script>
+<script data-goatcounter="https://ironsteeltcg.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <meta property="og:type" content="website"><meta property="og:site_name" content="Iron &amp; Steel TCG"><meta property="og:title" content="Journey Together Digital Binder | Iron &amp; Steel"><meta property="og:description" content="Free Journey Together digital binder: track the set, see what it costs to finish, and grab the cards you&#39;re missing."><meta property="og:image" content="https://ironsteeltcg.github.io/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Iron &amp; Steel TCG logo"><meta name="twitter:card" content="summary_large_image">
 <style>
 /* ===== Iron & Steel design tokens ===== */
@@ -178,16 +181,16 @@ footer .dc{display:inline-block;margin-bottom:8px;color:var(--gold-400);font-wei
   <button role="tab" data-f="all" aria-selected="true">All</button><button role="tab" data-f="miss" aria-selected="false">Missing</button><button role="tab" data-f="own" aria-selected="false">Owned</button><button role="tab" data-f="shop" aria-selected="false">In stock</button></div>
  <div class="acts">
   <button class="ibtn hot" id="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l-1 4H7zM7 7h10v14H7z"/><path d="M10 12h4"/></svg>Daily rip</button>
-  <button class="ibtn" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Share</button>
-  <button class="ibtn" id="bk" title="Save / restore progress" aria-label="Save / restore progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Backup</button>
+  <button class="ibtn" id="share" data-gc-event="ui-share" data-gc-title="Share progress image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Share</button>
+  <button class="ibtn" id="bk" data-gc-event="ui-backup" data-gc-title="Open save / restore" title="Save / restore progress" aria-label="Save / restore progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Backup</button>
   <button class="ibtn" id="snd" aria-pressed="true" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sw" d="M16 9a4 4 0 0 1 0 6"/></svg></button>
  </div></div></div>
 <main class="grid" id="g" aria-live="polite"></main>
 <div class="sheet-wrap" id="sw-wrap" aria-hidden="true"><div class="scrim" id="scrim"></div>
  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Card details" tabindex="-1"><div class="handle" id="handle"></div><button class="x" id="cx" aria-label="Close">×</button><div id="mb"></div></section></div>
 <div class="toast" id="toast"></div>
-<div class="bk"><p>Progress is saved in this browser on this device — back it up to move it to another device.</p><button class="bkb" id="bk2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Save / restore progress</button></div>
-<footer><a class="dc" href="https://discord.gg/dvrF3yHRs" target="_blank" rel="nofollow noopener">Join our Discord</a><br>Prices are TCGPlayer market estimates. This is an unofficial fan tool and isn't affiliated with Nintendo, The Pokémon Company, or Creatures. Card conditions are stated on each listing.</footer>
+<div class="bk"><p>Progress is saved in this browser on this device — back it up to move it to another device.</p><button class="bkb" id="bk2" data-gc-event="ui-backup" data-gc-title="Open save / restore"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Save / restore progress</button></div>
+<footer><a class="dc" data-gc-event="out-discord" data-gc-title="Join our Discord (footer)" href="https://discord.gg/dvrF3yHRs" target="_blank" rel="nofollow noopener">Join our Discord</a><br>Prices are TCGPlayer market estimates. This is an unofficial fan tool and isn't affiliated with Nintendo, The Pokémon Company, or Creatures. Card conditions are stated on each listing.</footer>
 <style>
 /* ===== Save / restore progress (shared by set pages + landing) ===== */
 .bk{max-width:1200px;margin:0 auto;padding:6px 20px 0;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
@@ -265,7 +268,7 @@ window.ISP=(function(){
    const msg=(m,err)=>{const el=document.getElementById('bk-msg');el.textContent=m;el.classList.toggle('err',!!err)};
    document.getElementById('bk-copy').onclick=async()=>{const c=document.getElementById('bk-code');msg(await copy(c.value,c)?'Backup code copied. Keep it somewhere safe.':'Select the code and copy it.')};
    document.getElementById('bk-link').onclick=async()=>{const l=link(document.getElementById('bk-code').value);w.dataset.link=l;msg(await copy(l)?'Restore link copied. Open it on your other device.':'Copy failed: '+l)};
-   document.getElementById('bk-go').onclick=()=>{try{const r=merge(document.getElementById('bk-in').value);document.getElementById('bk-in').value='';fill();
+   document.getElementById('bk-go').onclick=()=>{window.ISGC&&ISGC('ui-restore','Restore from backup code');try{const r=merge(document.getElementById('bk-in').value);document.getElementById('bk-in').value='';fill();
     msg(r.added?`Restored ${r.added} card${r.added==1?'':'s'} across ${r.sets} binder${r.sets==1?'':'s'}.`:'Nothing new to add. You already have every card in that backup.')}catch(e){msg("That code didn't work. Check you copied all of it.",true)}}}
   fill();last=document.activeElement;w.classList.add('open');w.setAttribute('aria-hidden','false');document.getElementById('bk-msg').textContent='';setTimeout(()=>w.querySelector('.bkp').focus({preventScroll:true}),30)}
  function fill(){const b=all(),n=total(b),m=Object.keys(b).length;document.getElementById('bk-code').value=exportCode();
@@ -359,10 +362,12 @@ $('cx').onclick=closeSheet;$('scrim').onclick=closeSheet;addEventListener('keydo
  const up=e=>{if(y0==null)return;const dy=e.clientY-y0;y0=null;s.style.transition='';if(dy>90)closeSheet();else s.style.setProperty('--dy','0px')};h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up)})();
 function rarityLabel(c){return c.r||'Card'}
 function ebaySearch(c){return 'https://www.ebay.com/sch/i.html?_nkw='+encodeURIComponent(c.name+' '+pad(c)+' '+CFG.q+' pokemon')}
-function buyLinks(c){return c.buy.map(x=>{const tp=x.pf=='tcgplayer';return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" target="_blank" rel="noopener" href="${esc(x.u)}"><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Get it from Iron &amp; Steel on ${tp?'TCGPlayer':'eBay'}<span class="sub">${esc(x.t)}${x.cond?` · <span class="cond">${esc(x.cond)}</span>`:''}</span></span><span aria-hidden="true">↗</span></a>`}).join('')}
+function gcBuy(x){return x.pf=='tcgplayer'?'out-tcgplayer-store/'+CFG.slug:x.l?'out-ebay-lot/'+x.l:'out-ebay-single/'+CFG.slug}
+function gcT(c,x){return CFG.set+' #'+c.id+' '+c.name+(x?' | '+x:'')}
+function buyLinks(c){return c.buy.map(x=>{const tp=x.pf=='tcgplayer';return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Get it from Iron &amp; Steel on ${tp?'TCGPlayer':'eBay'}<span class="sub">${esc(x.t)}${x.cond?` · <span class="cond">${esc(x.cond)}</span>`:''}</span></span><span aria-hidden="true">↗</span></a>`}).join('')}
 function shopHTML(c){if(c.buy.length)return `<div class="sect">In stock with us</div><div class="stack">${buyLinks(c)}</div>`;
- return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
- `<a class="btn btn--ghost" target="_blank" rel="noopener" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
+ return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" data-gc-event="out-affiliate/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
+ `<a class="btn btn--ghost" target="_blank" rel="noopener" data-gc-event="out-ebay-search/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
 function bigCard(c,extra=''){const o=own.has(c.k),t=tier(c.r);return `<div class="big"><div class="slot ${o?'own':''} r${t}" data-k="${esc(c.k)}" id="bigslot"><div class="card sk"><img src="${esc(c.big||c.img)}" alt="${esc(c.name)}" decoding="async"><div class="foil"></div><div class="glare"></div></div></div></div>`}
 function wireBigTilt(){const s=$('bigslot');if(!s||RM)return;s.addEventListener('pointermove',e=>tilt(s,e,18));s.addEventListener('pointerleave',()=>untilt(s))}
 function openCard(c,fromEl){const o=own.has(c.k);
