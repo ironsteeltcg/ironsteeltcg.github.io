@@ -1,0 +1,1575 @@
+{
+ "Stormfront": {
+  "group": 1369,
+  "release": "2008-11-01",
+  "binder": "Stormfront",
+  "slug": "stormfront",
+  "stocked": 1,
+  "printed": 100,
+  "mixed": false,
+  "main_n": 100,
+  "main": 1022.05,
+  "full_n": 103,
+  "full": 2071.26,
+  "rh_n": 95,
+  "rh": 1213.87,
+  "master": 3285.13,
+  "under25": 1,
+  "missing_main": 0,
+  "top": [
+   [
+    103,
+    "Charizard",
+    737.5
+   ],
+   [
+    101,
+    "Charmander",
+    200.43
+   ],
+   [
+    98,
+    "Machamp LV.X",
+    187.84
+   ]
+  ],
+  "median_main": 1.17,
+  "no_full_arts": null
+ },
+ "XY - Steam Siege": {
+  "group": 1815,
+  "release": "2016-08-03",
+  "binder": "XY - Steam Siege",
+  "slug": "steam-siege",
+  "stocked": 1,
+  "printed": 114,
+  "mixed": false,
+  "main_n": 114,
+  "main": 288.4,
+  "full_n": 116,
+  "full": 432.61,
+  "rh_n": 93,
+  "rh": 81.85,
+  "master": 514.46,
+  "under25": 45,
+  "missing_main": 0,
+  "top": [
+   [
+    116,
+    "Gardevoir EX (Secret)",
+    108.48
+   ],
+   [
+    112,
+    "M Gardevoir EX (Full Art)",
+    57.62
+   ],
+   [
+    115,
+    "Volcanion EX (Secret)",
+    35.73
+   ]
+  ],
+  "median_main": 0.28,
+  "no_full_arts": {
+   "cutoff": 106,
+   "count": 106,
+   "cost": 117.27
+  }
+ },
+ "SWSH01: Sword & Shield Base Set": {
+  "group": 2585,
+  "release": "2020-02-07",
+  "binder": "Sword & Shield Base Set",
+  "slug": "sword-shield-base-set",
+  "stocked": 1,
+  "printed": 202,
+  "mixed": false,
+  "main_n": 202,
+  "main": 273.75,
+  "full_n": 216,
+  "full": 530.66,
+  "rh_n": 165,
+  "rh": 100.74,
+  "master": 631.4,
+  "under25": 109,
+  "missing_main": 0,
+  "top": [
+   [
+    206,
+    "Snorlax VMAX (Secret)",
+    105.8
+   ],
+   [
+    142,
+    "Snorlax VMAX",
+    47.22
+   ],
+   [
+    200,
+    "Marnie (Full Art)",
+    33.76
+   ]
+  ],
+  "median_main": 0.22,
+  "no_full_arts": {
+   "cutoff": 186,
+   "count": 186,
+   "cost": 129.89
+  }
+ },
+ "SWSH03: Darkness Ablaze": {
+  "group": 2675,
+  "release": "2020-08-14",
+  "binder": "Darkness Ablaze",
+  "slug": "darkness-ablaze",
+  "stocked": 7,
+  "printed": 189,
+  "mixed": false,
+  "main_n": 189,
+  "main": 154.74,
+  "full_n": 201,
+  "full": 242.44,
+  "rh_n": 155,
+  "rh": 68.73,
+  "master": 311.17,
+  "under25": 106,
+  "missing_main": 0,
+  "top": [
+   [
+    20,
+    "Charizard VMAX",
+    38.8
+   ],
+   [
+    190,
+    "Butterfree VMAX (Secret)",
+    17.75
+   ],
+   [
+    194,
+    "Salamence VMAX (Secret)",
+    14.7
+   ]
+  ],
+  "median_main": 0.19,
+  "no_full_arts": {
+   "cutoff": 176,
+   "count": 176,
+   "cost": 116.69
+  }
+ },
+ "Shining Fates": {
+  "group": 2754,
+  "release": "2021-02-19",
+  "binder": "Shining Fates",
+  "slug": "shining-fates",
+  "stocked": 1,
+  "printed": 72,
+  "mixed": false,
+  "main_n": 72,
+  "main": 70.37,
+  "full_n": 73,
+  "full": 74.04,
+  "rh_n": 46,
+  "rh": 12.68,
+  "master": 86.72,
+  "under25": 35,
+  "missing_main": 0,
+  "top": [
+   [
+    72,
+    "Skyla (Full Art)",
+    8.93
+   ],
+   [
+    70,
+    "Poke Kid (Full Art)",
+    8.76
+   ],
+   [
+    64,
+    "Alcremie V (Full Art)",
+    6.36
+   ]
+  ],
+  "median_main": 0.25,
+  "no_full_arts": {
+   "cutoff": 63,
+   "count": 63,
+   "cost": 34.62
+  }
+ },
+ "SWSH05: Battle Styles": {
+  "group": 2765,
+  "release": "2021-03-19",
+  "binder": "Battle Styles",
+  "slug": "battle-styles",
+  "stocked": 5,
+  "printed": 163,
+  "mixed": false,
+  "main_n": 163,
+  "main": 530.37,
+  "full_n": 183,
+  "full": 797.21,
+  "rh_n": 123,
+  "rh": 35.67,
+  "master": 832.88,
+  "under25": 100,
+  "missing_main": 0,
+  "top": [
+   [
+    155,
+    "Tyranitar V (Alternate Full Art)",
+    237.54
+   ],
+   [
+    170,
+    "Rapid Strike Urshifu VMAX (Alternate Art Secret)",
+    77.32
+   ],
+   [
+    146,
+    "Empoleon V (Alternate Full Art)",
+    63.57
+   ]
+  ],
+  "median_main": 0.2,
+  "no_full_arts": {
+   "cutoff": 141,
+   "count": 141,
+   "cost": 49.69
+  }
+ },
+ "SWSH06: Chilling Reign": {
+  "group": 2807,
+  "release": "2021-06-18",
+  "binder": "Chilling Reign",
+  "slug": "chilling-reign",
+  "stocked": 3,
+  "printed": 198,
+  "mixed": false,
+  "main_n": 198,
+  "main": 1099.99,
+  "full_n": 233,
+  "full": 2016.26,
+  "rh_n": 136,
+  "rh": 48.8,
+  "master": 2065.06,
+  "under25": 102,
+  "missing_main": 0,
+  "top": [
+   [
+    201,
+    "Blaziken VMAX (Alternate Art Secret)",
+    382.23
+   ],
+   [
+    177,
+    "Galarian Moltres V (Alternate Full Art)",
+    233.69
+   ],
+   [
+    224,
+    "Snorlax (Secret)",
+    142.02
+   ]
+  ],
+  "median_main": 0.24,
+  "no_full_arts": {
+   "cutoff": 159,
+   "count": 159,
+   "cost": 65.5
+  }
+ },
+ "SWSH07: Evolving Skies": {
+  "group": 2848,
+  "release": "2021-08-27",
+  "binder": "Evolving Skies",
+  "slug": "evolving-skies",
+  "stocked": 14,
+  "printed": 203,
+  "mixed": false,
+  "main_n": 203,
+  "main": 2880.16,
+  "full_n": 237,
+  "full": 8040.16,
+  "rh_n": 132,
+  "rh": 40.07,
+  "master": 8080.23,
+  "under25": 108,
+  "missing_main": 0,
+  "top": [
+   [
+    215,
+    "Umbreon VMAX (Alternate Art Secret)",
+    2264.7
+   ],
+   [
+    218,
+    "Rayquaza VMAX (Alternate Art Secret)",
+    1268.52
+   ],
+   [
+    192,
+    "Dragonite V (Alternate Full Art)",
+    497.16
+   ]
+  ],
+  "median_main": 0.21,
+  "no_full_arts": {
+   "cutoff": 165,
+   "count": 165,
+   "cost": 203.54
+  }
+ },
+ "SWSH08: Fusion Strike": {
+  "group": 2906,
+  "release": "2021-11-12",
+  "binder": "Fusion Strike",
+  "slug": "fusion-strike",
+  "stocked": 2,
+  "printed": 264,
+  "mixed": false,
+  "main_n": 264,
+  "main": 436.33,
+  "full_n": 284,
+  "full": 2253.01,
+  "rh_n": 217,
+  "rh": 75.11,
+  "master": 2328.12,
+  "under25": 182,
+  "missing_main": 0,
+  "top": [
+   [
+    271,
+    "Gengar VMAX (Alternate Art Secret)",
+    1034.15
+   ],
+   [
+    270,
+    "Espeon VMAX (Alternate Art Secret)",
+    341.35
+   ],
+   [
+    269,
+    "Mew VMAX (Alternate Art Secret)",
+    239.37
+   ]
+  ],
+  "median_main": 0.18,
+  "no_full_arts": {
+   "cutoff": 244,
+   "count": 244,
+   "cost": 140.66
+  }
+ },
+ "SWSH09: Brilliant Stars": {
+  "group": 2948,
+  "release": "2022-02-25",
+  "binder": "Brilliant Stars",
+  "slug": "brilliant-stars",
+  "stocked": 1,
+  "printed": 172,
+  "mixed": false,
+  "main_n": 172,
+  "main": 571.18,
+  "full_n": 186,
+  "full": 764.57,
+  "rh_n": 124,
+  "rh": 32.8,
+  "master": 797.37,
+  "under25": 110,
+  "missing_main": 0,
+  "top": [
+   [
+    154,
+    "Charizard V (Alternate Full Art)",
+    277.85
+   ],
+   [
+    174,
+    "Charizard VSTAR (Secret)",
+    67.42
+   ],
+   [
+    166,
+    "Arceus V (Alternate Full Art)",
+    60.4
+   ]
+  ],
+  "median_main": 0.18,
+  "no_full_arts": {
+   "cutoff": 151,
+   "count": 151,
+   "cost": 90.98
+  }
+ },
+ "SWSH10: Astral Radiance": {
+  "group": 3040,
+  "release": "2022-05-27",
+  "binder": "Astral Radiance",
+  "slug": "astral-radiance",
+  "stocked": 1,
+  "printed": 189,
+  "mixed": false,
+  "main_n": 189,
+  "main": 671.7,
+  "full_n": 216,
+  "full": 889.01,
+  "rh_n": 128,
+  "rh": 42.24,
+  "master": 931.25,
+  "under25": 99,
+  "missing_main": 0,
+  "top": [
+   [
+    172,
+    "Machamp V (Alternate Full Art)",
+    191.87
+   ],
+   [
+    167,
+    "Origin Forme Palkia V (Alternate Full Art)",
+    84.22
+   ],
+   [
+    161,
+    "Beedrill V (Alternate Full Art)",
+    73.47
+   ]
+  ],
+  "median_main": 0.23,
+  "no_full_arts": {
+   "cutoff": 159,
+   "count": 159,
+   "cost": 74.75
+  }
+ },
+ "Pokemon GO": {
+  "group": 3064,
+  "release": "2022-07-01",
+  "binder": "Pokemon GO",
+  "slug": "pokemon-go",
+  "stocked": 1,
+  "printed": 78,
+  "mixed": false,
+  "main_n": 78,
+  "main": 172.5,
+  "full_n": 88,
+  "full": 357.07,
+  "rh_n": 57,
+  "rh": 40.72,
+  "master": 397.79,
+  "under25": 38,
+  "missing_main": 0,
+  "top": [
+   [
+    72,
+    "Mewtwo V (Alternate Full Art)",
+    55.06
+   ],
+   [
+    79,
+    "Mewtwo VSTAR (79) (Secret)",
+    52.45
+   ],
+   [
+    81,
+    "Dragonite VSTAR (Secret)",
+    46.21
+   ]
+  ],
+  "median_main": 0.27,
+  "no_full_arts": {
+   "cutoff": 70,
+   "count": 70,
+   "cost": 88.04
+  }
+ },
+ "Trick or Trade BOOster Bundle": {
+  "group": 3179,
+  "release": "2022-09-01",
+  "binder": "Trick or Trade BOOster Bundle",
+  "slug": "trick-or-trade",
+  "stocked": 1,
+  "printed": null,
+  "mixed": true,
+  "main_n": 30,
+  "main": 8.44,
+  "full_n": 30,
+  "full": 8.44,
+  "rh_n": 0,
+  "rh": 0,
+  "master": 8.44,
+  "under25": 21,
+  "missing_main": 0,
+  "top": [
+   [
+    57,
+    "Gengar (2021 Copyright Date)",
+    1.5
+   ],
+   [
+    56,
+    "Mewtwo",
+    0.89
+   ],
+   [
+    81,
+    "Mimikyu",
+    0.51
+   ]
+  ],
+  "median_main": 0.21,
+  "no_full_arts": null
+ },
+ "SWSH11: Lost Origin": {
+  "group": 3118,
+  "release": "2022-09-09",
+  "binder": "Lost Origin",
+  "slug": "lost-origin",
+  "stocked": 4,
+  "printed": 196,
+  "mixed": false,
+  "main_n": 196,
+  "main": 1230.14,
+  "full_n": 217,
+  "full": 1382.34,
+  "rh_n": 149,
+  "rh": 61.36,
+  "master": 1443.7,
+  "under25": 126,
+  "missing_main": 0,
+  "top": [
+   [
+    186,
+    "Giratina V (Alternate Full Art)",
+    851.13
+   ],
+   [
+    180,
+    "Aerodactyl V (Alternate Full Art)",
+    203.23
+   ],
+   [
+    201,
+    "Giratina VSTAR (201) (Secret)",
+    28.72
+   ]
+  ],
+  "median_main": 0.19,
+  "no_full_arts": {
+   "cutoff": 171,
+   "count": 171,
+   "cost": 57.72
+  }
+ },
+ "SWSH12: Silver Tempest": {
+  "group": 3170,
+  "release": "2022-11-11",
+  "binder": "Silver Tempest",
+  "slug": "silver-tempest",
+  "stocked": 1,
+  "printed": 195,
+  "mixed": false,
+  "main_n": 195,
+  "main": 740.7,
+  "full_n": 215,
+  "full": 933.21,
+  "rh_n": 142,
+  "rh": 45.09,
+  "master": 978.3,
+  "under25": 126,
+  "missing_main": 0,
+  "top": [
+   [
+    186,
+    "Lugia V (Alternate Full Art)",
+    488.36
+   ],
+   [
+    202,
+    "Lugia VSTAR (Secret) (202)",
+    38.7
+   ],
+   [
+    177,
+    "Unown V (Alternate Full Art)",
+    29.94
+   ]
+  ],
+  "median_main": 0.18,
+  "no_full_arts": {
+   "cutoff": 169,
+   "count": 169,
+   "cost": 70.16
+  }
+ },
+ "SWSH: Crown Zenith": {
+  "group": 17688,
+  "release": "2023-01-20",
+  "binder": "Crown Zenith",
+  "slug": "crown-zenith",
+  "stocked": 2,
+  "printed": 159,
+  "mixed": false,
+  "main_n": 159,
+  "main": 186.28,
+  "full_n": 160,
+  "full": 226.25,
+  "rh_n": 112,
+  "rh": 61.06,
+  "master": 287.31,
+  "under25": 89,
+  "missing_main": 0,
+  "top": [
+   [
+    160,
+    "Pikachu (Secret)",
+    39.97
+   ],
+   [
+    147,
+    "Elesa's Sparkle (Full Art)",
+    14.94
+   ],
+   [
+    19,
+    "Charizard VSTAR",
+    11.71
+   ]
+  ],
+  "median_main": 0.2,
+  "no_full_arts": {
+   "cutoff": 146,
+   "count": 146,
+   "cost": 130.04
+  }
+ },
+ "SV01: Scarlet & Violet Base Set": {
+  "group": 22873,
+  "release": "2023-03-31",
+  "binder": "Scarlet & Violet Base Set",
+  "slug": "scarlet-violet-base-set",
+  "stocked": 1,
+  "printed": 198,
+  "mixed": false,
+  "main_n": 198,
+  "main": 35.69,
+  "full_n": 258,
+  "full": 698.92,
+  "rh_n": 186,
+  "rh": 47.81,
+  "master": 746.73,
+  "under25": 176,
+  "missing_main": 0,
+  "top": [
+   [
+    245,
+    "Gardevoir ex - 245/198",
+    68.32
+   ],
+   [
+    210,
+    "Drowzee - 210/198",
+    45.66
+   ],
+   [
+    211,
+    "Ralts - 211/198",
+    41.7
+   ]
+  ],
+  "median_main": 0.14,
+  "no_full_arts": null
+ },
+ "SV02: Paldea Evolved": {
+  "group": 23120,
+  "release": "2023-06-09",
+  "binder": "Paldea Evolved",
+  "slug": "paldea-evolved",
+  "stocked": 1,
+  "printed": 193,
+  "mixed": false,
+  "main_n": 193,
+  "main": 43.71,
+  "full_n": 279,
+  "full": 1813.88,
+  "rh_n": 176,
+  "rh": 41.3,
+  "master": 1855.18,
+  "under25": 156,
+  "missing_main": 0,
+  "top": [
+   [
+    203,
+    "Magikarp - 203/193",
+    352.72
+   ],
+   [
+    211,
+    "Raichu - 211/193",
+    96.45
+   ],
+   [
+    226,
+    "Maushold - 226/193",
+    86.48
+   ]
+  ],
+  "median_main": 0.14,
+  "no_full_arts": null
+ },
+ "SV03: Obsidian Flames": {
+  "group": 23228,
+  "release": "2023-08-11",
+  "binder": "Obsidian Flames",
+  "slug": "obsidian-flames",
+  "stocked": 10,
+  "printed": 197,
+  "mixed": false,
+  "main_n": 197,
+  "main": 58.32,
+  "full_n": 230,
+  "full": 423.25,
+  "rh_n": 176,
+  "rh": 51.87,
+  "master": 475.12,
+  "under25": 162,
+  "missing_main": 0,
+  "top": [
+   [
+    223,
+    "Charizard ex - 223/197",
+    94.27
+   ],
+   [
+    228,
+    "Charizard ex - 228/197",
+    34.93
+   ],
+   [
+    199,
+    "Ninetales - 199/197",
+    34.72
+   ]
+  ],
+  "median_main": 0.17,
+  "no_full_arts": null
+ },
+ "SV: Scarlet & Violet 151": {
+  "group": 23237,
+  "release": "2023-09-22",
+  "binder": "Scarlet & Violet 151",
+  "slug": "scarlet-violet-151",
+  "stocked": 1,
+  "printed": 165,
+  "mixed": false,
+  "main_n": 165,
+  "main": 71.2,
+  "full_n": 207,
+  "full": 1658.45,
+  "rh_n": 153,
+  "rh": 134.31,
+  "master": 1792.76,
+  "under25": 108,
+  "missing_main": 0,
+  "top": [
+   [
+    199,
+    "Charizard ex - 199/165",
+    325.39
+   ],
+   [
+    200,
+    "Blastoise ex - 200/165",
+    114.0
+   ],
+   [
+    198,
+    "Venusaur ex - 198/165",
+    92.57
+   ]
+  ],
+  "median_main": 0.22,
+  "no_full_arts": null
+ },
+ "SV04: Paradox Rift": {
+  "group": 23286,
+  "release": "2023-11-03",
+  "binder": "Paradox Rift",
+  "slug": "paradox-rift",
+  "stocked": 14,
+  "printed": 182,
+  "mixed": false,
+  "main_n": 182,
+  "main": 42.88,
+  "full_n": 266,
+  "full": 1138.4,
+  "rh_n": 162,
+  "rh": 36.42,
+  "master": 1174.82,
+  "under25": 155,
+  "missing_main": 0,
+  "top": [
+   [
+    199,
+    "Groudon - 199/182",
+    103.61
+   ],
+   [
+    206,
+    "Morpeko - 206/182",
+    61.99
+   ],
+   [
+    193,
+    "Plusle - 193/182",
+    45.58
+   ]
+  ],
+  "median_main": 0.16,
+  "no_full_arts": null
+ },
+ "SV: Paldean Fates": {
+  "group": 23353,
+  "release": "2024-01-26",
+  "binder": "Paldean Fates",
+  "slug": "paldean-fates",
+  "stocked": 0,
+  "printed": 91,
+  "mixed": false,
+  "main_n": 91,
+  "main": 21.03,
+  "full_n": 245,
+  "full": 2499.69,
+  "rh_n": 81,
+  "rh": 18.97,
+  "master": 2518.66,
+  "under25": 75,
+  "missing_main": 0,
+  "top": [
+   [
+    232,
+    "Mew ex - 232/091",
+    863.85
+   ],
+   [
+    234,
+    "Charizard ex - 234/091",
+    256.92
+   ],
+   [
+    233,
+    "Gardevoir ex - 233/091",
+    165.59
+   ]
+  ],
+  "median_main": 0.13,
+  "no_full_arts": null
+ },
+ "SV05: Temporal Forces": {
+  "group": 23381,
+  "release": "2024-03-22",
+  "binder": "Temporal Forces",
+  "slug": "temporal-forces",
+  "stocked": 2,
+  "printed": 162,
+  "mixed": false,
+  "main_n": 162,
+  "main": 92.64,
+  "full_n": 218,
+  "full": 1158.33,
+  "rh_n": 140,
+  "rh": 44.16,
+  "master": 1202.49,
+  "under25": 126,
+  "missing_main": 0,
+  "top": [
+   [
+    177,
+    "Gastly - 177/162",
+    91.56
+   ],
+   [
+    208,
+    "Raging Bolt ex - 208/162",
+    62.11
+   ],
+   [
+    193,
+    "Gengar ex - 193/162",
+    51.33
+   ]
+  ],
+  "median_main": 0.17,
+  "no_full_arts": null
+ },
+ "SV06: Twilight Masquerade": {
+  "group": 23473,
+  "release": "2024-05-24",
+  "binder": "Twilight Masquerade",
+  "slug": "twilight-masquerade",
+  "stocked": 15,
+  "printed": 167,
+  "mixed": false,
+  "main_n": 167,
+  "main": 62.09,
+  "full_n": 226,
+  "full": 1203.54,
+  "rh_n": 147,
+  "rh": 44.93,
+  "master": 1248.47,
+  "under25": 135,
+  "missing_main": 0,
+  "top": [
+   [
+    214,
+    "Greninja ex - 214/167",
+    317.44
+   ],
+   [
+    220,
+    "Perrin - 220/167",
+    160.22
+   ],
+   [
+    188,
+    "Eevee - 188/167",
+    69.67
+   ]
+  ],
+  "median_main": 0.17,
+  "no_full_arts": null
+ },
+ "SV: Shrouded Fable": {
+  "group": 23529,
+  "release": "2024-08-02",
+  "binder": "Shrouded Fable",
+  "slug": "shrouded-fable",
+  "stocked": 1,
+  "printed": 64,
+  "mixed": false,
+  "main_n": 64,
+  "main": 23.87,
+  "full_n": 99,
+  "full": 806.85,
+  "rh_n": 55,
+  "rh": 16.19,
+  "master": 823.04,
+  "under25": 49,
+  "missing_main": 0,
+  "top": [
+   [
+    78,
+    "Persian - 078/064",
+    71.87
+   ],
+   [
+    98,
+    "Basic Darkness Energy",
+    57.96
+   ],
+   [
+    66,
+    "Houndoom - 066/064",
+    57.06
+   ]
+  ],
+  "median_main": 0.15,
+  "no_full_arts": null
+ },
+ "SV07: Stellar Crown": {
+  "group": 23537,
+  "release": "2024-09-13",
+  "binder": "Stellar Crown",
+  "slug": "stellar-crown",
+  "stocked": 0,
+  "printed": 142,
+  "mixed": false,
+  "main_n": 142,
+  "main": 41.89,
+  "full_n": 175,
+  "full": 558.44,
+  "rh_n": 125,
+  "rh": 37.67,
+  "master": 596.11,
+  "under25": 112,
+  "missing_main": 0,
+  "top": [
+   [
+    148,
+    "Squirtle",
+    94.88
+   ],
+   [
+    143,
+    "Bulbasaur",
+    85.99
+   ],
+   [
+    169,
+    "Dachsbun ex - 169/142",
+    70.36
+   ]
+  ],
+  "median_main": 0.17,
+  "no_full_arts": null
+ },
+ "SV08: Surging Sparks": {
+  "group": 23651,
+  "release": "2024-11-08",
+  "binder": "Surging Sparks",
+  "slug": "surging-sparks",
+  "stocked": 0,
+  "printed": 191,
+  "mixed": false,
+  "main_n": 191,
+  "main": 54.12,
+  "full_n": 252,
+  "full": 1141.45,
+  "rh_n": 165,
+  "rh": 39.49,
+  "master": 1180.94,
+  "under25": 160,
+  "missing_main": 0,
+  "top": [
+   [
+    238,
+    "Pikachu ex - 238/191",
+    274.44
+   ],
+   [
+    239,
+    "Latias ex - 239/191",
+    180.32
+   ],
+   [
+    237,
+    "Milotic ex - 237/191",
+    104.72
+   ]
+  ],
+  "median_main": 0.13,
+  "no_full_arts": null
+ },
+ "SV: Prismatic Evolutions": {
+  "group": 23821,
+  "release": "2025-01-17",
+  "binder": "Prismatic Evolutions",
+  "slug": "prismatic-evolutions",
+  "stocked": 3,
+  "printed": 131,
+  "mixed": false,
+  "main_n": 131,
+  "main": 75.69,
+  "full_n": 180,
+  "full": 4371.27,
+  "rh_n": 100,
+  "rh": 23.31,
+  "master": 4394.58,
+  "under25": 87,
+  "missing_main": 0,
+  "top": [
+   [
+    161,
+    "Umbreon ex - 161/131",
+    1269.69
+   ],
+   [
+    156,
+    "Sylveon ex - 156/131",
+    432.04
+   ],
+   [
+    144,
+    "Leafeon ex - 144/131",
+    311.16
+   ]
+  ],
+  "median_main": 0.18,
+  "no_full_arts": null
+ },
+ "SV09: Journey Together": {
+  "group": 24073,
+  "release": "2025-03-28",
+  "binder": "Journey Together",
+  "slug": "journey-together",
+  "stocked": 15,
+  "printed": 159,
+  "mixed": false,
+  "main_n": 159,
+  "main": 37.46,
+  "full_n": 190,
+  "full": 390.42,
+  "rh_n": 143,
+  "rh": 42.66,
+  "master": 433.08,
+  "under25": 139,
+  "missing_main": 0,
+  "top": [
+   [
+    184,
+    "Lillie's Clefairy ex - 184/159",
+    87.74
+   ],
+   [
+    187,
+    "Salamence ex - 187/159",
+    42.7
+   ],
+   [
+    185,
+    "N's Zoroark ex - 185/159",
+    35.45
+   ]
+  ],
+  "median_main": 0.16,
+  "no_full_arts": null
+ },
+ "SV10: Destined Rivals": {
+  "group": 24269,
+  "release": "2025-05-30",
+  "binder": "Destined Rivals",
+  "slug": "destined-rivals",
+  "stocked": 45,
+  "printed": 182,
+  "mixed": false,
+  "main_n": 182,
+  "main": 41.63,
+  "full_n": 244,
+  "full": 1430.92,
+  "rh_n": 165,
+  "rh": 52.9,
+  "master": 1483.82,
+  "under25": 141,
+  "missing_main": 0,
+  "top": [
+   [
+    231,
+    "Team Rocket's Mewtwo ex - 231/182",
+    361.97
+   ],
+   [
+    232,
+    "Cynthia's Garchomp ex - 232/182",
+    186.47
+   ],
+   [
+    230,
+    "Ethan's Ho-Oh ex - 230/182",
+    140.63
+   ]
+  ],
+  "median_main": 0.19,
+  "no_full_arts": null
+ },
+ "SV: Black Bolt": {
+  "group": 24325,
+  "release": "2025-07-18",
+  "binder": "Black Bolt",
+  "slug": "black-bolt",
+  "stocked": 0,
+  "printed": 86,
+  "mixed": false,
+  "main_n": 86,
+  "main": 14.75,
+  "full_n": 172,
+  "full": 3272.47,
+  "rh_n": 80,
+  "rh": 18.9,
+  "master": 3291.37,
+  "under25": 79,
+  "missing_main": 0,
+  "top": [
+   [
+    171,
+    "Victini - 171/086",
+    623.46
+   ],
+   [
+    172,
+    "Zekrom ex - 172/086",
+    602.79
+   ],
+   [
+    166,
+    "Zekrom ex - 166/086",
+    263.89
+   ]
+  ],
+  "median_main": 0.14,
+  "no_full_arts": null
+ },
+ "SV: White Flare": {
+  "group": 24326,
+  "release": "2025-07-18",
+  "binder": "White Flare",
+  "slug": "white-flare",
+  "stocked": 0,
+  "printed": 86,
+  "mixed": false,
+  "main_n": 86,
+  "main": 16.02,
+  "full_n": 173,
+  "full": 2904.01,
+  "rh_n": 80,
+  "rh": 21.09,
+  "master": 2925.1,
+  "under25": 77,
+  "missing_main": 0,
+  "top": [
+   [
+    172,
+    "Victini - 172/086",
+    550.89
+   ],
+   [
+    173,
+    "Reshiram ex - 173/086",
+    467.36
+   ],
+   [
+    166,
+    "Reshiram ex - 166/086",
+    178.16
+   ]
+  ],
+  "median_main": 0.16,
+  "no_full_arts": null
+ },
+ "ME01: Mega Evolution": {
+  "group": 24380,
+  "release": "2025-09-26",
+  "binder": "Mega Evolution",
+  "slug": "mega-evolution",
+  "stocked": 26,
+  "printed": 132,
+  "mixed": false,
+  "main_n": 132,
+  "main": 24.62,
+  "full_n": 188,
+  "full": 1399.03,
+  "rh_n": 122,
+  "rh": 31.89,
+  "master": 1430.92,
+  "under25": 115,
+  "missing_main": 0,
+  "top": [
+   [
+    188,
+    "Mega Lucario ex - 188/132",
+    225.54
+   ],
+   [
+    178,
+    "Mega Gardevoir ex - 178/132",
+    171.05
+   ],
+   [
+    187,
+    "Mega Gardevoir ex - 187/132",
+    168.86
+   ]
+  ],
+  "median_main": 0.15,
+  "no_full_arts": null
+ },
+ "ME02: Phantasmal Flames": {
+  "group": 24448,
+  "release": "2025-11-14",
+  "binder": "Phantasmal Flames",
+  "slug": "phantasmal-flames",
+  "stocked": 24,
+  "printed": 94,
+  "mixed": false,
+  "main_n": 94,
+  "main": 23.32,
+  "full_n": 130,
+  "full": 1008.93,
+  "rh_n": 84,
+  "rh": 20.3,
+  "master": 1029.23,
+  "under25": 81,
+  "missing_main": 0,
+  "top": [
+   [
+    125,
+    "Mega Charizard X ex - 125/094",
+    623.2
+   ],
+   [
+    130,
+    "Mega Charizard X ex - 130/094",
+    205.11
+   ],
+   [
+    109,
+    "Mega Charizard X ex - 109/094",
+    20.01
+   ]
+  ],
+  "median_main": 0.15,
+  "no_full_arts": null
+ },
+ "ME: Ascended Heroes": {
+  "group": 24541,
+  "release": "2026-01-30",
+  "binder": "Ascended Heroes",
+  "slug": "ascended-heroes",
+  "stocked": 0,
+  "printed": 217,
+  "mixed": false,
+  "main_n": 217,
+  "main": 80.64,
+  "full_n": 295,
+  "full": 4298.81,
+  "rh_n": 178,
+  "rh": 52.66,
+  "master": 4351.47,
+  "under25": 163,
+  "missing_main": 0,
+  "top": [
+   [
+    284,
+    "Mega Gengar ex - 284/217",
+    816.38
+   ],
+   [
+    276,
+    "Pikachu ex - 276/217",
+    740.19
+   ],
+   [
+    290,
+    "Mega Dragonite ex - 290/217",
+    474.19
+   ]
+  ],
+  "median_main": 0.19,
+  "no_full_arts": null
+ },
+ "ME03: Perfect Order": {
+  "group": 24587,
+  "release": "2026-03-27",
+  "binder": "Perfect Order",
+  "slug": "perfect-order",
+  "stocked": 0,
+  "printed": 88,
+  "mixed": false,
+  "main_n": 88,
+  "main": 15.61,
+  "full_n": 124,
+  "full": 455.38,
+  "rh_n": 79,
+  "rh": 18.04,
+  "master": 473.42,
+  "under25": 77,
+  "missing_main": 0,
+  "top": [
+   [
+    124,
+    "Mega Zygarde ex - 124/088",
+    95.04
+   ],
+   [
+    121,
+    "Meowth ex - 121/088",
+    86.34
+   ],
+   [
+    120,
+    "Mega Zygarde ex - 120/088",
+    40.55
+   ]
+  ],
+  "median_main": 0.11,
+  "no_full_arts": null
+ },
+ "ME04: Chaos Rising": {
+  "group": 24655,
+  "release": "2026-05-22",
+  "binder": "Chaos Rising",
+  "slug": "chaos-rising",
+  "stocked": 0,
+  "printed": 86,
+  "mixed": false,
+  "main_n": 86,
+  "main": 15.53,
+  "full_n": 122,
+  "full": 462.93,
+  "rh_n": 76,
+  "rh": 18.43,
+  "master": 481.36,
+  "under25": 76,
+  "missing_main": 0,
+  "top": [
+   [
+    116,
+    "Mega Greninja ex - 116/086",
+    127.82
+   ],
+   [
+    122,
+    "Mega Greninja ex - 122/086",
+    121.1
+   ],
+   [
+    119,
+    "Cinccino ex - 119/086",
+    41.08
+   ]
+  ],
+  "median_main": 0.14,
+  "no_full_arts": null
+ },
+ "ME05: Pitch Black": {
+  "group": 24688,
+  "release": "2026-07-17",
+  "binder": "Pitch Black",
+  "slug": "pitch-black",
+  "stocked": 0,
+  "printed": 84,
+  "mixed": false,
+  "main_n": 84,
+  "main": 14.81,
+  "full_n": 120,
+  "full": 558.94,
+  "rh_n": 74,
+  "rh": 17.99,
+  "master": 576.93,
+  "under25": 74,
+  "missing_main": 0,
+  "top": [
+   [
+    116,
+    "Mega Darkrai ex - 116/084",
+    137.11
+   ],
+   [
+    120,
+    "Mega Darkrai ex - 120/084",
+    135.53
+   ],
+   [
+    117,
+    "Morpeko ex - 117/084",
+    61.7
+   ]
+  ],
+  "median_main": 0.12,
+  "no_full_arts": null
+ },
+ "ME: 30th Celebration": {
+  "group": 24722,
+  "release": "2026-09-16",
+  "binder": "30th Celebration",
+  "slug": "30th-celebration",
+  "stocked": 0,
+  "printed": 128,
+  "mixed": false,
+  "main_n": 128,
+  "main": 56.21,
+  "full_n": 158,
+  "full": 678.86,
+  "rh_n": 0,
+  "rh": 0,
+  "master": 678.86,
+  "under25": 69,
+  "missing_main": 0,
+  "top": [
+   [
+    152,
+    "Mew ex - 152/128",
+    86.9
+   ],
+   [
+    154,
+    "Gengar ex - 154/128",
+    74.55
+   ],
+   [
+    150,
+    "Pikachu ex - 150/128",
+    54.99
+   ]
+  ],
+  "median_main": 0.24,
+  "no_full_arts": null
+ },
+ "EX Trainer Kit 1: Latias & Latios": {
+  "group": 1543,
+  "release": "2026-10-14",
+  "binder": "EX Trainer Kit 1: Latias & Latios",
+  "slug": "ex-trainer-kit-1-latias-latios",
+  "stocked": 1,
+  "printed": null,
+  "mixed": true,
+  "main_n": 20,
+  "main": 79.54,
+  "full_n": 20,
+  "full": 79.54,
+  "rh_n": 0,
+  "rh": 0,
+  "master": 79.54,
+  "under25": 5,
+  "missing_main": 0,
+  "top": [
+   [
+    4,
+    "Latias",
+    39.24
+   ],
+   [
+    2,
+    "Latios",
+    26.44
+   ],
+   [
+    6,
+    "Pikachu",
+    6.87
+   ]
+  ],
+  "median_main": 0.46,
+  "no_full_arts": null
+ },
+ "EX Trainer Kit 2: Plusle & Minun": {
+  "group": 1542,
+  "release": "2026-10-14",
+  "binder": "EX Trainer Kit 2: Plusle & Minun",
+  "slug": "ex-trainer-kit-2-plusle-minun",
+  "stocked": 1,
+  "printed": null,
+  "mixed": true,
+  "main_n": 24,
+  "main": 66.0,
+  "full_n": 24,
+  "full": 66.0,
+  "rh_n": 0,
+  "rh": 0,
+  "master": 66.0,
+  "under25": 1,
+  "missing_main": 0,
+  "top": [
+   [
+    6,
+    "Plusle",
+    22.49
+   ],
+   [
+    6,
+    "Minun",
+    21.94
+   ],
+   [
+    1,
+    "Arcanine",
+    6.73
+   ]
+  ],
+  "median_main": 0.55,
+  "no_full_arts": null
+ }
+}
