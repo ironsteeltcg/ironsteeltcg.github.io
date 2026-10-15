@@ -142,7 +142,7 @@ footer{font-size:11px;color:var(--ink-400);padding:20px;text-align:center;max-wi
  .htxt h1{font-size:20px}.htxt p{font-size:12px;margin:2px 0 6px}.chips{gap:4px}.chip{font-size:11px;padding:3px 7px}
  .ring{width:76px;height:76px}.ring svg{width:76px;height:76px}.ring .pct{font-size:18px}
  .bar .in{padding:8px 10px;flex-wrap:wrap;gap:8px}.tabs{flex:1 1 100%;order:2}.tabs button{flex:1;padding:9px 6px;font-size:12.5px}
- .acts{flex:1 1 100%;order:1}.acts .ibtn{flex:1;justify-content:center;height:40px;padding:0 8px}
+ .acts{flex:1 1 100%;order:1}.acts .ibtn{flex:1;justify-content:center;height:40px;padding:0 8px;gap:5px;font-size:12.5px}
  .grid{grid-template-columns:repeat(3,1fr);gap:8px;padding:10px}
  .no{font-size:10px;bottom:4px;left:4px;padding:1px 5px}.slot .badge{top:4px;right:4px;font-size:9px;padding:1px 6px}
  .sheet-wrap{place-items:end center}
@@ -159,6 +159,7 @@ footer{font-size:11px;color:var(--ink-400);padding:20px;text-align:center;max-wi
  @view-transition{navigation:none}
  .card{transform:none!important}
 }
+footer .dc{display:inline-block;margin-bottom:8px;color:var(--gold-400);font-weight:700;font-size:12px;text-decoration:none}footer .dc:hover{text-decoration:underline}
 </style></head><body>
 <header class="hero">
  <a class="back" href="../">← All binders</a>
@@ -174,23 +175,122 @@ footer{font-size:11px;color:var(--ink-400);padding:20px;text-align:center;max-wi
  <div class="acts">
   <button class="ibtn hot" id="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l-1 4H7zM7 7h10v14H7z"/><path d="M10 12h4"/></svg>Daily rip</button>
   <button class="ibtn" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Share</button>
+  <button class="ibtn" id="bk" title="Save / restore progress" aria-label="Save / restore progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Backup</button>
   <button class="ibtn" id="snd" aria-pressed="true" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sw" d="M16 9a4 4 0 0 1 0 6"/></svg></button>
  </div></div></div>
 <main class="grid" id="g" aria-live="polite"></main>
 <div class="sheet-wrap" id="sw-wrap" aria-hidden="true"><div class="scrim" id="scrim"></div>
  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Card details" tabindex="-1"><div class="handle" id="handle"></div><button class="x" id="cx" aria-label="Close">×</button><div id="mb"></div></section></div>
 <div class="toast" id="toast"></div>
-<footer>Your progress is saved in this browser only. Prices are TCGPlayer market estimates. This is an unofficial fan tool and isn't affiliated with Nintendo, The Pokémon Company, or Creatures. Iron &amp; Steel cards are Lightly Played.</footer>
+<div class="bk"><p>Progress is saved in this browser on this device — back it up to move it to another device.</p><button class="bkb" id="bk2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>Save / restore progress</button></div>
+<footer><a class="dc" href="https://discord.gg/dvrF3yHRs" target="_blank" rel="nofollow noopener">Join our Discord</a><br>Prices are TCGPlayer market estimates. This is an unofficial fan tool and isn't affiliated with Nintendo, The Pokémon Company, or Creatures. Card conditions are stated on each listing.</footer>
+<style>
+/* ===== Save / restore progress (shared by set pages + landing) ===== */
+.bk{max-width:1200px;margin:0 auto;padding:6px 20px 0;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
+.bk p{margin:0;font-size:12px;color:var(--ink-200)}
+.bkb{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--ink-600);background:var(--ink-800);color:var(--ink-50);font:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.bkb:hover{border-color:var(--ink-400)}.bkb svg{width:16px;height:16px}
+.bkw{position:fixed;inset:0;z-index:30;display:grid;place-items:center;visibility:hidden;pointer-events:none}
+.bkw.open{visibility:visible;pointer-events:auto}
+.bkw .sc{position:absolute;inset:0;background:#05040acc;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+.bkw.open .sc{opacity:1}
+.bkp{position:relative;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;background:linear-gradient(180deg,var(--ink-700),var(--ink-800));border:1px solid var(--ink-600);border-radius:24px;box-shadow:0 10px 30px #000a;padding:22px;opacity:0;transform:translateY(16px) scale(.97);transition:transform .38s var(--ease-spring),opacity .25s}
+.bkw.open .bkp{opacity:1;transform:none}
+.bkp h2{margin:6px 40px 6px 0;font-size:22px;line-height:1.15}
+.bkp .ey{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-400)}
+.bkp .ln{font-size:13px;color:var(--ink-200);margin:0 0 12px;line-height:1.45}
+.bkp .lb{font-size:12px;color:var(--ink-200);margin:14px 0 6px;font-weight:600}
+.bkp textarea{width:100%;min-height:74px;resize:vertical;border-radius:12px;border:1px solid var(--ink-600);background:var(--ink-900);color:var(--ink-50);padding:10px 12px;font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+.bkp .rw{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.bkp .bt{flex:1 1 160px;min-height:44px;padding:10px 14px;border-radius:12px;border:1px solid var(--ink-600);background:var(--ink-700);color:var(--ink-50);font:inherit;font-size:14px;font-weight:650;cursor:pointer}
+.bkp .bt:hover{border-color:var(--ink-400)}
+.bkp .bt.gd{background:linear-gradient(180deg,var(--gold-300),var(--gold-400) 45%,var(--gold-600));color:#1b1300;border-color:transparent}
+.bkp .sm{font-size:11px;color:var(--ink-400);margin:8px 0 0}
+.bkp .x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--ink-600);background:var(--ink-800);color:var(--ink-50);cursor:pointer;font-size:18px;line-height:1}
+.bkp .msg{min-height:18px;font-size:13px;font-weight:600;color:#3ddc97;margin-top:8px}.bkp .msg.err{color:#ff5d8f}
+#bk-toast{position:fixed;left:50%;bottom:24px;z-index:46;transform:translate(-50%,20px);opacity:0;background:var(--ink-700);border:1px solid var(--ink-600);color:var(--ink-50);padding:10px 16px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px #000a;transition:all .3s var(--ease-out);pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+#bk-toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:600px){.bk{padding:6px 12px 0}.bkw{place-items:end center}.bkp{width:100%;max-height:92dvh;border-radius:22px 22px 0 0;border-bottom:0;padding:16px 16px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);opacity:1;transition:transform .42s var(--ease-out)}.bkw.open .bkp{transform:none}.bkp .bt{flex:1 1 100%}}
+@media (prefers-reduced-motion:reduce){.bkp,.bkw .sc,#bk-toast{transition:none!important}}
+</style>
 <script>
-const C=[{"k": "1", "n": 1, "id": "1", "name": "Bagon", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/83694_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/83694_400w.jpg", "p": 0.3, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "1-2", "n": 1, "id": "1", "name": "Electrike", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85131_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85131_400w.jpg", "p": 0.25, "rh": null, "m": 1, "buy": [{"t": "$0.01, Lightly Played", "u": "https://www.tcgplayer.com/search/pokemon/product?seller=dceacde1&q=Electrike", "pf": "tcgplayer"}], "aff": null}, {"k": "2", "n": 2, "id": "2", "name": "Combusken", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/84403_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/84403_400w.jpg", "p": 0.54, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "2-2", "n": 2, "id": "2", "name": "Latios", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86664_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86664_400w.jpg", "p": 26.44, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "3", "n": 3, "id": "3", "name": "Delcatty", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/84737_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/84737_400w.jpg", "p": 0.5, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "3-2", "n": 3, "id": "3", "name": "Linoone", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86805_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86805_400w.jpg", "p": 0.52, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "4", "n": 4, "id": "4", "name": "Latias", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86650_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86650_400w.jpg", "p": 39.24, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "4-2", "n": 4, "id": "4", "name": "Magnemite", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87076_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87076_400w.jpg", "p": 0.56, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "5", "n": 5, "id": "5", "name": "Magneton", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87103_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87103_400w.jpg", "p": 0.52, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "5-2", "n": 5, "id": "5", "name": "Numel", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87808_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87808_400w.jpg", "p": 0.83, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "6", "n": 6, "id": "6", "name": "Pikachu", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88079_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88079_400w.jpg", "p": 6.87, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "6-2", "n": 6, "id": "6", "name": "Skitty", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/89263_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/89263_400w.jpg", "p": 0.78, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "7", "n": 7, "id": "7", "name": "Torchic", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/89954_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/89954_400w.jpg", "p": 0.43, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "7-2", "n": 7, "id": "7", "name": "Zigzagoon", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/90746_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/90746_400w.jpg", "p": 0.43, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "8", "n": 8, "id": "8", "name": "Potion (Latias)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88335_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88335_400w.jpg", "p": 0.17, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "8-2", "n": 8, "id": "8", "name": "Potion (Latios)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88336_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88336_400w.jpg", "p": 0.15, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "9", "n": 9, "id": "9", "name": "Energy Search (Latias)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85239_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85239_400w.jpg", "p": 0.2, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "9-2", "n": 9, "id": "9", "name": "Energy Search (Latios)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85240_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85240_400w.jpg", "p": 0.21, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "10", "n": 10, "id": "10", "name": "Fire Energy", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85457_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85457_400w.jpg", "p": 0.24, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "10-2", "n": 10, "id": "10", "name": "Lightning Energy", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86760_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86760_400w.jpg", "p": 0.36, "rh": null, "m": 1, "buy": [], "aff": null}],CFG={"set": "EX Trainer Kit 1: Latias & Latios", "id": "tcg1543", "main": 20, "total": 20, "slug": "ex-trainer-kit-1-latias-latios", "q": "EX Trainer Kit 1: Latias & Latios", "logo": "", "release": "2026-10-14", "stocked": 1, "cost": {"main": 79.54, "main_n": 20, "full": 79.54, "full_n": 20, "rh": 0, "rh_n": 0, "master": 79.54, "no_full_arts": null}},K='is-binder-'+CFG.id,DK='is-daily-rip',SK='is-sound';
+/* Progress storage. Main key 'is-binder-<id>' (array of card keys) + mirror 'is-bak-binder-<id>'.
+   Backup code = base64url(JSON {v,app,t,b:{'is-binder-<id>':[keys]}}). Restore = union merge, never removes. */
+window.ISP=(function(){
+ let rec=0;const PFX='is-binder-',BAK='is-bak-binder-',BAD='is-corrupt-binder-',LS=(()=>{try{return localStorage}catch(_){return null}})();
+ const parse=v=>{if(v==null)return null;const a=JSON.parse(v);if(!Array.isArray(a))throw new Error('not a list');return a.filter(x=>typeof x=='string')};
+ function read(id){if(!LS)return [];let bad=false;
+  try{const a=parse(LS.getItem(PFX+id));if(a)return a}catch(_){bad=true}
+  let b=null;try{b=parse(LS.getItem(BAK+id))}catch(_){}
+  if(bad){try{LS.setItem(BAD+id,LS.getItem(PFX+id))}catch(_){}}
+  if(b){try{LS.setItem(PFX+id,JSON.stringify(b))}catch(_){}rec++;return b}
+  return bad?[]:null}
+ function write(id,arr){if(!LS)return false;const s=JSON.stringify([...new Set(arr)]);try{LS.setItem(PFX+id,s);LS.setItem(BAK+id,s);return true}catch(_){return false}}
+ function ids(){const o=new Set();if(!LS)return [];for(let i=0;i<LS.length;i++){const k=LS.key(i);if(k.startsWith(PFX))o.add(k.slice(PFX.length));else if(k.startsWith(BAK))o.add(k.slice(BAK.length))}return [...o].sort()}
+ function all(){const b={};for(const id of ids()){const a=read(id);if(a&&a.length)b[PFX+id]=a}return b}
+ const b64e=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ const b64d=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))};
+ function exportCode(){return b64e(JSON.stringify({v:1,app:'iron-steel-binder',t:new Date().toISOString(),b:all()}))}
+ function decode(code){let s=String(code||'').trim();const m=s.match(/[#&?]restore=([^&\s]+)/);if(m)s=m[1];try{s=decodeURIComponent(s)}catch(_){}s=s.replace(/\s+/g,'');
+  if(!s)throw new Error('empty');const o=JSON.parse(b64d(s)),b=o&&typeof o=='object'?(o.b||o):null;if(!b||typeof b!='object')throw new Error('bad code');
+  const out={};for(const [k,v] of Object.entries(b)){if(!k.startsWith(PFX)||!Array.isArray(v))continue;out[k.slice(PFX.length)]=v.filter(x=>typeof x=='string')}
+  if(!Object.keys(out).length)throw new Error('no binders in code');return out}
+ function merge(code){const d=decode(code);let added=0,sets=0;
+  for(const [id,keys] of Object.entries(d)){const cur=read(id)||[],s=new Set(cur);let n=0;for(const k of keys)if(!s.has(k)){s.add(k);n++}
+   if(n||!cur.length){write(id,[...s]);}added+=n;if(n)sets++}
+  persist();window.ISP&&ISP.onChange&&ISP.onChange();return {added,sets,binders:Object.keys(d).length}}
+ let asked=false;function persist(){if(asked)return;asked=true;try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persisted().then(p=>p||navigator.storage.persist()).then(r=>{ISP.persisted=!!r}).catch(()=>{})}catch(_){}}
+ function link(code){return location.origin+location.pathname+'#restore='+code}
+ const total=b=>Object.values(b).reduce((n,a)=>n+a.length,0);
+ let tt=0;function say(m){let t=document.getElementById('bk-toast');if(!t){t=document.createElement('div');t.id='bk-toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3200)}
+ async function copy(txt,ta){try{await navigator.clipboard.writeText(txt);return true}catch(_){}try{const t=ta||document.createElement('textarea');if(!ta){t.value=txt;document.body.appendChild(t)}t.select();const ok=document.execCommand('copy');if(!ta)t.remove();return ok}catch(_){return false}}
+ let last=null;
+ function open(){let w=document.getElementById('bkw');
+  if(!w){w=document.createElement('div');w.id='bkw';w.className='bkw';w.setAttribute('aria-hidden','true');
+   w.innerHTML=`<div class="sc" data-close></div><section class="bkp" role="dialog" aria-modal="true" aria-labelledby="bk-h" tabindex="-1"><button class="x" data-close aria-label="Close">×</button>
+   <div class="ey">Save / restore progress</div><h2 id="bk-h">Back up your binders</h2>
+   <p class="ln">Progress is saved in this browser on this device — back it up to move it to another device.</p>
+   <div class="lb" id="bk-sum"></div><textarea id="bk-code" readonly aria-label="Your backup code" spellcheck="false"></textarea>
+   <div class="rw"><button class="bt gd" id="bk-copy">Copy backup code</button><button class="bt" id="bk-link">Copy restore link</button></div>
+   <div class="lb">Restore from a backup</div><textarea id="bk-in" aria-label="Paste a backup code or restore link" placeholder="Paste a backup code or restore link…" spellcheck="false"></textarea>
+   <div class="rw"><button class="bt" id="bk-go">Restore</button></div><div class="msg" id="bk-msg" role="status"></div>
+   <p class="sm">Restoring only adds cards to your binders. It never removes any.</p></section>`;
+   document.body.appendChild(w);
+   w.addEventListener('click',e=>{if(e.target.closest('[data-close]'))close()});
+   addEventListener('keydown',e=>{if(e.key=='Escape'&&w.classList.contains('open'))close()});
+   const msg=(m,err)=>{const el=document.getElementById('bk-msg');el.textContent=m;el.classList.toggle('err',!!err)};
+   document.getElementById('bk-copy').onclick=async()=>{const c=document.getElementById('bk-code');msg(await copy(c.value,c)?'Backup code copied. Keep it somewhere safe.':'Select the code and copy it.')};
+   document.getElementById('bk-link').onclick=async()=>{const l=link(document.getElementById('bk-code').value);w.dataset.link=l;msg(await copy(l)?'Restore link copied. Open it on your other device.':'Copy failed: '+l)};
+   document.getElementById('bk-go').onclick=()=>{try{const r=merge(document.getElementById('bk-in').value);document.getElementById('bk-in').value='';fill();
+    msg(r.added?`Restored ${r.added} card${r.added==1?'':'s'} across ${r.sets} binder${r.sets==1?'':'s'}.`:'Nothing new to add. You already have every card in that backup.')}catch(e){msg("That code didn't work. Check you copied all of it.",true)}}}
+  fill();last=document.activeElement;w.classList.add('open');w.setAttribute('aria-hidden','false');document.getElementById('bk-msg').textContent='';setTimeout(()=>w.querySelector('.bkp').focus({preventScroll:true}),30)}
+ function fill(){const b=all(),n=total(b),m=Object.keys(b).length;document.getElementById('bk-code').value=exportCode();
+  document.getElementById('bk-sum').textContent=n?`Your backup code · ${n} card${n==1?'':'s'} in ${m} binder${m==1?'':'s'}`:'Your backup code · no cards yet'}
+ function close(){const w=document.getElementById('bkw');if(!w)return;w.classList.remove('open');w.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus({preventScroll:true})}
+ /* restore link: merge before the page reads its progress */
+ let pending=null;const h=location.hash.match(/^#restore=(.+)$/);
+ if(h){try{pending=merge(h[1])}catch(_){pending={error:true}}try{history.replaceState(null,'',location.pathname+location.search)}catch(_){}}
+ addEventListener('DOMContentLoaded',()=>{if(pending)say(pending.error?"That restore link didn't work.":pending.added?`Restored ${pending.added} card${pending.added==1?'':'s'} from your backup`:'Backup already up to date');
+  else if(rec)say('Recovered your progress from the backup copy')});
+ return {PFX,BAK,read,write,all,ids,exportCode,decode,merge,persist,link,open,close,say,get restored(){return pending},get recovered(){return rec}}})();
+</script>
+
+<script>
+const C=[{"k": "1-bagon", "n": 1, "id": "1", "name": "Bagon", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/83694_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/83694_400w.jpg", "p": 0.3, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "1-electrike", "n": 1, "id": "1", "name": "Electrike", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85131_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85131_400w.jpg", "p": 0.25, "rh": null, "m": 1, "buy": [{"t": "$0.01", "u": "https://www.tcgplayer.com/search/pokemon/product?seller=dceacde1&q=Electrike", "pf": "tcgplayer"}], "aff": null}, {"k": "2-combusken", "n": 2, "id": "2", "name": "Combusken", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/84403_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/84403_400w.jpg", "p": 0.54, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "2-latios", "n": 2, "id": "2", "name": "Latios", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86664_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86664_400w.jpg", "p": 26.44, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "3-delcatty", "n": 3, "id": "3", "name": "Delcatty", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/84737_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/84737_400w.jpg", "p": 0.5, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "3-linoone", "n": 3, "id": "3", "name": "Linoone", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86805_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86805_400w.jpg", "p": 0.52, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "4-latias", "n": 4, "id": "4", "name": "Latias", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86650_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86650_400w.jpg", "p": 39.24, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "4-magnemite", "n": 4, "id": "4", "name": "Magnemite", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87076_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87076_400w.jpg", "p": 0.56, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "5-magneton", "n": 5, "id": "5", "name": "Magneton", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87103_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87103_400w.jpg", "p": 0.52, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "5-numel", "n": 5, "id": "5", "name": "Numel", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/87808_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/87808_400w.jpg", "p": 0.83, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "6-pikachu", "n": 6, "id": "6", "name": "Pikachu", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88079_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88079_400w.jpg", "p": 6.87, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "6-skitty", "n": 6, "id": "6", "name": "Skitty", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/89263_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/89263_400w.jpg", "p": 0.78, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "7-torchic", "n": 7, "id": "7", "name": "Torchic", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/89954_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/89954_400w.jpg", "p": 0.43, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "7-zigzagoon", "n": 7, "id": "7", "name": "Zigzagoon", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/90746_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/90746_400w.jpg", "p": 0.43, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "8-potion-latias", "n": 8, "id": "8", "name": "Potion (Latias)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88335_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88335_400w.jpg", "p": 0.17, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "8-potion-latios", "n": 8, "id": "8", "name": "Potion (Latios)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/88336_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/88336_400w.jpg", "p": 0.15, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "9-energy-search-latias", "n": 9, "id": "9", "name": "Energy Search (Latias)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85239_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85239_400w.jpg", "p": 0.2, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "9-energy-search-latios", "n": 9, "id": "9", "name": "Energy Search (Latios)", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85240_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85240_400w.jpg", "p": 0.21, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "10-fire-energy", "n": 10, "id": "10", "name": "Fire Energy", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/85457_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/85457_400w.jpg", "p": 0.24, "rh": null, "m": 1, "buy": [], "aff": null}, {"k": "10-lightning-energy", "n": 10, "id": "10", "name": "Lightning Energy", "r": "Common", "img": "https://tcgplayer-cdn.tcgplayer.com/product/86760_200w.jpg", "big": "https://tcgplayer-cdn.tcgplayer.com/product/86760_400w.jpg", "p": 0.36, "rh": null, "m": 1, "buy": [], "aff": null}],CFG={"set": "EX Trainer Kit 1: Latias & Latios", "id": "tcg1543", "sid": "tcg1543", "leg": {"1": "1-bagon", "1-2": "1-electrike", "10": "10-fire-energy", "10-2": "10-lightning-energy", "2": "2-combusken", "2-2": "2-latios", "3": "3-delcatty", "3-2": "3-linoone", "4": "4-latias", "4-2": "4-magnemite", "5": "5-magneton", "5-2": "5-numel", "6": "6-pikachu", "6-2": "6-skitty", "7": "7-torchic", "7-2": "7-zigzagoon", "8": "8-potion-latias", "8-2": "8-potion-latios", "9": "9-energy-search-latias", "9-2": "9-energy-search-latios"}, "main": 20, "total": 20, "slug": "ex-trainer-kit-1-latias-latios", "q": "EX Trainer Kit 1: Latias & Latios", "logo": "", "release": "2026-10-14", "stocked": 1, "cost": {"main": 79.54, "main_n": 20, "full": 79.54, "full_n": 20, "rh": 0, "rh_n": 0, "master": 79.54, "no_full_arts": null}},SID=CFG.sid||CFG.id,DK='is-daily-rip',SK='is-sound';
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
-let own=new Set(JSON.parse(localStorage.getItem(K)||'[]')),f='all',lastFocus=null;
+let own=new Set(),f='all',lastFocus=null;
 const $=id=>document.getElementById(id),g=$('g');
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const pad=c=>/^\d+$/.test(c.id)?c.id.padStart(3,'0'):c.id;
 const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 const byK=Object.fromEntries(C.map(c=>[c.k,c]));
-function save(){localStorage.setItem(K,JSON.stringify([...own]))}
+/* ---- progress: stable keys, legacy-key migration, mirror (see ISP) ---- */
+const canon=k=>String(k).toLowerCase().replace(/^0+(?=\d)/,'');
+const byCanon=(()=>{const m={},n={};for(const c of C){const x=canon(c.k);n[x]=(n[x]||0)+1;m[x]=c.k}for(const x in n)if(n[x]>1)delete m[x];return m})();
+function migrate(keys){const out=new Set();let ch=false;for(const k of keys){let nk=k;if(!byK[k]){nk=(CFG.leg&&CFG.leg[k])||byCanon[canon(k)]||k;if(nk!==k)ch=true}out.add(nk)}return {own:out,ch}}
+function loadOwn(){const raw=ISP.read(SID)||[],m=migrate(raw);own=m.own;if(m.ch||raw.length!==own.size)ISP.write(SID,[...own])}
+function save(){ISP.write(SID,[...own]);ISP.persist()}
+loadOwn();ISP.onChange=()=>{loadOwn();render()};
 function counts(){let o=0,om=0,left=0;for(const c of C){const h=own.has(c.k);if(h)o++;if(c.m){if(h)om++;else left+=c.p||0}}return{o,om,left}}
 function tier(r){r=(r||'').toLowerCase();return /special|hyper|ultra|illustration|secret|rainbow|gold|shiny|radiant|amazing|mega attack|black white/.test(r)?3:/double|holo|ace|prism|rare/.test(r)&&!/^rare$|^common|^uncommon/.test(r)?2:1}
 /* ---- hero ---- */
@@ -255,7 +355,7 @@ $('cx').onclick=closeSheet;$('scrim').onclick=closeSheet;addEventListener('keydo
  const up=e=>{if(y0==null)return;const dy=e.clientY-y0;y0=null;s.style.transition='';if(dy>90)closeSheet();else s.style.setProperty('--dy','0px')};h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up)})();
 function rarityLabel(c){return c.r||'Card'}
 function ebaySearch(c){return 'https://www.ebay.com/sch/i.html?_nkw='+encodeURIComponent(c.name+' '+pad(c)+' '+CFG.q+' pokemon')}
-function buyLinks(c){return c.buy.map(x=>{const tp=x.pf=='tcgplayer';return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" target="_blank" rel="noopener" href="${esc(x.u)}"><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Get it from Iron &amp; Steel on ${tp?'TCGPlayer':'eBay'}<span class="sub">${esc(x.t)}</span></span><span aria-hidden="true">↗</span></a>`}).join('')}
+function buyLinks(c){return c.buy.map(x=>{const tp=x.pf=='tcgplayer';return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" target="_blank" rel="noopener" href="${esc(x.u)}"><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Get it from Iron &amp; Steel on ${tp?'TCGPlayer':'eBay'}<span class="sub">${esc(x.t)}${x.cond?` · <span class="cond">${esc(x.cond)}</span>`:''}</span></span><span aria-hidden="true">↗</span></a>`}).join('')}
 function shopHTML(c){if(c.buy.length)return `<div class="sect">In stock with us</div><div class="stack">${buyLinks(c)}</div>`;
  return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
  `<a class="btn btn--ghost" target="_blank" rel="noopener" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
@@ -296,7 +396,7 @@ $('daily').onclick=()=>{const day=today();
   <div class="pack" id="pack"><div class="crimp t"></div><div class="pl"><div>${CFG.logo?`<img src="${esc(CFG.logo)}" alt="">`:''}${esc(CFG.set)}<div style="font-size:11px;opacity:.85;margin-top:6px">IRON &amp; STEEL DAILY</div></div></div><div class="crimp b"></div></div>${tearHTML('Tear the pack open')}</div>`,'Daily rip');
  wireTear(()=>{localStorage.setItem(DK,day);$('pack').classList.add('torn');const t=tier(c.r);
   setTimeout(()=>{$('mb').innerHTML=`<div style="text-align:center"><div class="eyebrow">Today's free rip</div><div class="reveal pop-wrap">${bigCard(c)}</div><h2 style="margin:4px 0">${esc(c.name)} <span style="color:var(--ink-400)">#${esc(pad(c))}</span></h2>
-   <div class="meta" style="justify-content:center"><span class="chip">${esc(rarityLabel(c))}</span><span class="chip">Lightly Played</span></div></div><div class="stack">${buyLinks(c)}</div>`;$('mb').dataset.rip=c.k;wireImgs($('mb'));wireBigTilt();
+   <div class="meta" style="justify-content:center"><span class="chip">${esc(rarityLabel(c))}</span>${(()=>{const cs=[...new Set(c.buy.map(x=>x.cond).filter(Boolean))];return cs.length==1?`<span class="chip cond">${esc(cs[0])}</span>`:''})()}</div></div><div class="stack">${buyLinks(c)}</div>`;$('mb').dataset.rip=c.k;wireImgs($('mb'));wireBigTilt();
    const bs=$('bigslot');bs.classList.add('own','pop');burstAt(bs,t+1);snd('chime')},RM?0:450)})};
 /* ---- share PNG ---- */
 function shareCanvas(){const W=1080,cv=document.createElement('canvas');cv.width=W;cv.height=W;const x=cv.getContext('2d');
@@ -313,6 +413,7 @@ $('share').onclick=()=>{const cv=shareCanvas(),name=`my-${CFG.slug}-binder.png`;
  cv.toBlob(async b=>{const file=new File([b],name,{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:`My ${CFG.set} binder`});return}catch(e){if(e.name=='AbortError')return}}
   const a=document.createElement('a');a.download=name;a.href=URL.createObjectURL(b);document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);toast('Progress image saved')},'image/png')};
-window.__binder={shareCanvas,counts,today,C,CFG};
+$('bk').onclick=$('bk2').onclick=()=>ISP.open();
+window.__binder={shareCanvas,counts,today,C,CFG,own:()=>[...own]};
 render();requestAnimationFrame(movePill);
 </script></body></html>
