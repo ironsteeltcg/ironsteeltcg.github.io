@@ -400,6 +400,136 @@ footer{color:var(--ink-2)}footer .dc{color:#0a4fa8}
  .msw{animation:msIn .25s linear!important}
 }
 @media print{.stage,.msw{display:none!important}}
+/* ===== Card view v4 (follow-up 2, Jonatan 2026-10-15 5:49-5:51 PM): tapping a card opens a FULL-SCREEN Pocket-style card view.
+   The card view has the faded, blurred binder behind. The big card floats
+   centred on the top layer; a centred Buy pill under it; scrolling reveals modular info panels.
+   Swipe the card up = add to binder (fly/pop/toast). Swipe down at the top (card or anywhere) = dismiss back to the binder. ===== */
+.sheet{padding-bottom:calc(env(safe-area-inset-bottom) + 16px)}
+.sheet-wrap.fly .sheet{transition-duration:.25s!important}
+.sheet-wrap.cardsheet{display:block}
+.sheet-wrap.cardsheet .scrim{opacity:calc(1 - var(--dp,0) * .85);transition:opacity .3s;
+ background:#efefef}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .sheet-wrap.cardsheet .scrim{background:#ecececD9;-webkit-backdrop-filter:blur(8px) saturate(0) brightness(1.05);backdrop-filter:blur(8px) saturate(0) brightness(1.05)}}
+.sheet-wrap.cardsheet.drag .scrim,.sheet-wrap.cardsheet.drag .sheet{transition:none!important}
+.sheet-wrap.cardsheet .sheet{position:absolute;left:0;right:0;top:100vh;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0 0 calc(env(safe-area-inset-bottom) + 80px);
+ border:0;border-radius:0;background:transparent;box-shadow:none;transform:none!important;overflow-y:auto;overscroll-behavior:contain;transition:top .42s var(--ease-out)}
+.sheet-wrap.cardsheet.open .sheet{top:var(--dy,0px)}
+.sheet-wrap.cardsheet .sheet .handle{display:none}
+.sheet-wrap.cardsheet.fly .sheet{transition-duration:.25s!important}
+/* close (round white icon button, Pocket's back button) and the progress pill both stick to the top while the panels scroll */
+.sheet-wrap.cardsheet .x{position:sticky;top:6px;left:12px;float:left;margin:6px 0 -50px 12px;width:44px;height:44px;border-radius:50%;border:0;background:var(--sheet);color:var(--ink);box-shadow:var(--sh-1);z-index:6}
+.cs.v3{position:relative;width:min(100%,460px);margin:0 auto;padding:0 16px;color:#1f2a3a}
+.ctop{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:flex-end;height:56px;box-sizing:border-box;width:100%;padding:0 16px 0 68px;background:var(--sheet);border-bottom:1px solid var(--line)}
+.ppill{pointer-events:auto;position:relative;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 4px;border-radius:999px;background:#fff;box-shadow:var(--sh-1);color:#1f2a3a}
+.ppill .pic{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#d9f9ea;color:#0b5a49}
+.ppill .pic svg{width:18px;height:18px}
+.ppill .pbar{width:96px;height:10px;border-radius:999px;background:#e8e8e8;overflow:hidden}
+.ppill .pbar i{display:block;height:100%;width:var(--pf,0%);border-radius:inherit;background:linear-gradient(90deg,#7ff5dc,#3fd9c4)}
+.ppill .pch{color:var(--ink);font:800 11px/1.3 var(--font);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* stage: the big card, centred, top layer, soft drop shadow */
+.cstage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding-top:14px}
+.flt{position:relative;z-index:4}
+.swc{position:relative;--cw:min(68vw,320px,calc((100vh - 300px) * 63 / 88));width:var(--cw);height:calc(var(--cw) * 88 / 63);border-radius:14px;outline-offset:4px;
+ transform:translateY(var(--sy,0px)) rotate(calc(var(--sp,0) * -4deg)) scale(calc(1 + var(--sp,0) * .12));transition:transform .45s var(--ease-spring)}
+.swz:not(.own) .swc{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.swc.drag{cursor:grabbing;transition:none}
+.swc .big{width:100%;height:100%}
+.swc .big .slot,.swc .big .card{width:100%;height:100%}
+.swc .big .card{border-radius:14px;box-shadow:var(--sh-2)}
+.swz:not(.own) .swc .big .card{box-shadow:var(--sh-2),0 18px 40px -12px #4fe3f099}
+.swc #bigslot,.swc #bigslot .card,.swc #bigslot img{opacity:1;filter:none}
+#tear.dragging .cstage{z-index:7}
+.swc:focus-visible{outline:3px solid #3fd9c4}
+/* a single foil sheen sweep on open (off under reduced motion) + the swipe shimmer */
+.swc::before{content:'';position:absolute;inset:0;z-index:6;border-radius:14px;pointer-events:none;background:linear-gradient(115deg,transparent 35%,#ffffffa6 48%,#c8fff6 50%,#ffffffa6 52%,transparent 65%);background-size:300% 100%;background-position:120% 0;opacity:0}
+.flt.sheen .swc::before{animation:sheen .9s .25s var(--ease-out) 1}
+@keyframes sheen{0%{opacity:1;background-position:120% 0}100%{opacity:1;background-position:-20% 0}}
+.swz:not(.own) .swc::after{content:'';position:absolute;inset:0;border-radius:14px;pointer-events:none;z-index:5;
+ background:linear-gradient(160deg,transparent 30%,#ffffffb3 47%,#b3f6ff66 52%,transparent 68%);background-size:100% 260%;
+ background-position:0 calc(100% - var(--sp,0) * 100%);opacity:calc(var(--sp,0) * 1.4)}
+#tear.armed .swc .card{box-shadow:0 0 0 3px #3fd9c4,0 0 26px #3fd9c4aa}
+.swc.rise{animation:swRise .7s var(--ease-out)}@keyframes swRise{40%{translate:0 -12px}100%{translate:0 0}}
+/* Cyan cue between the card and its name; three finite waves, then a quiet resting state. */
+.swcue{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;margin-top:10px;color:var(--ink-2);font:700 13px/1.2 var(--font);text-align:center;pointer-events:none;transition:opacity .2s}
+.ua{height:32px;display:flex;flex-direction:column;align-items:center;padding-top:5px}
+.ua i{display:block;width:14px;height:14px;flex-shrink:0;margin-top:-5px;border-left:2.5px solid var(--cyan-2);border-top:2.5px solid var(--cyan-2);border-radius:1px;transform:rotate(45deg);opacity:.4;animation:uaUp 1.2s ease-in-out 3 both}
+.ua i:nth-child(1){animation-delay:.3s}.ua i:nth-child(2){animation-delay:.15s}
+.swcue.again .ua i{animation-name:uaUp2}
+@keyframes uaUp{0%,100%{opacity:.4}50%{opacity:1}}@keyframes uaUp2{0%,100%{opacity:.4}50%{opacity:1}}
+#tear.dragging .swcue{opacity:0}
+.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* minimal text under the card */
+.cs.v3 .cname{margin-top:8px;text-align:center}
+.cs.v3 .cname h2{margin:0;font-size:17px;line-height:1.25;color:#1f2a3a}
+.cs.v3 .cname .sub{margin-top:2px;font-size:12px;font-weight:700;color:#3b4556}
+/* Centred action pills below the card. */
+.pair{display:block;margin:14px auto 0;width:min(100%,280px)}
+.pair[hidden]{display:none}
+.pair .shop,.pair .shop .stack{margin:0;display:block}
+.ostep{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px auto 0;padding:0;width:max-content}
+.chip.inb{background:#d9f9ea;color:#0b5a49;font-weight:800;box-shadow:none}
+/* scroll down: modular info panels on the faded binder (one shadow level), fade/slide in as they enter (off under reduced motion) */
+.pnls{display:grid;gap:12px;margin-top:28px}
+.pnl{background:#fff;border-radius:20px;padding:14px 16px;box-shadow:var(--sh-1);color:#1f2a3a;transition:opacity .4s var(--ease-out),transform .4s var(--ease-out)}
+.pnl.pre{opacity:0;transform:translateY(16px)}
+.pnl h3{margin:0 0 8px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4a5568}
+.pnl .pv{display:flex;flex-direction:column}.pnl .pv+.pv{margin-top:8px}
+.pnl .lab{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4a5568}
+.pnl .pv b{font-size:28px;font-weight:800;color:var(--price);font-variant-numeric:tabular-nums}
+.pnl .stockline{margin-top:8px;font-size:15px;font-weight:600;color:var(--ink-2)}
+.pnl .pv i{font-style:normal;font-size:14px;color:#4a5568}
+.pnl .dl{margin:0}.pnl .note{margin-top:8px;color:#4a5568}
+.pnl .pgb{height:12px;border-radius:999px;background:#e8e8e8;overflow:hidden;margin:6px 0}.pnl .pgb i{display:block;height:100%;width:var(--pf,0%);background:linear-gradient(90deg,#7ff5dc,#3fd9c4)}
+.pnl .pgt{font-size:14px;font-weight:700}
+.pnl.shopp .sect{margin:0 0 8px}
+
+@media (prefers-reduced-motion:reduce){.swc,.swc.rise,.ua i,.flt.sheen .swc::before{animation:none!important;transition:none!important}.ua i{opacity:1}.swc::before,.swz:not(.own) .swc::after{display:none}.swcue,.pnl{transition:none}.pnl.pre{opacity:1;transform:none}
+ .sheet-wrap.cardsheet .sheet,.sheet-wrap.cardsheet .scrim{transition:opacity .2s!important}}
+/* fly into the real pocket */
+.flyc{position:fixed;z-index:30;transform-origin:0 0;border-radius:10px;pointer-events:none;box-shadow:0 10px 30px #1f2a3a55;object-fit:cover}
+.flyc.r2{box-shadow:0 0 0 2px #47d7ff,0 0 22px #47d7ffaa}.flyc.r3,.flyc.r4,.flyc.r5{box-shadow:0 0 0 2px #ffd166,0 0 26px #ffd166cc}
+.slot.landing .card{opacity:0}
+@media (prefers-reduced-motion:reduce){.swc,.swc.rise,.ua i{animation:none!important;transition:none!important}.ua i{opacity:1}.swz:not(.own) .swc::after{display:none}.flt,.swcue{transition:none}}
+/* ===== BUY (swap block): 'Buy this card · $x' glowing mint pill + the store pills that replace the pair; markup = BUY_LABEL/BUY_BTN/STORE_BTN in the JS.
+   Tapping it swaps the pair for the store pills in place (TCGPlayer mint, eBay white), each with a small grey label pill above. ===== */
+.btn.buy{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:52px;min-height:52px;margin:0 auto;padding:0 12px;border:0;outline:0;border-radius:999px;
+ background:linear-gradient(#8ff7e2,#4fe0cf);color:#06303a;font:800 15px/1 var(--font);text-decoration:none;cursor:pointer;box-shadow:var(--sh-1),0 0 18px #4fe0cf88;filter:none;transition:transform .12s var(--ease-out);white-space:nowrap}
+.cs:not(.v3) .btn.buy{width:min(100%,340px)}
+.btn.buy[hidden]{display:none}
+.btn.buy:hover{filter:none}
+.btn.buy:active{transform:scale(.97)}
+.btn.buy .txt{color:#06303a;flex:0 0 auto}
+.btn.buy .pchip{flex:0 0 auto;color:#06303a;font:800 15px/1 var(--font);font-variant-numeric:tabular-nums}
+.btn.buy .pchip::before{content:'· '}
+.btn.buy .lgw{height:26px;padding:1px 5px;margin-right:4px}
+.lgw{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:2px 6px;border-radius:8px;background:#fff;flex:0 0 auto}
+.lgw .slogo{display:block;height:24px;width:auto}
+.picker{margin:14px 0 0}
+.picker.in{animation:pkUp .26s var(--ease-out)}@keyframes pkUp{from{transform:scale(.94);opacity:0}}
+.pk-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px;padding-top:10px}
+.btn.store{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 12px;border-radius:999px;text-decoration:none;font:800 16px/1 var(--font);font-variant-numeric:tabular-nums;filter:none}
+.btn.store .tarr{position:absolute;top:50%;right:12px;transform:translateY(-50%);font-size:13px;line-height:1;font-weight:800}
+.btn.store.btn--tcg{background:linear-gradient(#8ff7e2,#4fe0cf);color:#06303a;box-shadow:var(--sh-1),0 0 18px #4fe0cf88;outline:0;border:0}
+.btn.store.btn--shop{background:#fff;color:#1f2a3a;box-shadow:var(--sh-1);border:0;outline:0}
+.btn.store:hover{filter:none}.btn.store:active{transform:scale(.97)}
+.btn.store .spr small{font-size:13px;font-weight:700}
+.btn.store .dtag{position:absolute;left:50%;top:-11px;transform:translateX(-50%);padding:3px 10px;border-radius:999px;background:#4a5568;color:#fff;font:800 11px/1.2 var(--font);white-space:nowrap}
+.btn.store.btn--shop .lgw{background:none;padding:2px 0}
+.btn.store.btn--tcg .lgw{padding:1px 4px;height:26px}
+@media (prefers-reduced-motion:reduce){.btn.buy,.btn.store{transition:none}.picker.in{animation:none}}
+/* ===== end BUY ===== */
+/* toast clears the mobile tab bar (56px); with the sheet open the tab bar is hidden, so it drops to the safe-area edge; desktop keeps 24px */
+:root{--tabbar-h:56px}
+@media (max-width:768px){
+ .toast{bottom:calc(var(--tabbar-h) + 12px + env(safe-area-inset-bottom))}
+ body.sheet-open .toast,body:has(.sheet-wrap.open) .toast{bottom:calc(12px + env(safe-area-inset-bottom))}
+}
+
+.cs.v3 .pair,.cs.v3 .ostep,.cs.v3 > .picker{position:sticky;top:56px;z-index:4;margin:0 auto;background:transparent;border:0;box-shadow:none;padding:8px 0}
+.cs.v3 > .picker{width:100%;max-width:428px}
+.cs.v3 .pair{width:min(100%,280px)}
+.cs.v3 .ostep{width:max-content;max-width:100%}
 @media print{
 @page{margin:12mm}
 html{color-scheme:light}*{color:#000!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;animation:none!important;transition:none!important}
@@ -599,14 +729,14 @@ function slotHTML(c,i){const o=own.has(c.k),t=tier(c.r);
  <span class="tick" role="button" aria-label="${o?'Mark not owned':'Mark owned'}: ${esc(c.name)}"></span>${o?'':`<span class="pname">${esc(c.name)}</span>`}<span class="no">${esc(pad(c))}</span>${c.p?`<span class="pr">$${money(c.p)}</span>`:''}${c.buy.length&&!o?'<span class="badge">In stock</span>':''}</button>`}
 function wireImgs(root){root.querySelectorAll('.card.sk img').forEach(im=>{const d=()=>{im.parentNode.classList.remove('sk');im.parentNode.classList.add('ld')};if(im.complete&&im.naturalWidth)d();else{im.onload=d;im.onerror=()=>{im.parentNode.classList.remove('sk')}}})}
 function render(){g.dataset.cols=cols;const list=C.filter(c=>{const o=own.has(c.k);return !(f=='miss'&&o||f=='own'&&!o||f=='shop'&&!c.buy.length)});
- g.innerHTML=list.length?list.map(slotHTML).join(''):`<div class="empty">${f=='own'?'No cards yet. Tap the circle on a card, or open it and drag the strip to tear it in.':'Nothing here.'}</div>`;wireImgs(g);stat()}
+ g.innerHTML=list.length?list.map(slotHTML).join(''):`<div class="empty">${f=='own'?'No cards yet. Tap the circle on a card, or open it and swipe the card up into your binder.':'Nothing here.'}</div>`;wireImgs(g);stat()}
 function selTabs(){document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.f==f));const sm=$('showmiss');if(sm){sm.textContent=f=='miss'?'Show all cards':'Show missing';sm.setAttribute('aria-pressed',f=='miss')}}
 function setFilter(nf){f=nf;selTabs();movePill();writeHash();
  if(document.startViewTransition&&!RM)document.startViewTransition(render);else render()}
 function movePill(){const b=document.querySelector('#tabs button[aria-selected=true]'),p=$('pill');p.style.left=b.offsetLeft+'px';p.style.width=b.offsetWidth+'px'}
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>setFilter(b.dataset.f));$('showmiss').onclick=()=>{setFilter(f=='miss'?'all':'miss');document.querySelector('.bar').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})};addEventListener('resize',movePill);
 g.addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;if(e.target.closest('.tick')){e.preventDefault();e.stopPropagation();quickTick(byK[s.dataset.k],s);return}openCard(byK[s.dataset.k],s)});
-/* one-tap quick tick on the pocket corner (the sheet button + tear strip do the same) */
+/* one-tap quick tick on the pocket corner (the card sheet swipe does the same) */
 function quickTick(c,el){const was=own.has(c.k);if(was)own.delete(c.k);else own.add(c.k);save();
  if((f=='miss'&&!was)||(f=='own'&&was)){el.remove();if(!g.querySelector('.slot'))render()}
  else{const tmp=document.createElement('div');tmp.innerHTML=slotHTML(c,parseInt(el.style.getPropertyValue('--i'))||0);const n=tmp.firstElementChild;n.style.animation='none';el.replaceWith(n);wireImgs(n);
@@ -619,7 +749,7 @@ addEventListener('hashchange',()=>{if(/^#restore=/.test(location.hash))return;co
  Pointer position is smoothed toward its target every frame; the card tilts within a fixed range, lifts out of its pocket,
  a rainbow foil band (colour-dodge, clipped to the art window; full card on top rarities) slides with the pointer and a
  radial glare follows it. Desktop: on hover. Phones: one showcase pass when the card sheet opens, never on a grid tap.
- Off while the tear knob is dragged and under prefers-reduced-motion. */
+ Off while the card is being swiped and under prefers-reduced-motion. */
 const FX=new Map();
 function fxFor(el,amt){let s=FX.get(el);if(!s){s={el,amt,x:.5,y:.5,a:0,tx:.5,ty:.5,ta:0,raf:0};FX.set(el,s)}return s}
 function fxStep(s){s.raf=0;s.x+=(s.tx-s.x)*.2;s.y+=(s.ty-s.y)*.2;s.a+=(s.ta-s.a)*.16;const cd=s.el.querySelector('.card');if(!cd)return fxStop(s);
@@ -659,7 +789,7 @@ function burst(x,y,power=1){if(RM)return;if(!fx){fx=document.createElement('canv
   if(P.length)fxRaf=requestAnimationFrame(step);else{fxRaf=0;ctx.clearRect(0,0,innerWidth,innerHeight)}})}
 function burstAt(el,power){const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,power)}
 /* ---- sheet ---- */
-function openSheet(html,label){lastFocus=document.activeElement;$('sw-wrap').classList.toggle('dim',/id="pack"/.test(html));document.body.classList.add('sheet-open');$('mb').innerHTML=html;$('sheet').setAttribute('aria-label',label||'Details');$('sheet').style.removeProperty('--dy');
+function openSheet(html,label){lastFocus=document.activeElement;$('sw-wrap').classList.toggle('dim',/id="pack"/.test(html));$('sw-wrap').classList.toggle('cardsheet',/class="cs v3/.test(html));document.body.classList.add('sheet-open');$('mb').innerHTML=html;$('sheet').setAttribute('aria-label',label||'Details');$('sheet').style.removeProperty('--dy');
  const w=$('sw-wrap');w.classList.add('open');w.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';wireImgs($('mb'));setTimeout(()=>$('sheet').focus({preventScroll:true}),30)}
 function closeSheet(){const w=$('sw-wrap');w.classList.remove('open');document.body.classList.remove('sheet-open');w.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
 $('cx').onclick=closeSheet;$('scrim').onclick=closeSheet;addEventListener('keydown',e=>{if(e.key=='Escape')closeSheet()});
@@ -670,42 +800,134 @@ function rarityLabel(c){return c.r||'Card'}
 function ebaySearch(c){return 'https://www.ebay.com/sch/i.html?_nkw='+encodeURIComponent(c.name+' '+pad(c)+' '+CFG.q+' pokemon')}
 function gcBuy(x){return x.pf=='tcgplayer'?'out-tcgplayer-store/'+CFG.slug:x.l?'out-ebay-lot/'+x.l:'out-ebay-single/'+CFG.slug}
 function gcT(c,x){return CFG.set+' #'+c.id+' '+c.name+(x?' | '+x:'')}
-/* buy buttons: our TCGPlayer storefront first (its listed price, e.g. $0.01, is real + a "Shop deal" pill), eBay second with its own
-   price. Links are the stock data's URLs untouched (storefront search: seller + card name, untagged). A condition shows only where
-   that listing's own stock row states one (cond); never from 'printing', never in general copy. */
-function buyLinks(c){const P=x=>{const v=parseFloat(String(x.pr||'').replace(/[^0-9.]/g,''));return isNaN(v)?Infinity:v},
- L=c.buy.slice().sort((a,b)=>P(a)-P(b)||(b.pf=='tcgplayer')-(a.pf=='tcgplayer')),m=L[0],shop=x=>x.pf=='tcgplayer'?'TCGPlayer':'eBay',
- sub=x=>x.pf=='tcgplayer'?(x.v||''):(x.l?x.t:'Single'+(x.v?' '+x.v:'')),cond=x=>x.cond?`<span class="cond">${esc(x.cond)}</span>`:'',
- at=x=>`target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"`,tp=m.pf=='tcgplayer',s=sub(m);
- return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" ${at(m)}><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Buy from Iron &amp; Steel TCG${m.pr?' · '+esc(m.pr):''} on ${shop(m)}${s||m.cond?`<span class="sub">${esc(s)}${m.cond?(s?' · ':'')+cond(m):''}</span>`:''}</span>${tp&&P(m)<=0.01?'<span class="deal">Shop deal</span>':''}<span aria-hidden="true">↗</span></a>`+
- L.slice(1).map(x=>{const s=sub(x);return `<a class="btn btn--also${x.pf=='tcgplayer'?' btn--tcg':''}" ${at(x)}><span>Also on ${shop(x)}${x.pr?' · '+esc(x.pr):''}${s&&s!='Single'?` <span class="asub">${esc(s)}</span>`:''}${x.cond?' · '+cond(x):''}</span><span aria-hidden="true">↗</span></a>`}).join('')}
-function shopHTML(c){if(c.buy.length)return `<div class="sect">In stock with us</div><div class="stack">${buyLinks(c)}</div>`;
+/* ===== BUY (swap point) =====
+   Missing card, in stock: ONE centered cyan 'Buy this card' button with the lowest price in a dark chip. With 2+ listings it opens
+   a small store picker (Pocket-style row: TCGPlayer cyan, eBay white, each a plain <a href> with the stock data's URL, untouched,
+   in the same cheapest-first order as before; 'Deal' tag only on our $0.01 TCGPlayer price). With one listing the button IS that
+   store's link and shows its logo. No condition is ever shown in the buy UI.
+   Template strings: BUY_LABEL, BUY_BTN, STORE_BTN. Look: the BUY block in appfeel-swipe.css.
+   Store logos (official, unmodified apart from scaling / trimming transparent padding), used only to label that store's link:
+   TCGPlayer: https://mma.prnewswire.com/media/1627012/TCGplayer_Logo.jpg?p=original (TCGplayer press media via PR Newswire/Cision)
+   eBay:      https://static.ebayinc.com/static/assets/Uploads/PressRoom/Local/eBay-Logo.png (eBay Inc. Press Room, Logos download) */
+const BUY_LABEL='Buy this card',STORE={tcgplayer:{n:'TCGPlayer',img:'/assets/store-tcgplayer.jpg',w:64,h:24},ebay:{n:'eBay',img:'/assets/store-ebay.png',w:60,h:24}};
+const storeOf=x=>STORE[x.pf=='tcgplayer'?'tcgplayer':'ebay'],logo=s=>`<img class="slogo" src="${s.img}" width="${s.w}" height="${s.h}" alt="${s.n}" decoding="async">`;
+const BUY_BTN=({tag,cls,attrs,price,lg})=>`<${tag} class="btn buy${cls?' '+cls:''}" ${attrs}>${lg?`<span class="lgw">${lg}</span>`:''}<span class="txt">${BUY_LABEL}</span>${price?`<span class="pchip">${price}</span>`:''}</${tag}>`;
+const STORE_BTN=({cls,attrs,s,price,deal,lot})=>`<a class="btn store ${cls}" ${attrs} aria-label="Buy on ${s.n}${price?', '+price:''}${lot?', lot':''}, opens ${s.n}"><span class="tarr" aria-hidden="true">↗</span><span class="lgw">${logo(s)}</span><span class="spr">${price}${lot?' <small>lot</small>':''}</span>${deal?'<span class="dtag">Deal</span>':''}</a>`;
+function buyLinks(c,opts={}){const filtered=opts.noLot?c.buy.filter(x=>!x.l):c.buy, listings=filtered.length?filtered:c.buy;const P=x=>{const v=parseFloat(String(x.pr||'').replace(/[^0-9.]/g,''));return isNaN(v)?Infinity:v},
+ L=listings.slice().sort((a,b)=>P(a)-P(b)||(b.pf=='tcgplayer')-(a.pf=='tcgplayer')),m=L[0],
+ at=x=>`target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"`,cls=x=>x.pf=='tcgplayer'?'btn--tcg':'btn--shop';
+ if(L.length==1){const s=storeOf(m);return BUY_BTN({tag:'a',cls:cls(m),attrs:`${at(m)} aria-label="${BUY_LABEL} on ${s.n}${m.pr?', '+esc(m.pr):''}, opens ${s.n}"`,price:m.pr?esc(m.pr):'',lg:logo(s)})}
+ return BUY_BTN({tag:'button',cls:'',attrs:'type="button" id="buyb" aria-expanded="false" aria-controls="picker"',price:m.pr?esc(m.pr):''})+
+  `<div class="picker" id="picker" role="group" aria-label="Choose a store" hidden><div class="pk-row" style="--n:${L.length}">`+
+  L.map(x=>STORE_BTN({cls:cls(x),attrs:at(x),s:storeOf(x),price:x.pr?esc(x.pr):'',deal:x.pf=='tcgplayer'&&P(x)===0.01,lot:!!x.l})).join('')+`</div></div>`}
+/* store pills: tapping 'Buy this card' hides it (and, in the card view, the Buy row); the store pills take its place (focus moves to the first);
+   the way back is Escape or the close button. Reduced motion: no slide (CSS). */
+function wireBuy(){const b=$('buyb'),pk=$('picker');if(!b||!pk)return;
+ b.onclick=()=>{b.setAttribute('aria-expanded','true');b.hidden=true;const pr=b.closest('.pair');if(pr)pr.hidden=true;pk.hidden=false;pk.classList.remove('in');void pk.offsetWidth;pk.classList.add('in');const a=pk.querySelector('a');if(a)a.focus({preventScroll:true})}}
+function shopHTML(c,opts={}){if(c.buy.length)return `<div class="stack">${buyLinks(c,opts)}</div>`;
  return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" data-gc-event="out-affiliate/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
  `<a class="btn btn--ghost" target="_blank" rel="noopener" data-gc-event="out-ebay-search/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
 function bigCard(c,extra=''){const o=own.has(c.k),t=tier(c.r);return `<div class="big"><div class="slot ${o?'own':''} r${t}" data-k="${esc(c.k)}" id="bigslot"><div class="card sk"><img src="${esc(c.big||c.img)}" alt="${esc(c.name)}" width="245" height="342" decoding="async"><div class="foil"></div><div class="glare"></div></div></div></div>`}
 function wireBigTilt(){const s=$('bigslot');if(!s||RM)return;if(FINE){s.addEventListener('pointermove',e=>{if(e.pointerType!='touch')tilt(s,e,18)});s.addEventListener('pointerleave',()=>untilt(s))}else setTimeout(()=>showcase(s),380)}
 /* card sheet: coloured art panel (set accent) on top, then a rounded surface with Price (default) / Details / Variants tabs.
    Every value comes from the page's own data (C / CFG), the same data as the static card table. */
-function openCard(c,fromEl){const o=own.has(c.k),nb=c.buy.length,TABS=[['price','Price'],['details','Details'],['variants','Variants']];
- const pricePane=`<div class="pricerow"><span>Market price</span>${c.p?`<b>$${money(c.p)}</b>`:'<i>No market price yet</i>'}</div>`+
-  (o?`<div class="ostep"><span>Number owned</span><div class="stepper"><button type="button" id="tg" aria-label="${qty(c.k)>1?'Remove one copy':'Remove from my binder'}">−</button><output id="qn" aria-live="polite">${qty(c.k)}</output><button type="button" id="tq" aria-label="Add another copy">+</button></div></div>`:tearHTML('Drag to tear it in'))+(o?'':shopHTML(c));
+/* card view v4 (Jonatan, 2026-10-15 5:49-5:51 PM): a FULL-SCREEN Pocket-style card view with the faded, blurred binder behind.
+   Top: close (round) + set-progress pill (binder icon, mint bar, 'N / main' chip). Stage: the big card, centred, top layer, one
+   foil sheen on open, the 'Swipe up to add' strip across its lower edge. Minimal text (name, set line), then a
+   centred 'Buy this card · $x' pill (swaps for a centred pair of store pills). Owned cards show
+   the 'In binder ✓' chip + stepper instead. Scrolling down reveals modular info panels: Price, Details, Variants, Your binder.
+   Swipe the card up = add; swipe down at the top (card or anywhere) = dismiss. */
+const ICO_BINDER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 3v18M12.5 8h3.5M12.5 12h3.5"/></svg>';
+function openCard(c,fromEl){const o=own.has(c.k),nb=c.buy.length,cn=counts(),pf=Math.round(100*Math.min(1,cn.om/CFG.main))+'%';
  const rel=CFG.release?new Date(CFG.release+'T12:00').toLocaleDateString(undefined,{month:'short',year:'numeric'}):'';
- const details=`<dl class="dl"><dt>Set</dt><dd>${esc(CFG.set)}</dd><dt>Number</dt><dd>#${esc(pad(c))}${c.m?' / '+CFG.main:''}</dd><dt>Rarity</dt><dd>${esc(rarityLabel(c))}</dd><dt>Counts toward</dt><dd>${c.m?'Main set and full set':'Full set (beyond the main-set number)'}</dd>${rel?`<dt>Released</dt><dd>${esc(rel)}</dd>`:''}<dt>In your binder</dt><dd>${o?'Yes':'Not yet'}</dd><dt>In stock with us</dt><dd>${nb?nb+' listing'+(nb>1?'s':''):'Not right now'}</dd></dl>`;
- const variants=`<ul class="vl"><li><span>${esc(rarityLabel(c))}</span>${c.p?`<b>$${money(c.p)}</b>`:'<span>No price</span>'}</li><li${c.rh?'':' class="na"'}><span>Reverse holo</span>${c.rh?`<b>$${money(c.rh)}</b>`:'<span>No price</span>'}</li></ul><p class="note" style="margin-top:10px">TCGPlayer market estimates. The binder tracks one copy per card number.</p>`;
- const panes={price:pricePane,details,variants};
- openSheet(`<div class="cs"><div class="art">${bigCard(c)}<div class="ttl"><div class="eyebrow">${esc(CFG.set)} · #${esc(pad(c))}${c.m?' / '+CFG.main:''}</div><h2>${esc(c.name)}</h2>
- <div class="meta"><span class="chip">${esc(rarityLabel(c))}</span><span class="chip status ${o?'own':'miss'}">${o?'✓ In your binder':'Missing'}</span></div></div></div>
- <div class="panel"><div class="stabs" role="tablist" aria-label="Card info">${TABS.map(([k,l],i)=>`<button role="tab" id="t-${k}" data-t="${k}" aria-controls="p-${k}" aria-selected="${!i}"${i?' tabindex="-1"':''}>${l}</button>`).join('')}</div>
- ${TABS.map(([k],i)=>`<div role="tabpanel" id="p-${k}" aria-labelledby="t-${k}"${i?' hidden':''}>${panes[k]}</div>`).join('')}</div></div>`,c.name);
- const tabs=[...document.querySelectorAll('#mb .stabs button')],sel=b=>{tabs.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$('p-'+x.dataset.t).hidden=!on})};
- tabs.forEach((b,i)=>{b.onclick=()=>sel(b);b.onkeydown=e=>{if(e.key=='ArrowRight'||e.key=='ArrowLeft'){const n=tabs[(i+(e.key=='ArrowRight'?1:tabs.length-1))%tabs.length];sel(n);n.focus();e.preventDefault()}}});
- wireBigTilt();
+ const details=`<dl class="dl"><dt>Set</dt><dd>${esc(CFG.set)}</dd><dt>Number</dt><dd>#${esc(pad(c))}${c.m?' / '+CFG.main:''}</dd><dt>Rarity</dt><dd>${esc(rarityLabel(c))}</dd><dt>Counts toward</dt><dd>${c.m?'Main set and full set':'Full set (beyond the main-set number)'}</dd>${rel?`<dt>Released</dt><dd>${esc(rel)}</dd>`:''}<dt>In stock with us</dt><dd>${nb?nb+' listing'+(nb>1?'s':''):'Not right now'}</dd></dl>`;
+ const variants=`<ul class="vl"><li><span>${esc(rarityLabel(c))}</span>${c.p?`<b>$${money(c.p)}</b>`:'<span>No price</span>'}</li><li${c.rh?'':' class="na"'}><span>Reverse holo</span>${c.rh?`<b>$${money(c.rh)}</b>`:'<span>No price</span>'}</li></ul><p class="note">TCGPlayer market estimates. The binder tracks one copy per card number.</p>`;
+ const top=`<div class="ctop"><div class="ppill" role="img" aria-label="${cn.om} of ${CFG.main} cards in your binder"><span class="pic">${ICO_BINDER}</span><span class="pbar" style="--pf:${pf}"><i></i></span><span class="pch">${cn.om} / ${CFG.main}</span></div></div>`;
+ const hint=o?'':`<div class="swcue" id="swcue" aria-hidden="true"><span class="ua"><i></i><i></i><i></i></span><span class="hm">Swipe up to add</span></div>`;
+ const stage=o?`<div class="cstage"><div class="flt swz own" id="flt"><div class="swc">${bigCard(c)}</div></div></div>`
+  :`<div class="cstage"><div class="flt swz" id="flt"><div class="swc" id="kn" tabindex="0" role="button" aria-label="Add ${esc(c.name)} to binder" aria-describedby="swh">${bigCard(c)}</div></div><p class="vh" id="swh">Swipe the card up, or press Enter, Space or the up arrow, or press and hold, to add it to your binder.</p></div>`;
+ const hd=`${hint}<div class="cname"><h2>${esc(c.name)}</h2><div class="sub">${esc(CFG.set)} · #${esc(pad(c))}${c.m?' / '+CFG.main:''} · ${esc(rarityLabel(c))}</div></div>`;
+ const act=o?`<div class="ostep"><span class="chip inb">In binder ✓</span><div class="stepper"><button type="button" id="tg" aria-label="${qty(c.k)>1?'Remove one copy':'Remove from my binder'}">−</button><output id="qn" aria-live="polite" aria-label="Number owned">${qty(c.k)}</output><button type="button" id="tq" aria-label="Add another copy">+</button></div></div>`
+  :`<div class="pair" id="pair"><div class="shop">${shopHTML(c,{noLot:true})}</div></div>`;
+ const low=nb?c.buy.map(x=>parseFloat(String(x.pr||'').replace(/[^0-9.]/g,''))).filter(v=>!isNaN(v)).sort((a,b)=>a-b)[0]:null;
+ const pnls=`<div class="pnls">
+ <section class="pnl"><h3>Price</h3><div class="pv"><span class="lab">Market price</span>${c.p?`<b>$${money(c.p)}</b>`:'<i>No price yet</i>'}</div>${low!=null&&isFinite(low)?`<div class="stockline">In stock with us from $${money(low)}</div>`:''}</section>
+ <section class="pnl"><h3>Details</h3>${details}</section><section class="pnl"><h3>Variants</h3>${variants}</section>
+ <section class="pnl"><h3>Your binder</h3><div class="pgt">${o?'This card is in your binder':'Not in your binder yet'}</div></section></div>`;
+ openSheet(`${top}<div class="cs v3${o?' owned':''}" id="tear">${stage}${hd}${act}${pnls}</div>`,c.name);
+ const w=$('sw-wrap');w.style.removeProperty('--dp');const pk=$('picker');if(pk&&$('pair'))$('pair').after(pk);
+ wireBigTilt();wireBuy();wirePanels();if(!RM){const f=$('flt');requestAnimationFrame(()=>f&&f.classList.add('sheen'))}
  if(o){const upd=()=>{const n=qty(c.k);$('qn').textContent=n;$('tg').setAttribute('aria-label',n>1?'Remove one copy':'Remove from my binder')};
   $('tg').onclick=()=>{const n=qty(c.k);if(n>1){setQty(c.k,n-1);upd();return}setQty(c.k,0);own.delete(c.k);save();closeSheet();render();toast('Removed from your binder')};
   $('tq').onclick=()=>{setQty(c.k,Math.min(99,qty(c.k)+1));upd();snd('tick',.6)}}
- else wireTear(()=>rip(c),tier(c.r))}
-/* ---- tear strip ---- */
-/* Tear strip = the only add path in the card sheet (and the daily pack).
+ else wireSwipe(c)}
+/* info panels fade/slide in as they scroll into view (reduced motion: shown as is) */
+function wirePanels(){const P=[...document.querySelectorAll('#mb .pnl')];if(RM||!('IntersectionObserver' in window))return;
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{root:$('sheet'),threshold:.08});
+ P.forEach(p=>{const r=p.getBoundingClientRect();if(r.top>innerHeight){p.classList.add('pre');io.observe(p)}})}
+/* swipe-down dismiss (card or anywhere on the view, only while scrolled to the top): the view follows the finger, the binder
+   un-fades (--dp drives the stage opacity); past 28% of the screen height or on a fast flick it closes, otherwise it springs back */
+const DM_AT=.28,DM_FLICK=.6;
+function dismissDrag(dy){const s=$('sheet'),w=$('sw-wrap'),v=Math.max(0,dy);s.style.setProperty('--dy',v+'px');w.style.setProperty('--dp',Math.min(1,v/innerHeight).toFixed(3))}
+function dismissEnd(dy,vel){const s=$('sheet'),w=$('sw-wrap');w.classList.remove('drag');if(dy>innerHeight*DM_AT||(vel>DM_FLICK&&dy>30)){w.style.removeProperty('--dp');closeSheet();return true}
+ s.style.setProperty('--dy','0px');w.style.removeProperty('--dp');return false}
+/* ---- swipe up into binder ----
+   (2) the gesture lives on the card only (#kn): touch-action:none (CSS), pointerdown + setPointerCapture; the card follows the finger
+       upward with a slight tilt, a shimmer and resistance. Threshold = 60% of the travel; releasing below it springs back, so a
+       small upward scroll never adds. The rest of the sheet scrolls and pulls down to close as normal (sheetPull below).
+   (3) past the threshold: navigator.vibrate(15), the sheet slides down (~250ms) while the card flies to the real grid pocket
+       (getBoundingClientRect of that .slot), shrinks into it, the pocket pops with the rarity burst, counter ticks, toast.
+       Reduced motion: no fly, a plain fade, the add still completes.
+   (5) open hint: the card rises 12px and settles on every open, skipped under reduced motion.
+   (6) #kn is focusable (role=button, 'Add [name] to binder', instructions in aria-describedby). Enter, Space, ArrowUp, End, an
+       assistive-tech click (detail 0) and a 650ms press-and-hold complete the add; a quick tap gives the rise nudge. */
+const SW_AT=.6,SW_HOLD=650,SWK='is-swipe-hint';
+function swipeTravel(){return Math.max(140,Math.min(220,Math.round(innerHeight*.25)))}
+function wireSwipe(c){const z=$('tear'),k=$('kn');if(!k)return;let d=false,x0=0,y0=0,moved=false,done=false,hold=0,step=0,p=0,dn=null,vy=0,ly=0,lt=0;const T=swipeTravel();
+ const set=(up,q)=>{const m=up<=T?up:T+(up-T)*.3;p=Math.min(1,up/T);k.style.setProperty('--sy',(-m*.9).toFixed(1)+'px');k.style.setProperty('--sp',p.toFixed(3));
+  z.classList.toggle('armed',p>=SW_AT);if(q)return;const st=Math.floor(p*10);if(st>step){step=st;snd('tick',p);if(st%2==0)buzz(6)}else if(st<step)step=st};
+ const back=()=>{k.classList.remove('drag');z.classList.remove('dragging');set(0,1);step=0};
+ const rise=()=>{if(RM)return;k.classList.remove('rise');void k.offsetWidth;k.classList.add('rise');setTimeout(()=>k.classList.remove('rise'),800)};
+ const eatClick=()=>{const eat=ev=>{ev.stopPropagation();ev.preventDefault()},off=()=>document.removeEventListener('click',eat,true);
+  document.addEventListener('click',eat,true);document.addEventListener('pointerup',()=>setTimeout(off,400),{capture:true,once:true});setTimeout(off,4000)};
+ const finish=()=>{if(done)return;done=true;d=false;dragging=false;clearTimeout(hold);if(navigator.vibrate)navigator.vibrate(15);snd('rip');flyIn(c,k)};
+ k.addEventListener('pointerdown',e=>{if(done||e.button>0)return;d=true;moved=false;dragging=true;for(const s of [...FX.values()])untilt(s.el);
+  x0=e.clientX;y0=e.clientY;dn=null;vy=0;ly=y0;lt=e.timeStamp;try{k.setPointerCapture(e.pointerId)}catch(_){}
+  clearTimeout(hold);hold=setTimeout(()=>{if(d&&!moved){eatClick();finish()}},SW_HOLD);e.preventDefault()});
+ k.addEventListener('pointermove',e=>{if(!d)return;if(!moved&&(Math.abs(e.clientX-x0)>6||Math.abs(e.clientY-y0)>6)){moved=true;clearTimeout(hold);k.classList.add('drag');z.classList.add('dragging')}
+  if(moved){if(dn==null)dn=e.clientY>y0&&$('sheet').scrollTop<=0;
+   if(dn){$('sw-wrap').classList.add('drag');dismissDrag(e.clientY-y0);vy=(e.clientY-ly)/Math.max(1,e.timeStamp-lt);ly=e.clientY;lt=e.timeStamp}else set(Math.max(0,y0-e.clientY))}});
+ const up=e=>{dragging=false;clearTimeout(hold);if(!d)return;d=false;if(done)return;if(!moved){if(e.type=='pointerup')rise();return}
+  if(dn){dn=null;k.classList.remove('drag');z.classList.remove('dragging');dismissEnd(e.clientY-y0,vy);return}
+  if(p>=SW_AT)finish();else back()};
+ k.addEventListener('pointerup',up);k.addEventListener('pointercancel',up);
+ k.addEventListener('click',e=>{if(e.detail===0)finish()});
+ k.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '||e.key=='ArrowUp'||e.key=='End'){e.preventDefault();finish()}});
+ try{localStorage.setItem(SWK,'1')}catch(_){}if(!RM)setTimeout(rise,450)}
+/* the add: sheet slides down (~250ms) while the card flies into the real pocket, then pop + rarity burst + toast + milestone */
+function flyIn(c,k){const before=counts().om,t=tier(c.r),r0=k.getBoundingClientRect(),im=k.querySelector('img'),src=im&&(im.currentSrc||im.src)||c.big||c.img;
+ own.add(c.k);save();const hh=$('flt');if(hh)hh.style.visibility='hidden';const w=$('sw-wrap');w.classList.add('fly');closeSheet();setTimeout(()=>w.classList.remove('fly'),320);
+ if(f=='miss'){f='all';selTabs();movePill();writeHash()}
+ render();const el=g.querySelector(`.slot[data-k="${CSS.escape(c.k)}"]`);if(el)el.scrollIntoView({block:'center',behavior:'auto'});
+ const fin=()=>{toast(`In your binder! ${counts().om}/${CFG.main}`);milestone(before)};
+ if(RM||!el){if(el&&el.animate)el.animate([{opacity:0},{opacity:1}],{duration:250,easing:'linear'});snd('chime');fin();return}
+ const r1=el.getBoundingClientRect(),fl=document.createElement('img');fl.className='flyc r'+t;fl.alt='';fl.src=src;fl.setAttribute('aria-hidden','true');
+ Object.assign(fl.style,{left:r0.left+'px',top:r0.top+'px',width:r0.width+'px',height:r0.height+'px'});document.body.appendChild(fl);el.classList.add('landing');
+ const dx=r1.left-r0.left,dy=r1.top-r0.top,sx=r1.width/r0.width,sy=r1.height/r0.height;
+ const a=fl.animate([{transform:'translate(0,0) scale(1) rotate(-4deg)'},{transform:`translate(${(dx*.45).toFixed(1)}px,${(dy*.45-40).toFixed(1)}px) scale(${((1+sx)/2).toFixed(3)}) rotate(5deg)`,offset:.5},
+  {transform:`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(${sx.toFixed(3)},${sy.toFixed(3)}) rotate(0deg)`}],{duration:560,easing:'cubic-bezier(.3,.7,.2,1)',fill:'forwards'});
+ a.onfinish=()=>{fl.remove();el.classList.remove('landing');el.classList.add('pop');burstAt(el,t+1);snd('chime');setTimeout(()=>el.classList.remove('pop'),1000);fin()}}
+/* pull-down-to-close anywhere in the sheet (not on the card): only when the sheet is scrolled to the top, so normal scrolling works */
+(function sheetPull(){const s=$('sheet'),w=$('sw-wrap');let y0=null,pull=false,vy=0,ly=0,lt=0;
+ s.addEventListener('touchstart',e=>{y0=null;if(e.touches.length!=1||e.target.closest('#kn,.tear,#handle'))return;y0=e.touches[0].clientY;ly=y0;lt=e.timeStamp;vy=0;pull=false},{passive:true});
+ s.addEventListener('touchmove',e=>{if(y0==null)return;const y=e.touches[0].clientY,dy=y-y0;
+  if(!pull){if(s.scrollTop<=0&&dy>8){pull=true;s.style.transition='none';w.classList.add('drag')}else{if(dy<-4||s.scrollTop>0)y0=null;return}}
+  e.preventDefault();vy=(y-ly)/Math.max(1,e.timeStamp-lt);ly=y;lt=e.timeStamp;if(w.classList.contains('cardsheet'))dismissDrag(dy-8);else s.style.setProperty('--dy',Math.max(0,dy-8)+'px')},{passive:false});
+ const end=()=>{if(y0==null)return;const was=pull;y0=null;pull=false;if(!was)return;s.style.transition='';const dy=parseFloat(s.style.getPropertyValue('--dy'))||0;
+  if(w.classList.contains('cardsheet')){dismissEnd(dy,vy);return}w.classList.remove('drag');if(dy>90)closeSheet();else s.style.setProperty('--dy','0px')};
+ s.addEventListener('touchend',end);s.addEventListener('touchcancel',end)})();
+/* ---- pack strip (daily rip opener) ---- */
+/* Pack strip = the daily-pack opener (the card sheet uses swipe-up, see wireSwipe).
    (c) touch-action:none on .tear (CSS) + drag starts on pointerdown with setPointerCapture, so a diagonal swipe never scrolls the sheet.
    (b) a tap without a drag nudges the knob ~30% right and back over 300ms and pulses the label.
    (d) completes at 60% of the travel: navigator.vibrate(15), rarity glow on the strip, then rip() (card pop + rarity burst).
@@ -749,12 +971,6 @@ function milestone(before){if(!CFG.main)return;const now=counts(),seen=LSJ(MK,[]
  w.innerHTML=`<div class="mb"><div class="rib" id="ms-h">${m==100?'Main set complete!':m+'% of the main set!'}</div>${MS_SVG}<div class="ml">${m==100?'Every main-set card is in your binder':`<b>$${money(now.left)}</b> left to finish`}</div><div class="tp">Tap to keep going</div></div>`;
  const close=()=>{w.remove();removeEventListener('keydown',kd,true);if(prev&&prev.focus)prev.focus({preventScroll:true})},kd=e=>{if(e.key=='Escape'||e.key=='Enter'||e.key==' '){e.preventDefault();e.stopPropagation();close()}};
  w.onclick=close;addEventListener('keydown',kd,true);document.body.appendChild(w);w.focus({preventScroll:true});snd('chime');if(navigator.vibrate)navigator.vibrate(15)}
-function rip(c){const before=counts().om;own.add(c.k);save();closeSheet();const t=tier(c.r);
- const go=()=>{render();const el=g.querySelector(`.slot[data-k="${CSS.escape(c.k)}"]`);if(el)el.scrollIntoView({block:'center',behavior:'auto'});
-  toast(`${c.name} added · ${counts().om}/${CFG.main}`);
-  if(RM){if(el)el.classList.add('pop');snd('chime');milestone(before);return}
-  stage(c,t,()=>{if(el&&el.isConnected){el.classList.add('pop');setTimeout(()=>el.classList.remove('pop'),1000)}milestone(before)})};
- if(f=='miss'){f='all';selTabs();movePill();writeHash()}go()}
 let tt=0;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
 /* ---- free daily rip ---- */
 function untilMidnight(){const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);const s=Math.round((m-n)/60000);return `${Math.floor(s/60)}h ${s%60}m`}
@@ -763,10 +979,10 @@ $('daily').onclick=()=>{const day=today();
  const pool=C.filter(c=>c.buy.length);if(!pool.length){openSheet(`<div style="text-align:center"><h2>No cards from this set in stock right now</h2></div>`,'Daily rip');return}
  const c=pool[Math.floor(Math.random()*pool.length)];
  openSheet(`<div style="text-align:center"><div class="eyebrow">Today's free rip</div><h2 style="margin:6px 0 4px">One free pack a day</h2><p style="color:var(--ink-200);margin:0 0 6px;font-size:14px">Reveals a random card we actually have in stock.</p>
-  <div class="pack" id="pack"><div class="crimp t"></div><div class="pl"><div>${CFG.logo?`<img src="${esc(CFG.logo)}" alt="">`:''}${esc(CFG.set)}<div style="font-size:11px;opacity:.85;margin-top:6px">IRON &amp; STEEL DAILY</div></div></div><div class="crimp b"></div></div>${tearHTML('Tear the pack open')}</div>`,'Daily rip');
+  <div class="pack" id="pack"><div class="crimp t"></div><div class="pl"><div>${CFG.logo?`<img src="${esc(CFG.logo)}" alt="">`:''}${esc(CFG.set)}<div style="font-size:11px;opacity:.85;margin-top:6px">IRON &amp; STEEL DAILY</div></div></div><div class="crimp b"></div></div>${tearHTML('Slide to open the pack')}</div>`,'Daily rip');
  wireTear(()=>{localStorage.setItem(DK,day);$('pack').classList.add('torn');const t=tier(c.r);
   setTimeout(()=>{$('mb').innerHTML=`<div style="text-align:center"><div class="eyebrow">Today's free rip</div><div class="reveal pop-wrap">${bigCard(c)}</div><h2 style="margin:4px 0">${esc(c.name)} <span style="color:var(--ink-400)">#${esc(pad(c))}</span></h2>
-   <div class="meta" style="justify-content:center"><span class="chip">${esc(rarityLabel(c))}</span>${(()=>{const cs=[...new Set(c.buy.map(x=>x.cond).filter(Boolean))];return cs.length==1?`<span class="chip cond">${esc(cs[0])}</span>`:''})()}</div></div><div class="stack">${buyLinks(c)}</div>`;$('mb').dataset.rip=c.k;wireImgs($('mb'));wireBigTilt();
+   <div class="meta" style="justify-content:center"><span class="chip">${esc(rarityLabel(c))}</span></div></div><div class="stack">${buyLinks(c)}</div>`;$('mb').dataset.rip=c.k;wireImgs($('mb'));wireBigTilt();wireBuy();
    const bs=$('bigslot');bs.classList.add('own','pop');burstAt(bs,t+1);snd('chime')},RM?0:450)})};
 /* ---- share PNG ---- */
 function shareCanvas(){const W=1080,cv=document.createElement('canvas');cv.width=W;cv.height=W;const x=cv.getContext('2d');
