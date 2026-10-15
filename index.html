@@ -7,7 +7,7 @@
 <script>window.goatcounter=Object.assign(window.goatcounter||{},{path:function(p){return String(p||"/").split("?")[0].split("#")[0]||"/"}});window.ISGC=function(n,t){try{var g=window.goatcounter;if(n&&g&&typeof g.count==="function")g.count({path:String(n),title:String(t||n),event:true})}catch(_){}};(function(){function h(e){if(e.type==="auxclick"&&e.button!==1)return;var a=e.target&&e.target.closest&&e.target.closest("[data-gc-event]");if(a)ISGC(a.getAttribute("data-gc-event"),a.getAttribute("data-gc-title"))}document.addEventListener("click",h,true);document.addEventListener("auxclick",h,true)})();</script>
 <script data-goatcounter="https://ironsteeltcg.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <meta property="og:type" content="website"><meta property="og:site_name" content="Iron &amp; Steel TCG"><meta property="og:title" content="Pokémon Set Checklists &amp; Binder Tracker | Iron &amp; Steel TCG"><meta property="og:description" content="Free Pokémon TCG binder tracker: a set checklist with prices for 41 sets. Tick off the cards you own and see what it costs to complete each set."><meta property="og:image" content="https://ironsteeltcg.github.io/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Iron &amp; Steel TCG logo"><meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://ironsteeltcg.github.io/#org", "name": "Iron & Steel TCG", "url": "https://ironsteeltcg.github.io/", "logo": "https://ironsteeltcg.github.io/assets/logo-160.webp", "image": "https://ironsteeltcg.github.io/assets/og-image.png", "sameAs": ["https://bsky.app/profile/ironsteeltcg.bsky.social", "https://x.com/ironsteeltcg", "https://www.instagram.com/ironsteeltcg/", "https://www.tiktok.com/@ironsteeltcg", "https://www.pinterest.com/ironsteeltcg/"]}, {"@type": "WebSite", "@id": "https://ironsteeltcg.github.io/#website", "name": "Iron & Steel TCG", "url": "https://ironsteeltcg.github.io/", "description": "Free Pokémon TCG binder tracker: a set checklist with prices for 41 sets. Tick off the cards you own and see what it costs to complete each set.", "inLanguage": "en", "image": "https://ironsteeltcg.github.io/assets/og-image.png", "publisher": {"@id": "https://ironsteeltcg.github.io/#org"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://ironsteeltcg.github.io/#org", "name": "Iron & Steel TCG", "url": "https://ironsteeltcg.github.io/", "logo": "https://ironsteeltcg.github.io/assets/logo-160.webp", "image": "https://ironsteeltcg.github.io/assets/og-image.png", "sameAs": ["https://bsky.app/profile/ironsteeltcg.bsky.social", "https://x.com/ironsteeltcg", "https://www.instagram.com/ironsteeltcg/", "https://www.tiktok.com/@ironsteeltcg", "https://www.pinterest.com/ironsteeltcg/", "https://www.facebook.com/profile.php?id=61595195380522", "https://linktr.ee/ironsteeltcg"]}, {"@type": "WebSite", "@id": "https://ironsteeltcg.github.io/#website", "name": "Iron & Steel TCG", "url": "https://ironsteeltcg.github.io/", "description": "Free Pokémon TCG binder tracker: a set checklist with prices for 41 sets. Tick off the cards you own and see what it costs to complete each set.", "inLanguage": "en", "image": "https://ironsteeltcg.github.io/assets/og-image.png", "publisher": {"@id": "https://ironsteeltcg.github.io/#org"}}]}</script>
 <style>
 :root{--ink-900:#0c0a14;--ink-800:#15121f;--ink-700:#1e1a2c;--ink-600:#2a2540;--ink-400:#6f6890;--ink-300:#958eb5;--line-strong:#605a80;--sh-1:0 1px 2px #0006,0 4px 12px #0004;--sh-2:0 8px 24px #0008;--ink-200:#b9b3d1;--ink-50:#f5f3ff;--gold-300:#ffe08a;--gold-400:#ffd166;--gold-600:#e9a800;--flare-500:#ff5d8f;--aqua-400:#47d7ff;--ease-out:cubic-bezier(.2,.8,.2,1);--ease-spring:cubic-bezier(.34,1.56,.64,1)}
 @view-transition{navigation:auto}
@@ -42,9 +42,62 @@ footer .dc{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;
 .setlinks{margin-top:34px;color:var(--ink-200);font-size:14px}.setlinks h2{color:var(--ink-50);font-size:18px;margin:0 0 10px}.setlinks ul{list-style:none;margin:0;padding:0;columns:3 260px;column-gap:24px}.setlinks li{break-inside:avoid;padding:0 0 6px}.setlinks a{display:block;min-height:44px;padding:12px 0 2px;color:var(--gold-400);text-decoration:none;font-weight:600}.setlinks a:hover{text-decoration:underline}.setlinks span{display:block;font-size:13px;color:var(--ink-300)}
 @media (max-width:600px){.brandhd{gap:10px}.brandhd .mark{height:56px}}
 .hublink{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);color:var(--gold-400);font-weight:600;font-size:14px;text-decoration:none}.hublink:hover{border-color:var(--gold-400)}
+/* ===== App-feel layer (2026-10-15, Critiquito delta): light pastel, rounded type, pills, mobile tab bar =====
+   Loaded after the page's own CSS. Dark tokens are remapped onto the light palette, so every existing rule follows. */
+:root{
+ --surface:#edf5f8;--panel:#dfe7f2;--sheet:#fff;--ink:#1f2a3a;--ink-2:#4a5568;--line:#c9d4e3;--price:#0b6b5a;
+ --mint:#79efbc;--lav:#b9a2ff;--cyan-1:#8ffcff;--cyan-2:#4fe3f0;--on-cyan:#06303a;--dim:#0b1020cc;
+ --ink-900:var(--surface);--ink-800:var(--sheet);--ink-700:var(--panel);--ink-600:var(--line);--ink-500:var(--line);
+ --ink-400:var(--ink-2);--ink-300:var(--ink-2);--ink-200:var(--ink-2);--ink-50:var(--ink);--line-strong:var(--line);
+ --gold-400:var(--price);--on-gold:#06303a;
+ /* still exactly two depth levels, retuned for a light page: 1 = cards, pills, chips; 2 = sheet, sticky bar, tab bar, toast */
+ --sh-1:0 1px 3px #1f2a3a29;--sh-2:0 8px 24px #1f2a3a2e;
+ --font:ui-rounded,"SF Pro Rounded","Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+html{color-scheme:light}
+body{font-family:var(--font);background:var(--surface);color:var(--ink)}
+:focus-visible{outline:3px solid #1f6feb;outline-offset:2px}
+h1,h2,h3{font-weight:800}
+.kw{background:linear-gradient(transparent 60%,#ffe58a 60%);padding:0 .06em}
+/* pills: one cyan primary per view, everything else a white secondary pill */
+.btn--primary{border-radius:999px;min-height:52px;padding:0 28px;background:linear-gradient(#8ffcff,#4fe3f0);color:var(--on-cyan);font-weight:800;border:0;
+ box-shadow:var(--sh-1);outline:4px solid #76faff33;outline-offset:0}
+.btn--primary:focus-visible{outline:3px solid #1f6feb}
+/* bottom tab bar: phones only; the same 4 links stay in the HTML on desktop (display:none) */
+.tabbar{display:none}
+@media (max-width:768px){
+ .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:15;display:grid;grid-template-columns:repeat(4,1fr);height:calc(56px + env(safe-area-inset-bottom));padding:0 4px env(safe-area-inset-bottom);
+  background:#edf5f8;border-top:1px solid var(--line);box-shadow:var(--sh-2);width:auto}
+ /* frosted only where the browser can blur; otherwise the opaque #edf5f8 above */
+ @supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){.tabbar{background:rgba(237,245,248,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+ .tabbar a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;color:var(--ink-2);text-decoration:none;font:700 11px/1.1 var(--font)}
+ .tabbar a svg{width:24px;height:24px}
+ .tabbar a[aria-current=page]{color:var(--ink)}
+ .tabbar a[aria-current=page]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--mint)}
+ .tabbar a[aria-current=page] svg{fill:#79efbc}
+ body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+ html{scroll-padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+ body.sheet-open .tabbar,body:has(.sheet-wrap.open) .tabbar,body:has(.bkw.open) .tabbar{display:none}
+}
+@media print{.tabbar{display:none!important}}
+/* ----- home ----- */
+body{background:linear-gradient(180deg,#d5e0fd 0,#aad5f8 260px,var(--surface) 520px)}
+.eyebrow{color:#0a4fa8}
+.lead{color:var(--ink)}
+.search{background:#fff;border:0;box-shadow:var(--sh-1);color:var(--ink)}.search::placeholder{color:var(--ink-2)}
+.tabs{background:var(--panel);border:0;padding:3px}.tabs button{color:var(--ink-2);font-weight:700}.tabs button[aria-selected=true]{color:var(--ink)}
+.tabs .pill{background:#fff;box-shadow:var(--sh-1)}
+.t{background:#fff;border:0;box-shadow:var(--sh-1);border-radius:20px}.t:hover{border:0;box-shadow:var(--sh-2)}
+.t .s{color:var(--ink-2)}.t .s b{color:var(--price);font-weight:800}.nfa{color:var(--price)}
+.badge{background:#ffe58a;color:#3a2a00}.badge::before{background:#3a2a00}.badge.bp{background:#c9f7e3;color:#05402f}.badge.bp::before{background:#05402f}
+.pb{height:10px;border-radius:999px;background:var(--panel)}.pb i{background:var(--mint)}
+.row{color:var(--ink-2)}.row b{color:var(--ink)}
+.hublink{background:#fff;border:0;box-shadow:var(--sh-1);color:var(--ink);font-weight:700}.hublink:hover{box-shadow:var(--sh-2)}
+.setlinks{color:var(--ink-2)}.setlinks h2{color:var(--ink)}.setlinks a{color:#0a4fa8}
+footer{color:var(--ink-2)}footer .dc{color:#0a4fa8}
 </style></head><body><main>
 <header class="brandhd"><img class="mark" src="assets/logo-160.webp" width="191" height="160" alt="Iron &amp; Steel TCG" decoding="async" fetchpriority="high"><div><div class="eyebrow">Iron &amp; Steel TCG · free tools</div>
-<h1>Pokémon TCG Binder Tracker</h1></div></header>
+<h1>Pokémon TCG <span class="kw">Binder</span> Tracker</h1></div></header>
 <p class="lead">Tap a missing card, tear it into your binder, and watch the set fill up. Every binder shows what it costs to finish, and which gaps we have in stock right now.</p>
 <div class="tools"><input class="search" id="q" type="search" placeholder="Find a set…" aria-label="Find a set">
 <div class="tabs" role="tablist" id="tabs"><span class="pill" id="pill"></span><button role="tab" data-s="stock" aria-selected="true">Featured</button><button role="tab" data-s="new" aria-selected="false">Newest</button><button role="tab" data-s="mine" aria-selected="false">My progress</button></div><a class="hublink" href="cheapest-pokemon-sets-to-complete/">Cheapest sets to finish →</a></div>
@@ -80,10 +133,18 @@ footer .dc{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;
 #bk-toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:600px){.bk{padding:6px 12px 0}.bkw{place-items:end center}.bkp{width:100%;max-height:92dvh;border-radius:22px 22px 0 0;border-bottom:0;padding:16px 16px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);opacity:1;transition:transform .42s var(--ease-out)}.bkw.open .bkp{transform:none}.bkp .bt{flex:1 1 100%}}
 @media (prefers-reduced-motion:reduce){.bkp,.bkw .sc,#bk-toast{transition:none!important}}
+/* ----- save / restore (app-feel) ----- */
+.bkb{background:#fff;border:0;box-shadow:var(--sh-1,0 1px 3px #1f2a3a29);color:var(--ink,#1f2a3a);font-weight:700}
+.bk p{color:var(--ink-2,#4a5568)}
+.bkw .sc{background:#1f2a3a73}
+.bkp{background:#fff;border:0;color:var(--ink,#1f2a3a)}
+.bkp .x{background:#fff;border:0;box-shadow:var(--sh-1,0 1px 3px #1f2a3a29);width:48px;height:48px;border-radius:50%}
+#bk-toast{background:#fff;border:0;color:var(--ink,#1f2a3a)}
 </style>
 <script>
 /* Progress storage. Main key 'is-binder-<id>' (array of card keys) + mirror 'is-bak-binder-<id>'.
-   Backup code = base64url(JSON {v,app,t,b:{'is-binder-<id>':[keys]}}). Restore = union merge, never removes. */
+   Backup code = base64url(JSON {v,app,t,b:{'is-binder-<id>':[keys]},x?:{'is-qty-<id>':{key:n},'is-milestones-<id>':[25,..]}}).
+   Restore = union merge, never removes (cards: union; duplicate counts: max per card; milestones seen: union). */
 window.ISP=(function(){
  let rec=0;const PFX='is-binder-',BAK='is-bak-binder-',BAD='is-corrupt-binder-',LS=(()=>{try{return localStorage}catch(_){return null}})();
  const parse=v=>{if(v==null)return null;const a=JSON.parse(v);if(!Array.isArray(a))throw new Error('not a list');return a.filter(x=>typeof x=='string')};
@@ -98,15 +159,22 @@ window.ISP=(function(){
  function all(){const b={};for(const id of ids()){const a=read(id);if(a&&a.length)b[PFX+id]=a}return b}
  const b64e=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
  const b64d=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))};
- function exportCode(){return b64e(JSON.stringify({v:1,app:'iron-steel-binder',t:new Date().toISOString(),b:all()}))}
+ const XP=/^is-(qty|milestones)-/,MSV=[25,50,75,100];let lastX=null;
+ function extras(){const x={};if(!LS)return x;for(let i=0;i<LS.length;i++){const k=LS.key(i);if(!XP.test(k))continue;try{const v=JSON.parse(LS.getItem(k));if(v&&(Array.isArray(v)?v.length:Object.keys(v).length))x[k]=v}catch(_){}}return x}
+ function mergeX(x){if(!LS||!x||typeof x!='object')return;for(const [k,v] of Object.entries(x)){try{
+   if(/^is-qty-/.test(k)&&v&&typeof v=='object'&&!Array.isArray(v)){let c={};try{c=JSON.parse(LS.getItem(k))||{}}catch(_){}
+    for(const [ck,n] of Object.entries(v)){const m=Math.floor(Number(n));if(m>=2&&m<=99)c[ck]=Math.max(c[ck]||0,m)}if(Object.keys(c).length)LS.setItem(k,JSON.stringify(c))}
+   else if(/^is-milestones-/.test(k)&&Array.isArray(v)){let c=[];try{c=JSON.parse(LS.getItem(k))||[]}catch(_){}
+    const u=[...new Set(c.concat(v).map(Number))].filter(m=>MSV.includes(m)).sort((a,b)=>a-b);if(u.length)LS.setItem(k,JSON.stringify(u))}}catch(_){}}}
+ function exportCode(){const x=extras();return b64e(JSON.stringify(Object.assign({v:1,app:'iron-steel-binder',t:new Date().toISOString(),b:all()},Object.keys(x).length?{x}:{})))}
  function decode(code){let s=String(code||'').trim();const m=s.match(/[#&?]restore=([^&\s]+)/);if(m)s=m[1];try{s=decodeURIComponent(s)}catch(_){}s=s.replace(/\s+/g,'');
-  if(!s)throw new Error('empty');const o=JSON.parse(b64d(s)),b=o&&typeof o=='object'?(o.b||o):null;if(!b||typeof b!='object')throw new Error('bad code');
+  if(!s)throw new Error('empty');const o=JSON.parse(b64d(s)),b=o&&typeof o=='object'?(o.b||o):null;lastX=o&&o.x&&typeof o.x=='object'?o.x:null;if(!b||typeof b!='object')throw new Error('bad code');
   const out={};for(const [k,v] of Object.entries(b)){if(!k.startsWith(PFX)||!Array.isArray(v))continue;out[k.slice(PFX.length)]=v.filter(x=>typeof x=='string')}
   if(!Object.keys(out).length)throw new Error('no binders in code');return out}
  function merge(code){const d=decode(code);let added=0,sets=0;
   for(const [id,keys] of Object.entries(d)){const cur=read(id)||[],s=new Set(cur);let n=0;for(const k of keys)if(!s.has(k)){s.add(k);n++}
    if(n||!cur.length){write(id,[...s]);}added+=n;if(n)sets++}
-  persist();window.ISP&&ISP.onChange&&ISP.onChange();return {added,sets,binders:Object.keys(d).length}}
+  mergeX(lastX);persist();window.ISP&&ISP.onChange&&ISP.onChange();return {added,sets,binders:Object.keys(d).length}}
  let asked=false;function persist(){if(asked)return;asked=true;try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persisted().then(p=>p||navigator.storage.persist()).then(r=>{ISP.persisted=!!r}).catch(()=>{})}catch(_){}}
  function link(code){return location.origin+location.pathname+'#restore='+code}
  const total=b=>Object.values(b).reduce((n,a)=>n+a.length,0);
@@ -157,4 +225,5 @@ function draw(){const q=$('q').value.trim().toLowerCase();let L=S.filter(s=>!q||
 function pill(){const b=document.querySelector('#tabs button[aria-selected=true]'),p=$('pill');p.style.left=b.offsetLeft+'px';p.style.width=b.offsetWidth+'px'}
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{sort=b.dataset.s;document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));pill();draw()});
 $('bk').onclick=()=>ISP.open();$('q').oninput=draw;addEventListener('resize',pill);addEventListener('pageshow',draw);draw();requestAnimationFrame(pill);
-</script></body></html>
+</script><nav class="tabbar" aria-label="Main"><a href="/" aria-current="page"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM7 9h1M16 9h1"/></svg><span>Binders</span></a><a href="/cheapest-pokemon-sets-to-complete/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M16.5 7.5C16 5.9 14.3 5 12 5c-2.8 0-4.5 1.3-4.5 3.3 0 4.7 9 2.6 9 7.2 0 2-1.8 3.5-4.5 3.5-2.4 0-4.2-1-4.8-2.8"/></svg><span>Cheapest sets</span></a><a href="/charizard-checklist/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.2 1.2-3.6 2.4-4.6.2 1.6 1 2.6 2.1 2.6C11 8.5 11.3 5.6 12 3z"/></svg><span>Charizard</span></a><a href="/free-pokemon-collection-tracker-no-app/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Compare</span></a></nav>
+</body></html>

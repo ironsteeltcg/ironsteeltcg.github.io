@@ -31,8 +31,6 @@ a{color:inherit}button{font:inherit;color:inherit}
 .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;padding:10px 14px;border-radius:var(--r-md);border:1px solid transparent;font-weight:650;font-size:15px;line-height:1.25;text-decoration:none;cursor:pointer;transition:transform .15s var(--ease-out),filter .2s;text-align:left}
 .btn:active{transform:scale(.98)}
 .btn--gold{background:linear-gradient(180deg,var(--gold-300),var(--gold-400) 45%,var(--gold-600));color:var(--on-gold)}
-.btn--own{min-height:52px;font-size:16px;font-weight:700;justify-content:center;text-align:center}
-.btn--own.pop{animation:tearPop .5s var(--ease-out)}
 .btn--shop{background:linear-gradient(135deg,var(--violet-700),#a21caf);color:#fff}
 .btn--tcg{background:linear-gradient(135deg,#0369a1,#4f46e5);color:#fff}
 .btn--shop,.btn--tcg{min-height:48px}
@@ -158,12 +156,13 @@ a{color:inherit}button{font:inherit;color:inherit}
 .vl{list-style:none;margin:0;padding:0;display:grid;gap:8px}.vl li{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--ink-600);border-radius:var(--r-md);background:var(--ink-900);font-size:15px}.vl li b{color:var(--gold-400);font-variant-numeric:tabular-nums}.vl li.na{color:var(--ink-300)}
 .stack{display:grid;gap:8px}.note{font-size:13px;color:var(--ink-300);margin:0}
 .sect{font-size:13px;color:var(--ink-200);margin:14px 0 6px;font-weight:600}
-.ortear{font-size:13px;color:var(--ink-300);text-align:center;margin:10px 0 2px}
-/* ===== Tear strip (kept: drag or keyboard; the button above is the one-tap path) ===== */
-.tear{--p:0;position:relative;height:64px;border-radius:14px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none;margin:4px 0 6px;
+.btn.btn--also{min-height:44px;background:none;border:0;padding:4px 6px;justify-content:center;gap:6px;font-size:14px;font-weight:600;color:var(--ink-200);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong)}
+.btn.btn--also:hover{color:var(--ink-50);filter:none}.btn--also .asub{color:var(--ink-300);font-weight:500}.btn--also .cond{color:var(--ink-200)}
+/* ===== Tear strip: the only add path in the sheet; full width, >=56px, touch-action:none so a drag never scrolls the sheet ===== */
+.tear{--p:0;position:relative;width:100%;height:64px;cursor:grab;border-radius:14px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none;margin:4px 0 6px;
  background:repeating-linear-gradient(90deg,#ffffff10 0 2px,transparent 2px 7px),linear-gradient(180deg,#6b6f80,#c7cbd8 35%,#8a8fa3 60%,#5c6070);
  box-shadow:inset 0 1px 0 #fff9,inset 0 -2px 0 #0006}
-.tear .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-left:64px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1d1f27;opacity:calc(1 - var(--p) * 1.4);pointer-events:none}
+.tear .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;padding-left:64px;font-size:16px;font-weight:800;letter-spacing:.01em;color:#1d1f27;opacity:calc(1 - var(--p) * 1.4);pointer-events:none}
 .tear .slit{position:absolute;left:0;top:0;bottom:0;width:calc(var(--p) * 100%);background:radial-gradient(120% 140% at 100% 50%,#fff 0%,#ffe08a 18%,#ff5d8f 45%,#2a1d4d 80%);
  -webkit-mask:linear-gradient(#000,#000) left/calc(100% - 10px) 100% no-repeat,conic-gradient(from -45deg at right,#0000,#000 1deg 89deg,#0000 90deg) right/10px 12px repeat-y;
  mask:linear-gradient(#000,#000) left/calc(100% - 10px) 100% no-repeat,conic-gradient(from -45deg at right,#0000,#000 1deg 89deg,#0000 90deg) right/10px 12px repeat-y}
@@ -171,6 +170,13 @@ a{color:inherit}button{font:inherit;color:inherit}
  background:linear-gradient(180deg,var(--gold-300),var(--gold-600));box-shadow:inset 0 1px 0 #fff9,var(--sh-1);color:var(--on-gold);font-size:20px;font-weight:900;transform:translateX(var(--kx,0px))}
 .tear .knob:active{cursor:grabbing}
 .tear.done{animation:tearPop .5s var(--ease-out)}@keyframes tearPop{50%{transform:scale(1.03)}}
+/* hint: arrow drifts, knob gives a small idle nudge until the strip is touched */
+.tear .hint{display:inline-block;animation:tHint 1.4s ease-in-out infinite}@keyframes tHint{50%{transform:translateX(5px)}}
+.tear:not(.used) .knob{animation:kHint 2.6s var(--ease-out) 1.2s infinite}@keyframes kHint{0%,72%,100%{translate:0}82%{translate:12px}}
+.tear.pulse .lbl{animation:lPulse .3s var(--ease-out)}@keyframes lPulse{50%{transform:scale(1.07)}}
+/* rarity glow on completion (tier(): 1 common, 2 holo/rare, 3 ultra and up) */
+.tear.done.g1{box-shadow:0 0 0 2px #c7cbd8,0 0 18px #c7cbd899}.tear.done.g2{box-shadow:0 0 0 2px #47d7ff,0 0 20px #47d7ffaa}
+.tear.done.g3,.tear.done.g4,.tear.done.g5{box-shadow:0 0 0 2px #ffd166,0 0 26px #ffd166cc}
 /* ===== Daily pack ===== */
 .pack{position:relative;width:200px;margin:6px auto 14px;aspect-ratio:5/8;border-radius:16px;overflow:hidden;
  background:linear-gradient(135deg,#ff5d8f,#8b5cf6 45%,#47d7ff);box-shadow:var(--sh-2),inset 0 0 0 2px #ffffff40}
@@ -212,12 +218,14 @@ footer{font-size:12px;color:var(--ink-300);padding:20px;text-align:center;max-wi
  .cs .ttl{padding-bottom:30px;padding-right:40px}.cs h2{font-size:20px;margin:4px 0 8px}
  .cs .panel{margin:0 -16px calc(-18px - env(safe-area-inset-bottom));padding:32px 16px calc(18px + env(safe-area-inset-bottom))}
  .dgrid{grid-template-columns:1fr;gap:12px}
- .tear{height:64px}.tear .knob{width:60px}.tear .lbl{padding-left:68px;font-size:12px}
+ .tear{height:60px}.tear .knob{width:60px}.tear .lbl{padding-left:68px;font-size:15px}
+ .hero{grid-template-columns:1fr}.ring{display:none}
 }
 @media (prefers-reduced-motion:reduce){
  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
  @view-transition{navigation:none}
  .card{transform:none!important}.glare,.foil{display:none!important}
+ .tear .hint,.tear .knob,.tear .lbl{animation:none!important}
 }
 footer .dc{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;margin-bottom:4px;color:var(--gold-400);font-weight:700;font-size:13px;text-decoration:none}footer .dc:hover{text-decoration:underline}
 .about{max-width:1200px;margin:0 auto;padding:10px 20px 0;display:grid;gap:6px}
@@ -230,6 +238,168 @@ footer .dc{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;
 .cl{background:var(--ink-800);border:1px solid var(--line-strong);border-radius:var(--r-md);padding:0 14px}.cl summary{cursor:pointer;font-weight:700;color:var(--ink-50);min-height:44px;padding:12px 0;box-sizing:border-box}.cl .tw{overflow-x:auto;margin-top:0;padding-bottom:10px}
 .cl table{width:100%;border-collapse:collapse;font-size:13px}.cl th,.cl td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--ink-600);white-space:nowrap}.cl td:nth-child(2){white-space:normal}.cl th:last-child,.cl td:last-child{text-align:right;font-variant-numeric:tabular-nums}.cl .note{margin-top:8px}
 @media (max-width:600px){.about{padding:12px 12px 0}.seo{padding:0 12px 10px}.cl th,.cl td{padding:4px 5px;font-size:12px}.cl th,.cl td{white-space:normal}.cl td:first-child,.cl td:last-child{white-space:nowrap}.cl{padding:0 8px}}
+/* ===== App-feel layer (2026-10-15, Critiquito delta): light pastel, rounded type, pills, mobile tab bar =====
+   Loaded after the page's own CSS. Dark tokens are remapped onto the light palette, so every existing rule follows. */
+:root{
+ --surface:#edf5f8;--panel:#dfe7f2;--sheet:#fff;--ink:#1f2a3a;--ink-2:#4a5568;--line:#c9d4e3;--price:#0b6b5a;
+ --mint:#79efbc;--lav:#b9a2ff;--cyan-1:#8ffcff;--cyan-2:#4fe3f0;--on-cyan:#06303a;--dim:#0b1020cc;
+ --ink-900:var(--surface);--ink-800:var(--sheet);--ink-700:var(--panel);--ink-600:var(--line);--ink-500:var(--line);
+ --ink-400:var(--ink-2);--ink-300:var(--ink-2);--ink-200:var(--ink-2);--ink-50:var(--ink);--line-strong:var(--line);
+ --gold-400:var(--price);--on-gold:#06303a;
+ /* still exactly two depth levels, retuned for a light page: 1 = cards, pills, chips; 2 = sheet, sticky bar, tab bar, toast */
+ --sh-1:0 1px 3px #1f2a3a29;--sh-2:0 8px 24px #1f2a3a2e;
+ --font:ui-rounded,"SF Pro Rounded","Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+html{color-scheme:light}
+body{font-family:var(--font);background:var(--surface);color:var(--ink)}
+:focus-visible{outline:3px solid #1f6feb;outline-offset:2px}
+h1,h2,h3{font-weight:800}
+.kw{background:linear-gradient(transparent 60%,#ffe58a 60%);padding:0 .06em}
+/* pills: one cyan primary per view, everything else a white secondary pill */
+.btn--primary{border-radius:999px;min-height:52px;padding:0 28px;background:linear-gradient(#8ffcff,#4fe3f0);color:var(--on-cyan);font-weight:800;border:0;
+ box-shadow:var(--sh-1);outline:4px solid #76faff33;outline-offset:0}
+.btn--primary:focus-visible{outline:3px solid #1f6feb}
+/* bottom tab bar: phones only; the same 4 links stay in the HTML on desktop (display:none) */
+.tabbar{display:none}
+@media (max-width:768px){
+ .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:15;display:grid;grid-template-columns:repeat(4,1fr);height:calc(56px + env(safe-area-inset-bottom));padding:0 4px env(safe-area-inset-bottom);
+  background:#edf5f8;border-top:1px solid var(--line);box-shadow:var(--sh-2);width:auto}
+ /* frosted only where the browser can blur; otherwise the opaque #edf5f8 above */
+ @supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){.tabbar{background:rgba(237,245,248,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+ .tabbar a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;color:var(--ink-2);text-decoration:none;font:700 11px/1.1 var(--font)}
+ .tabbar a svg{width:24px;height:24px}
+ .tabbar a[aria-current=page]{color:var(--ink)}
+ .tabbar a[aria-current=page]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--mint)}
+ .tabbar a[aria-current=page] svg{fill:#79efbc}
+ body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+ html{scroll-padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+ body.sheet-open .tabbar,body:has(.sheet-wrap.open) .tabbar,body:has(.bkw.open) .tabbar{display:none}
+}
+@media print{.tabbar{display:none!important}}
+/* ----- set page (binder) ----- */
+.hero{background:linear-gradient(180deg,#d5e0fd,#aad5f8);color:var(--ink)}
+.hero::before{opacity:.13}
+.htxt p{color:var(--ink-2)}
+.back{min-height:48px;padding:0 16px;background:#fff;color:var(--ink);font-weight:700;box-shadow:var(--sh-1)}.back:hover{background:#fff}
+.ibtn,.pbtn{background:#fff;border:0;color:var(--ink);box-shadow:var(--sh-1);font-weight:700}
+.ibtn.ico{width:44px}
+/* Daily rip keeps a small glow (sits beside the cyan primary): white pill, 3px gold ring + 12px soft gold, nothing larger */
+.ibtn.hot{background:#fff;border:0;box-shadow:0 0 0 3px #f5c542,0 0 12px #f5c54266}
+.ibtn.hot:hover{box-shadow:0 0 0 3px #f5c542,0 0 12px #f5c54266}
+.ibtn:hover,.pbtn:hover{box-shadow:var(--sh-2)}
+.ibtn[aria-pressed=true]#cols{background:var(--ink);color:#fff}
+.ring .trk{stroke:#ffffff99}
+.prog{background:#fff;border:0;box-shadow:var(--sh-1);border-radius:20px}
+.st b{font-size:28px;font-weight:800;color:var(--ink)}.st:last-child b{color:var(--price)}
+.st span{font-size:12px;font-weight:600;color:var(--ink-2)}
+.brow{color:var(--ink-2);font-weight:600}.brow b{color:var(--ink)}
+.prog progress{height:10px;border-radius:999px;background:var(--panel)}
+.prog progress::-webkit-progress-bar{background:var(--panel);border-radius:999px}
+.prog progress::-webkit-progress-value{background:var(--mint);border-radius:999px}
+.prog progress::-moz-progress-bar{background:var(--mint);border-radius:999px}
+#bf::-webkit-progress-value{background:var(--lav)}#bf::-moz-progress-bar{background:var(--lav)}
+.costs{color:var(--ink-2)}.costs b,#nfa b{color:var(--ink)}
+#showmiss{width:auto;min-height:52px;margin-left:auto}
+/* sticky filter: segmented control on --panel, selected = white pill */
+.bar{background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{background:var(--panel);border:0;padding:3px}
+.tabs button{color:var(--ink-2);font-weight:700}
+.tabs button[aria-selected=true]{color:var(--ink)}
+.tabs .pill{top:3px;bottom:3px;background:#fff;box-shadow:var(--sh-1)}
+/* the binder: 3-up (phones) in a rounded panel; compact = 5 per row, ticks hidden (tap opens the sheet) */
+.grid{background:var(--panel);border-radius:20px;padding:8px;gap:6px;margin:12px auto 24px;width:calc(100% - 40px)}
+.grid[data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px}
+.grid[data-cols="5"] .tick,.grid[data-cols="5"] .pname,.grid[data-cols="5"] .badge{display:none}
+.slot .card{z-index:1}
+.slot:not(.own) .card{background-color:var(--panel);outline:1px dashed #8d9bb1;outline-offset:-1px;box-shadow:none}
+.slot:not(.own) .card.ld img{opacity:.5;filter:grayscale(1)}
+.slot:not(.own):hover .card.ld img{opacity:.66}
+/* rarity on white: 2px gradient ring + coloured level-2 shadow (owned holo/ultra only) */
+.slot.own.r2::before,.slot.own.r3::before{content:"";position:absolute;inset:-2px;border-radius:12px;z-index:0}
+.slot.own.r2::before{background:linear-gradient(135deg,#47d7ff,#8b5cf6)}.slot.own.r2 .card{box-shadow:0 8px 24px #8b5cf666}
+.slot.own.r3::before{background:linear-gradient(135deg,#ffd166,#ff5d8f,#8b5cf6)}.slot.own.r3 .card{box-shadow:0 8px 24px #ff5d8f66}
+.slot .tick::before{border:2px solid #fff;background:#1f2a3a99}
+.slot .tick::after{border-color:#06303a}
+.slot.own .tick::before{background:var(--mint);border-color:#fff}
+.no{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}.slot.own .no{color:var(--ink)}
+.pr{background:#fff;color:var(--price);font-weight:800;box-shadow:var(--sh-1)}
+.pname{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.badge{background:#ffe58a;color:#3a2a00}.badge::before{background:#3a2a00}
+.card.sk{background:linear-gradient(100deg,#e6edf5 30%,#f4f8fb 50%,#e6edf5 70%) 0 0/300% 100%}
+/* sheet: white surface, round 48px close */
+.scrim{background:#1f2a3a73}
+.sheet{background:var(--sheet);border:0}
+.sheet .x{width:48px;height:48px;background:#fff;border:0;box-shadow:var(--sh-1);color:var(--ink)}
+.sheet .handle{background:var(--line)}
+.cs .art{background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 26%,#fff),#d5e0fd)}
+.cs .panel{background:var(--sheet)}
+.eyebrow{color:var(--ink)}
+.chip{background:#fff;border:0;box-shadow:var(--sh-1);color:var(--ink-2)}.chip b{color:var(--ink)}
+.status.own{color:var(--price)}.status.miss{color:var(--ink-2)}
+.stabs{background:var(--panel);border:0}
+.stabs button{color:var(--ink-2);font-weight:700}
+.stabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.pricerow span,.pricerow i{color:var(--ink-2)}.pricerow b{color:var(--price);font-weight:800}
+.dl dt{color:var(--ink-2)}.vl li{background:var(--surface);border-color:var(--line)}.vl li b{color:var(--price);font-weight:800}.vl li.na{color:var(--ink-2)}
+.note,.sect{color:var(--ink-2)}
+.btn--ghost{background:#fff;border:0;color:var(--ink);box-shadow:var(--sh-1);border-radius:999px}
+.btn--tcg:not(.btn--also),.btn--shop{border-radius:999px;min-height:52px;padding:8px 20px;background:linear-gradient(#8ffcff,#4fe3f0);color:var(--on-cyan);font-weight:800;box-shadow:var(--sh-1);outline:4px solid #76faff33}
+.btn--tcg:not(.btn--also) .ico,.btn--shop .ico{background:#ffffff99;color:var(--on-cyan)}
+.btn--tcg:hover,.btn--shop:hover{filter:none;box-shadow:var(--sh-2)}
+.deal{background:#1f2a3a;color:#ffd166}
+.btn.btn--also{color:var(--ink);text-decoration-color:var(--ink-2)}.btn.btn--also:hover{color:var(--ink)}.btn--also .asub{color:var(--ink-2)}.btn--also .cond{color:var(--ink)}
+/* owned stepper (duplicates); appears only once the card is in the binder */
+.ostep{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:6px 6px 6px 16px;border-radius:999px;background:var(--panel)}
+.ostep>span{font-weight:700;color:var(--ink-2);font-size:14px}
+.stepper{display:flex;align-items:center;gap:6px}.stepper output{min-width:28px;text-align:center;font:800 20px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--ink)}
+.stepper button{width:48px;height:48px;border-radius:50%;border:0;background:#fff;box-shadow:var(--sh-1);font:800 22px/1 var(--font);color:var(--ink);cursor:pointer}
+/* tear strip on white: panel track, cyan knob, muted hint */
+.tear{background:var(--panel);border:1px solid #718096;box-shadow:none}
+.tear .lbl{color:var(--ink);font-weight:700}
+/* slow arrow shimmer: drifts right and dims to 80% (still >= 4.5:1 on --panel); off under reduced motion */
+.tear .hint{display:inline-block;animation:tShim 2.8s ease-in-out infinite}@keyframes tShim{0%,100%{transform:translateX(0);opacity:1}50%{transform:translateX(5px);opacity:.8}}
+.tear .knob{background:linear-gradient(#8ffcff,#4fe3f0);color:var(--on-cyan);box-shadow:var(--sh-1)}
+/* dim stage: rip, Daily rip (sheet.dim), milestones play on #0b1020cc so rarity glow pops */
+.sheet-wrap.dim .scrim{background:var(--dim)}
+.sheet-wrap.dim .sheet{background:#141a2e;color:#f5f7ff;--ink:#f5f7ff;--ink-2:#c9d2e6;--ink-50:#f5f7ff;--ink-200:#c9d2e6;--ink-300:#c9d2e6;--panel:#242c46;--line:#3a4466;--line-strong:#3a4466;--price:#79efbc;--sheet:#141a2e;--ink-800:#1b2238;--ink-900:#0b1020;--ink-700:#242c46}
+.sheet-wrap.dim .sheet .x{background:#242c46;color:#f5f7ff}
+.stage{position:fixed;inset:0;z-index:30;display:grid;place-items:center;background:var(--dim);pointer-events:none;opacity:0;transition:opacity .22s}
+.stage.on{opacity:1}
+.stage .sc{width:min(62vw,260px);aspect-ratio:63/88;border-radius:16px;position:relative;transform:scale(.7) translateY(30px);transition:transform .5s var(--ease-spring)}
+.stage.on .sc{transform:none}
+.stage .sc img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block}
+.stage .sc::before{content:"";position:absolute;inset:-3px;border-radius:19px;z-index:-1;background:linear-gradient(135deg,#c7cbd8,#ffffff)}
+.stage.r2 .sc::before{background:linear-gradient(135deg,#47d7ff,#8b5cf6)}.stage.r3 .sc::before{background:linear-gradient(135deg,#ffd166,#ff5d8f,#8b5cf6)}
+.stage .sc{box-shadow:0 8px 24px #c7cbd899}.stage.r2 .sc{box-shadow:0 8px 24px #47d7ffcc}.stage.r3 .sc{box-shadow:0 8px 24px #ffd166cc}
+.stage .cap{position:absolute;left:0;right:0;bottom:16%;text-align:center;color:#f5f7ff;font:800 18px/1.3 var(--font)}
+/* milestone moment */
+.msw{position:fixed;inset:0;z-index:35;display:grid;place-items:center;background:var(--dim);cursor:pointer;animation:msIn .25s var(--ease-out)}
+@keyframes msIn{from{opacity:0}}
+.msw .mb{display:grid;justify-items:center;gap:14px;text-align:center;color:#f5f7ff;padding:24px;animation:msRise .55s var(--ease-spring)}
+@keyframes msRise{from{transform:translateY(30px) scale(.85);opacity:0}}
+.msw .rib{transform:rotate(-6deg);padding:12px 34px;background:linear-gradient(#e9b8ff,#b06bff);color:#24123f;font:800 26px/1.1 var(--font);border-radius:6px;box-shadow:0 8px 24px #b06bff66}
+.msw svg{width:120px;height:120px}
+.msw .ml{font:800 20px/1.3 var(--font)}.msw .ml b{color:#79efbc}
+.msw .tp{font:600 14px var(--font);color:#c9d2e6}
+.toast{background:#fff;border:0;color:var(--ink);box-shadow:var(--sh-2)}
+footer{color:var(--ink-2)}footer .dc{color:#0a4fa8}
+.hubl a{color:#0a4fa8}
+.seo{color:var(--ink-2)}.cl{background:#fff;border:0;box-shadow:var(--sh-1)}
+.intro{color:var(--ink)}.pnote{color:var(--ink-2)}
+@media (max-width:600px){
+ .grid{width:calc(100% - 16px);margin:8px auto 16px;padding:6px;gap:6px;border-radius:18px}
+ .grid[data-cols="5"]{grid-template-columns:repeat(5,1fr);gap:4px}
+ .st b{font-size:28px}.st:last-child b{font-size:28px}
+ #showmiss{min-height:52px;padding:0 20px}
+ /* phones: Print becomes a 44px icon button (its accessible name stays "Print checklist") so the row fits on one line */
+ #prt{font-size:0;gap:0;width:44px;min-width:44px;padding:0}#prt svg{width:20px;height:20px}
+ .prow{flex-wrap:nowrap}
+}
+@media (prefers-reduced-motion:reduce){
+ .stage,.msw .mb,.stage .sc{animation:none!important;transition:none!important;transform:none!important}
+ .msw{animation:msIn .25s linear!important}
+}
+@media print{.stage,.msw{display:none!important}}
 @media print{
 @page{margin:12mm}
 html{color-scheme:light}*{color:#000!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;animation:none!important;transition:none!important}
@@ -249,7 +419,7 @@ thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:a
 </style></head><body style="--acc:#3d7bff;--acc-bg:#24428a">
 <header class="hero" data-ghost="Stellar Crown">
  <div class="top"><a class="brand" href="../" aria-label="Iron &amp; Steel TCG home"><img class="mark" src="../assets/logo-160.webp" width="191" height="160" alt="Iron &amp; Steel TCG" decoding="async"></a><a class="back" href="../">← All binders</a><span class="acts">
-  <button class="ibtn ico" id="cols" aria-pressed="false" aria-label="Denser grid (4 per row)" title="Denser grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg></button>
+  <button class="ibtn ico" id="cols" aria-pressed="false" aria-label="Compact grid (5 per row)" title="Compact grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg></button>
   <button class="ibtn ico" id="share" data-gc-event="ui-share" data-gc-title="Share progress image" aria-label="Share progress image" title="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg></button>
   <button class="ibtn ico" id="bk" data-gc-event="ui-backup" data-gc-title="Open save / restore" title="Save / restore progress" aria-label="Save / restore progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg></button>
   <button class="ibtn ico" id="snd" aria-pressed="true" aria-label="Sound" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sw" d="M16 9a4 4 0 0 1 0 6"/></svg></button>
@@ -260,7 +430,7 @@ thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:a
  <circle class="trk" cx="52" cy="52" r="44" fill="none" stroke-width="9"/><circle class="val" id="rv" cx="52" cy="52" r="44" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg>
  <div class="pct"><div><span id="pc">0%</span><small id="pcs">main set</small></div></div></div>
  <div class="prog" id="chips"><div class="stats"><div class="st"><b id="so">0</b><span>Owned</span></div><div class="st"><b id="sl">142</b><span>Left in set</span></div><div class="st"><b id="sf">$41.89</b><span>to finish</span></div></div><div class="bars"><div class="brow"><span>Set</span><b id="pm">0/142</b></div><progress id="bm" max="142" value="0">0/142</progress><div class="brow"><span>Full set</span><b id="pf">0/175</b></div><progress id="bf" max="175" value="0">0/175</progress></div><p class="costs">Full set <b>$558.44</b> · master <b>$596.11</b></p></div>
- <p class="prow"><button type="button" class="pbtn" id="prt" data-gc-event="ui-print" data-gc-title="Print checklist: Stellar Crown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7z"/></svg>Print checklist</button><button class="ibtn hot" id="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12l-1 4H7zM7 7h10v14H7z"/><path d="M10 12h4"/></svg>Daily rip</button></p>
+ <p class="prow"><button type="button" class="pbtn" id="prt" aria-label="Print checklist" data-gc-event="ui-print" data-gc-title="Print checklist: Stellar Crown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7z"/></svg>Print checklist</button><button class="ibtn hot" id="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12l-1 4H7zM7 7h10v14H7z"/><path d="M10 12h4"/></svg>Daily rip</button><button type="button" class="btn btn--primary" id="showmiss" aria-pressed="false" aria-controls="g">Show missing</button></p>
 </header>
 <div class="about"><p class="intro">Stellar Crown (released September 13, 2024) has 175 cards. Buying one of each costs about $558.44 at TCGPlayer market prices; the 142-card main set is about $41.89. Full card list with prices and FAQ below; tap a card to add it to your binder.</p>
  <p class="pnote">Prices: TCGPlayer market estimates via TCGCSV (mid price where a card has no market price), as of October 15, 2026.</p></div>
@@ -269,6 +439,7 @@ thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:a
   <button role="tab" data-f="all" aria-selected="true">All <span class="n" id="n-all"></span></button><button role="tab" data-f="miss" aria-selected="false">Missing <span class="n" id="n-miss"></span></button><button role="tab" data-f="own" aria-selected="false">Owned <span class="n" id="n-own"></span></button><button role="tab" data-f="shop" aria-selected="false">In stock <span class="n" id="n-shop"></span></button></div>
 </div></div>
 <main class="grid" id="g" aria-live="polite"></main>
+<nav class="tabbar" aria-label="Main"><a href="/" aria-current="page"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM7 9h1M16 9h1"/></svg><span>Binders</span></a><a href="/cheapest-pokemon-sets-to-complete/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M16.5 7.5C16 5.9 14.3 5 12 5c-2.8 0-4.5 1.3-4.5 3.3 0 4.7 9 2.6 9 7.2 0 2-1.8 3.5-4.5 3.5-2.4 0-4.2-1-4.8-2.8"/></svg><span>Cheapest sets</span></a><a href="/charizard-checklist/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.2 1.2-3.6 2.4-4.6.2 1.6 1 2.6 2.1 2.6C11 8.5 11.3 5.6 12 3z"/></svg><span>Charizard</span></a><a href="/free-pokemon-collection-tracker-no-app/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Compare</span></a></nav>
 <section class="seo" aria-label="Card list and FAQ"><p class="hubl">Compare: <a href="../cheapest-pokemon-sets-to-complete/">see the cheapest Pokémon sets to complete</a></p>
 <details class="cl"><summary>Stellar Crown card list with prices (175 cards)</summary><div class="tw"><table data-ptable><thead><tr><th scope="col">#</th><th scope="col">Card</th><th scope="col">Rarity</th><th scope="col">Market price</th></tr></thead><tbody><tr><td>001</td><td>Venusaur ex</td><td>Double Rare</td><td>$1.74</td></tr><tr><td>002</td><td>Ledyba</td><td>Common</td><td>$0.21</td></tr><tr><td>003</td><td>Ledian</td><td>Rare</td><td>$0.20</td></tr><tr><td>004</td><td>Celebi</td><td>Uncommon</td><td>$0.09</td></tr><tr><td>005</td><td>Lileep</td><td>Common</td><td>$0.21</td></tr><tr><td>006</td><td>Cradily</td><td>Rare</td><td>$0.23</td></tr><tr><td>007</td><td>Carnivine</td><td>Common</td><td>$0.12</td></tr><tr><td>008</td><td>Mow Rotom</td><td>Common</td><td>$0.12</td></tr><tr><td>009</td><td>Grubbin</td><td>Common</td><td>$0.04</td></tr><tr><td>010</td><td>Gossifleur</td><td>Common</td><td>$0.07</td></tr><tr><td>011</td><td>Eldegoss</td><td>Uncommon</td><td>$0.07</td></tr><tr><td>012</td><td>Applin</td><td>Common</td><td>$0.24</td></tr><tr><td>013</td><td>Dipplin</td><td>Common</td><td>$0.28</td></tr><tr><td>014</td><td>Hydrapple ex</td><td>Double Rare</td><td>$1.89</td></tr><tr><td>015</td><td>Nymble</td><td>Common</td><td>$0.22</td></tr><tr><td>016</td><td>Lokix</td><td>Common</td><td>$0.18</td></tr><tr><td>017</td><td>Toedscool</td><td>Common</td><td>$0.14</td></tr><tr><td>018</td><td>Toedscruel</td><td>Uncommon</td><td>$0.03</td></tr><tr><td>019</td><td>Ponyta</td><td>Common</td><td>$0.14</td></tr><tr><td>020</td><td>Rapidash</td><td>Uncommon</td><td>$0.21</td></tr><tr><td>021</td><td>Pansear</td><td>Common</td><td>$0.12</td></tr><tr><td>022</td><td>Reshiram</td><td>Uncommon</td><td>$0.09</td></tr><tr><td>023</td><td>Salandit</td><td>Common</td><td>$0.07</td></tr><tr><td>024</td><td>Salazzle</td><td>Uncommon</td><td>$0.04</td></tr><tr><td>025</td><td>Turtonator</td><td>Common</td><td>$0.03</td></tr><tr><td>026</td><td>Scorbunny</td><td>Common</td><td>$0.16</td></tr><tr><td>027</td><td>Raboot</td><td>Common</td><td>$0.20</td></tr><tr><td>028</td><td>Cinderace ex</td><td>Double Rare</td><td>$0.83</td></tr><tr><td>029</td><td>Charcadet</td><td>Common</td><td>$0.16</td></tr><tr><td>030</td><td>Blastoise ex</td><td>Double Rare</td><td>$3.18</td></tr><tr><td>031</td><td>Lapras</td><td>Uncommon</td><td>$0.21</td></tr><tr><td>032</td><td>Lapras ex</td><td>Double Rare</td><td>$1.88</td></tr><tr><td>033</td><td>Marill</td><td>Common</td><td>$0.17</td></tr><tr><td>034</td><td>Azumarill</td><td>Uncommon</td><td>$0.06</td></tr><tr><td>035</td><td>Finneon</td><td>Common</td><td>$0.14</td></tr><tr><td>036</td><td>Lumineon</td><td>Uncommon</td><td>$0.17</td></tr><tr><td>037</td><td>Tirtouga</td><td>Common</td><td>$0.12</td></tr><tr><td>038</td><td>Carracosta</td><td>Rare</td><td>$0.23</td></tr><tr><td>039</td><td>Froakie</td><td>Common</td><td>$0.16</td></tr><tr><td>040</td><td>Frogadier</td><td>Uncommon</td><td>$0.18</td></tr><tr><td>041</td><td>Greninja ex</td><td>Double Rare</td><td>$1.43</td></tr><tr><td>042</td><td>Crabominable</td><td>Uncommon</td><td>$0.06</td></tr><tr><td>043</td><td>Chewtle</td><td>Common</td><td>$0.26</td></tr><tr><td>044</td><td>Drednaw</td><td>Rare</td><td>$0.23</td></tr><tr><td>045</td><td>Veluza</td><td>Uncommon</td><td>$0.19</td></tr><tr><td>046</td><td>Electabuzz</td><td>Common</td><td>$0.10</td></tr><tr><td>047</td><td>Electivire</td><td>Uncommon</td><td>$0.15</td></tr><tr><td>048</td><td>Chinchou</td><td>Common</td><td>$0.14</td></tr><tr><td>049</td><td>Lanturn</td><td>Uncommon</td><td>$0.09</td></tr><tr><td>050</td><td>Joltik</td><td>Common</td><td>$0.24</td></tr><tr><td>051</td><td>Galvantula ex</td><td>Double Rare</td><td>$0.99</td></tr><tr><td>052</td><td>Charjabug</td><td>Common</td><td>$0.15</td></tr><tr><td>053</td><td>Vikavolt</td><td>Uncommon</td><td>$0.09</td></tr><tr><td>054</td><td>Togedemaru</td><td>Uncommon</td><td>$0.05</td></tr><tr><td>055</td><td>Zeraora</td><td>Rare</td><td>$0.24</td></tr><tr><td>056</td><td>Pawmi</td><td>Common</td><td>$0.15</td></tr><tr><td>057</td><td>Slowpoke</td><td>Common</td><td>$3.26</td></tr><tr><td>058</td><td>Slowking</td><td>Uncommon</td><td>$0.27</td></tr><tr><td>059</td><td>Mewtwo</td><td>Uncommon</td><td>$0.58</td></tr><tr><td>060</td><td>Drifloon</td><td>Common</td><td>$0.05</td></tr><tr><td>061</td><td>Drifblim</td><td>Uncommon</td><td>$0.19</td></tr><tr><td>062</td><td>Yamask</td><td>Common</td><td>$0.11</td></tr><tr><td>063</td><td>Comfey</td><td>Common</td><td>$0.19</td></tr><tr><td>064</td><td>Milcery</td><td>Common</td><td>$0.06</td></tr><tr><td>065</td><td>Alcremie</td><td>Rare</td><td>$0.24</td></tr><tr><td>066</td><td>Fidough</td><td>Common</td><td>$0.21</td></tr><tr><td>067</td><td>Dachsbun ex</td><td>Double Rare</td><td>$1.65</td></tr><tr><td>068</td><td>Flittle</td><td>Common</td><td>$0.19</td></tr><tr><td>069</td><td>Espathra</td><td>Common</td><td>$0.19</td></tr><tr><td>070</td><td>Greavard</td><td>Common</td><td>$0.09</td></tr><tr><td>071</td><td>Iron Boulder</td><td>Rare</td><td>$0.18</td></tr><tr><td>072</td><td>Cubone</td><td>Common</td><td>$0.19</td></tr><tr><td>073</td><td>Marowak</td><td>Uncommon</td><td>$0.17</td></tr><tr><td>074</td><td>Rhyhorn</td><td>Common</td><td>$0.06</td></tr><tr><td>075</td><td>Rhydon</td><td>Common</td><td>$0.22</td></tr><tr><td>076</td><td>Rhyperior</td><td>Rare</td><td>$0.21</td></tr><tr><td>077</td><td>Meditite</td><td>Common</td><td>$0.14</td></tr><tr><td>078</td><td>Meditite</td><td>Common</td><td>$0.19</td></tr><tr><td>079</td><td>Medicham</td><td>Common</td><td>$0.16</td></tr><tr><td>080</td><td>Medicham ex</td><td>Double Rare</td><td>$0.68</td></tr><tr><td>081</td><td>Riolu</td><td>Common</td><td>$0.16</td></tr><tr><td>082</td><td>Lucario ex</td><td>Double Rare</td><td>$0.94</td></tr><tr><td>083</td><td>Mienfoo</td><td>Common</td><td>$0.05</td></tr><tr><td>084</td><td>Mienshao</td><td>Uncommon</td><td>$0.06</td></tr><tr><td>085</td><td>Pancham</td><td>Common</td><td>$0.12</td></tr><tr><td>086</td><td>Diancie</td><td>Uncommon</td><td>$0.15</td></tr><tr><td>087</td><td>Crabrawler</td><td>Common</td><td>$0.12</td></tr><tr><td>088</td><td>Falinks</td><td>Common</td><td>$0.19</td></tr><tr><td>089</td><td>Garganacl ex</td><td>Double Rare</td><td>$0.71</td></tr><tr><td>090</td><td>Koraidon</td><td>Uncommon</td><td>$0.03</td></tr><tr><td>091</td><td>Gulpin</td><td>Common</td><td>$0.26</td></tr><tr><td>092</td><td>Swalot</td><td>Uncommon</td><td>$0.14</td></tr><tr><td>093</td><td>Pangoro</td><td>Uncommon</td><td>$0.04</td></tr><tr><td>094</td><td>Impidimp</td><td>Common</td><td>$0.15</td></tr><tr><td>095</td><td>Morgrem</td><td>Common</td><td>$0.18</td></tr><tr><td>096</td><td>Grimmsnarl</td><td>Rare</td><td>$0.20</td></tr><tr><td>097</td><td>Bombirdier</td><td>Common</td><td>$0.09</td></tr><tr><td>098</td><td>Jirachi</td><td>Uncommon</td><td>$0.25</td></tr><tr><td>099</td><td>Klink</td><td>Common</td><td>$0.14</td></tr><tr><td>100</td><td>Klang</td><td>Common</td><td>$0.07</td></tr><tr><td>101</td><td>Klinklang</td><td>Rare</td><td>$0.17</td></tr><tr><td>102</td><td>Meltan</td><td>Common</td><td>$0.27</td></tr><tr><td>103</td><td>Meltan</td><td>Common</td><td>$0.18</td></tr><tr><td>104</td><td>Melmetal</td><td>Rare</td><td>$0.10</td></tr><tr><td>105</td><td>Melmetal ex</td><td>Double Rare</td><td>$0.69</td></tr><tr><td>106</td><td>Duraludon</td><td>Common</td><td>$0.13</td></tr><tr><td>107</td><td>Archaludon</td><td>Rare</td><td>$0.05</td></tr><tr><td>108</td><td>Varoom</td><td>Common</td><td>$0.02</td></tr><tr><td>109</td><td>Revavroom</td><td>Uncommon</td><td>$0.04</td></tr><tr><td>110</td><td>Orthworm ex</td><td>Double Rare</td><td>$0.67</td></tr><tr><td>111</td><td>Raging Bolt</td><td>Rare</td><td>$0.25</td></tr><tr><td>112</td><td>Tauros</td><td>Common</td><td>$0.18</td></tr><tr><td>113</td><td>Eevee</td><td>Common</td><td>$0.32</td></tr><tr><td>114</td><td>Hoothoot</td><td>Common</td><td>$0.25</td></tr><tr><td>115</td><td>Noctowl</td><td>Rare</td><td>$0.28</td></tr><tr><td>116</td><td>Glameow</td><td>Common</td><td>$0.08</td></tr><tr><td>117</td><td>Purugly</td><td>Common</td><td>$0.09</td></tr><tr><td>118</td><td>Fan Rotom</td><td>Common</td><td>$0.20</td></tr><tr><td>119</td><td>Bouffalant</td><td>Rare</td><td>$0.20</td></tr><tr><td>120</td><td>Tornadus</td><td>Uncommon</td><td>$0.04</td></tr><tr><td>121</td><td>Fletchling</td><td>Common</td><td>$0.08</td></tr><tr><td>122</td><td>Fletchinder</td><td>Common</td><td>$0.16</td></tr><tr><td>123</td><td>Talonflame</td><td>Uncommon</td><td>$0.07</td></tr><tr><td>124</td><td>Wooloo</td><td>Common</td><td>$0.17</td></tr><tr><td>125</td><td>Dubwool</td><td>Uncommon</td><td>$0.08</td></tr><tr><td>126</td><td>Lechonk</td><td>Common</td><td>$0.18</td></tr><tr><td>127</td><td>Cyclizar</td><td>Common</td><td>$0.08</td></tr><tr><td>128</td><td>Terapagos ex</td><td>Double Rare</td><td>$1.15</td></tr><tr><td>129</td><td>Antique Cover Fossil</td><td>Common</td><td>$0.15</td></tr><tr><td>130</td><td>Antique Root Fossil</td><td>Common</td><td>$0.19</td></tr><tr><td>131</td><td>Area Zero Underdepths</td><td>Uncommon</td><td>$0.21</td></tr><tr><td>132</td><td>Briar</td><td>Uncommon</td><td>$0.18</td></tr><tr><td>133</td><td>Crispin</td><td>Uncommon</td><td>$0.31</td></tr><tr><td>134</td><td>Deluxe Bomb</td><td>ACE SPEC Rare</td><td>$0.33</td></tr><tr><td>135</td><td>Glass Trumpet</td><td>Uncommon</td><td>$0.19</td></tr><tr><td>136</td><td>Grand Tree</td><td>ACE SPEC Rare</td><td>$0.43</td></tr><tr><td>137</td><td>Gravity Gemstone</td><td>Uncommon</td><td>$0.17</td></tr><tr><td>138</td><td>Kofu</td><td>Uncommon</td><td>$0.17</td></tr><tr><td>139</td><td>Lacey</td><td>Uncommon</td><td>$0.11</td></tr><tr><td>140</td><td>Occa Berry</td><td>Uncommon</td><td>$0.07</td></tr><tr><td>141</td><td>Payapa Berry</td><td>Uncommon</td><td>$0.14</td></tr><tr><td>142</td><td>Sparkling Crystal</td><td>ACE SPEC Rare</td><td>$0.34</td></tr><tr><td>143</td><td>Bulbasaur</td><td>Illustration Rare</td><td>$85.99</td></tr><tr><td>144</td><td>Ledian</td><td>Illustration Rare</td><td>$5.63</td></tr><tr><td>145</td><td>Lileep</td><td>Illustration Rare</td><td>$7.86</td></tr><tr><td>146</td><td>Turtonator</td><td>Illustration Rare</td><td>$4.46</td></tr><tr><td>147</td><td>Raboot</td><td>Illustration Rare</td><td>$7.33</td></tr><tr><td>148</td><td>Squirtle</td><td>Illustration Rare</td><td>$94.88</td></tr><tr><td>149</td><td>Crabominable</td><td>Illustration Rare</td><td>$3.37</td></tr><tr><td>150</td><td>Joltik</td><td>Illustration Rare</td><td>$6.14</td></tr><tr><td>151</td><td>Zeraora</td><td>Illustration Rare</td><td>$11.03</td></tr><tr><td>152</td><td>Milcery</td><td>Illustration Rare</td><td>$15.77</td></tr><tr><td>153</td><td>Meditite</td><td>Illustration Rare</td><td>$7.43</td></tr><tr><td>154</td><td>Gulpin</td><td>Illustration Rare</td><td>$13.03</td></tr><tr><td>155</td><td>Archaludon</td><td>Illustration Rare</td><td>$3.95</td></tr><tr><td>156</td><td>Hydrapple ex</td><td>Ultra Rare</td><td>$2.87</td></tr><tr><td>157</td><td>Cinderace ex</td><td>Ultra Rare</td><td>$3.32</td></tr><tr><td>158</td><td>Lapras ex</td><td>Ultra Rare</td><td>$6.45</td></tr><tr><td>159</td><td>Galvantula ex</td><td>Ultra Rare</td><td>$1.95</td></tr><tr><td>160</td><td>Dachsbun ex</td><td>Ultra Rare</td><td>$4.43</td></tr><tr><td>161</td><td>Medicham ex</td><td>Ultra Rare</td><td>$0.93</td></tr><tr><td>162</td><td>Orthworm ex</td><td>Ultra Rare</td><td>$1.17</td></tr><tr><td>163</td><td>Briar</td><td>Ultra Rare</td><td>$1.68</td></tr><tr><td>164</td><td>Crispin</td><td>Ultra Rare</td><td>$6.68</td></tr><tr><td>165</td><td>Kofu</td><td>Ultra Rare</td><td>$0.86</td></tr><tr><td>166</td><td>Lacey</td><td>Ultra Rare</td><td>$2.24</td></tr><tr><td>167</td><td>Hydrapple ex</td><td>Special Illustration Rare</td><td>$37.87</td></tr><tr><td>168</td><td>Galvantula ex</td><td>Special Illustration Rare</td><td>$19.20</td></tr><tr><td>169</td><td>Dachsbun ex</td><td>Special Illustration Rare</td><td>$70.36</td></tr><tr><td>170</td><td>Terapagos ex</td><td>Special Illustration Rare</td><td>$34.39</td></tr><tr><td>171</td><td>Briar</td><td>Special Illustration Rare</td><td>$11.51</td></tr><tr><td>172</td><td>Lacey</td><td>Special Illustration Rare</td><td>$18.00</td></tr><tr><td>173</td><td>Terapagos ex</td><td>Hyper Rare</td><td>$12.59</td></tr><tr><td>174</td><td>Area Zero Underdepths</td><td>Hyper Rare</td><td>$9.75</td></tr><tr><td>175</td><td>Bravery Charm</td><td>Hyper Rare</td><td>$3.43</td></tr></tbody></table></div><p class="note">Prices: TCGPlayer market estimates as of October 15, 2026.</p></details>
 <section class="ms" id="master-set"><h2>How much is a Stellar Crown master set?</h2><p class="answer">A Stellar Crown master set is 300 cards, $596.11 at today&#x27;s prices (TCGPlayer market prices via TCGCSV as of October 15, 2026): base (main set 1–142) 142 cards $41.89, reverse holos 125 cards $37.67, secret rares 33 cards $516.55.</p><p>A master set is one copy of every card in the set, including the secret rares numbered past the printed set size, plus the reverse holo version of every card that has one. In Scarlet &amp; Violet and Mega Evolution sets the ex, Ultra Rare and other higher-rarity cards don&#x27;t come in reverse holo, so the reverse holo count (125) is lower than the main set count (142). Our master set price is the full set plus every reverse holo, at TCGPlayer market prices via TCGCSV. Some collectors also count promos or stamped versions. We don&#x27;t include them.</p><div class="tw"><table class="mst"><thead><tr><th scope="col">Part</th><th scope="col">Cards</th><th scope="col">Cost</th></tr></thead><tbody><tr><td>Base: main set (1–142)</td><td>142</td><td>$41.89</td></tr><tr><td>Reverse holos</td><td>125</td><td>$37.67</td></tr><tr><td>Secret rares (past #142)</td><td>33</td><td>$516.55</td></tr><tr class="tot"><td><b>Master set</b></td><td><b>300</b></td><td><b>$596.11</b></td></tr></tbody></table></div><p>Skip the secret rares and the main set plus every reverse holo is about $79.56. The two most expensive cards, Squirtle 148 and Bulbasaur 143, cost $180.87 together.</p><p class="hubl">Compare: <a href="../shrouded-fable/#master-set">Shrouded Fable master set</a> · <a href="../surging-sparks/#master-set">Surging Sparks master set</a></p></section>
@@ -306,10 +477,18 @@ thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:a
 #bk-toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:600px){.bk{padding:6px 12px 0}.bkw{place-items:end center}.bkp{width:100%;max-height:92dvh;border-radius:22px 22px 0 0;border-bottom:0;padding:16px 16px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);opacity:1;transition:transform .42s var(--ease-out)}.bkw.open .bkp{transform:none}.bkp .bt{flex:1 1 100%}}
 @media (prefers-reduced-motion:reduce){.bkp,.bkw .sc,#bk-toast{transition:none!important}}
+/* ----- save / restore (app-feel) ----- */
+.bkb{background:#fff;border:0;box-shadow:var(--sh-1,0 1px 3px #1f2a3a29);color:var(--ink,#1f2a3a);font-weight:700}
+.bk p{color:var(--ink-2,#4a5568)}
+.bkw .sc{background:#1f2a3a73}
+.bkp{background:#fff;border:0;color:var(--ink,#1f2a3a)}
+.bkp .x{background:#fff;border:0;box-shadow:var(--sh-1,0 1px 3px #1f2a3a29);width:48px;height:48px;border-radius:50%}
+#bk-toast{background:#fff;border:0;color:var(--ink,#1f2a3a)}
 </style>
 <script>
 /* Progress storage. Main key 'is-binder-<id>' (array of card keys) + mirror 'is-bak-binder-<id>'.
-   Backup code = base64url(JSON {v,app,t,b:{'is-binder-<id>':[keys]}}). Restore = union merge, never removes. */
+   Backup code = base64url(JSON {v,app,t,b:{'is-binder-<id>':[keys]},x?:{'is-qty-<id>':{key:n},'is-milestones-<id>':[25,..]}}).
+   Restore = union merge, never removes (cards: union; duplicate counts: max per card; milestones seen: union). */
 window.ISP=(function(){
  let rec=0;const PFX='is-binder-',BAK='is-bak-binder-',BAD='is-corrupt-binder-',LS=(()=>{try{return localStorage}catch(_){return null}})();
  const parse=v=>{if(v==null)return null;const a=JSON.parse(v);if(!Array.isArray(a))throw new Error('not a list');return a.filter(x=>typeof x=='string')};
@@ -324,15 +503,22 @@ window.ISP=(function(){
  function all(){const b={};for(const id of ids()){const a=read(id);if(a&&a.length)b[PFX+id]=a}return b}
  const b64e=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
  const b64d=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))};
- function exportCode(){return b64e(JSON.stringify({v:1,app:'iron-steel-binder',t:new Date().toISOString(),b:all()}))}
+ const XP=/^is-(qty|milestones)-/,MSV=[25,50,75,100];let lastX=null;
+ function extras(){const x={};if(!LS)return x;for(let i=0;i<LS.length;i++){const k=LS.key(i);if(!XP.test(k))continue;try{const v=JSON.parse(LS.getItem(k));if(v&&(Array.isArray(v)?v.length:Object.keys(v).length))x[k]=v}catch(_){}}return x}
+ function mergeX(x){if(!LS||!x||typeof x!='object')return;for(const [k,v] of Object.entries(x)){try{
+   if(/^is-qty-/.test(k)&&v&&typeof v=='object'&&!Array.isArray(v)){let c={};try{c=JSON.parse(LS.getItem(k))||{}}catch(_){}
+    for(const [ck,n] of Object.entries(v)){const m=Math.floor(Number(n));if(m>=2&&m<=99)c[ck]=Math.max(c[ck]||0,m)}if(Object.keys(c).length)LS.setItem(k,JSON.stringify(c))}
+   else if(/^is-milestones-/.test(k)&&Array.isArray(v)){let c=[];try{c=JSON.parse(LS.getItem(k))||[]}catch(_){}
+    const u=[...new Set(c.concat(v).map(Number))].filter(m=>MSV.includes(m)).sort((a,b)=>a-b);if(u.length)LS.setItem(k,JSON.stringify(u))}}catch(_){}}}
+ function exportCode(){const x=extras();return b64e(JSON.stringify(Object.assign({v:1,app:'iron-steel-binder',t:new Date().toISOString(),b:all()},Object.keys(x).length?{x}:{})))}
  function decode(code){let s=String(code||'').trim();const m=s.match(/[#&?]restore=([^&\s]+)/);if(m)s=m[1];try{s=decodeURIComponent(s)}catch(_){}s=s.replace(/\s+/g,'');
-  if(!s)throw new Error('empty');const o=JSON.parse(b64d(s)),b=o&&typeof o=='object'?(o.b||o):null;if(!b||typeof b!='object')throw new Error('bad code');
+  if(!s)throw new Error('empty');const o=JSON.parse(b64d(s)),b=o&&typeof o=='object'?(o.b||o):null;lastX=o&&o.x&&typeof o.x=='object'?o.x:null;if(!b||typeof b!='object')throw new Error('bad code');
   const out={};for(const [k,v] of Object.entries(b)){if(!k.startsWith(PFX)||!Array.isArray(v))continue;out[k.slice(PFX.length)]=v.filter(x=>typeof x=='string')}
   if(!Object.keys(out).length)throw new Error('no binders in code');return out}
  function merge(code){const d=decode(code);let added=0,sets=0;
   for(const [id,keys] of Object.entries(d)){const cur=read(id)||[],s=new Set(cur);let n=0;for(const k of keys)if(!s.has(k)){s.add(k);n++}
    if(n||!cur.length){write(id,[...s]);}added+=n;if(n)sets++}
-  persist();window.ISP&&ISP.onChange&&ISP.onChange();return {added,sets,binders:Object.keys(d).length}}
+  mergeX(lastX);persist();window.ISP&&ISP.onChange&&ISP.onChange();return {added,sets,binders:Object.keys(d).length}}
  let asked=false;function persist(){if(asked)return;asked=true;try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persisted().then(p=>p||navigator.storage.persist()).then(r=>{ISP.persisted=!!r}).catch(()=>{})}catch(_){}}
  function link(code){return location.origin+location.pathname+'#restore='+code}
  const total=b=>Object.values(b).reduce((n,a)=>n+a.length,0);
@@ -385,10 +571,14 @@ const byCanon=(()=>{const m={},n={};for(const c of C){const x=canon(c.k);n[x]=(n
 function migrate(keys){const out=new Set();let ch=false;for(const k of keys){let nk=k;if(!byK[k]){nk=(CFG.leg&&CFG.leg[k])||byCanon[canon(k)]||k;if(nk!==k)ch=true}out.add(nk)}return {own:out,ch}}
 function loadOwn(){const raw=ISP.read(SID)||[],m=migrate(raw);own=m.own;if(m.ch||raw.length!==own.size)ISP.write(SID,[...own])}
 function save(){ISP.write(SID,[...own]);ISP.persist()}
+/* duplicates count (owned stepper) + milestones seen: own keys, outside the 'is-binder-' backup namespace */
+const QK='is-qty-'+SID,MK='is-milestones-'+SID,LSJ=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(_){return d}},LSW=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+const qty=k=>own.has(k)?Math.max(1,LSJ(QK,{})[k]||1):0;
+function setQty(k,n){const q=LSJ(QK,{});if(n>1)q[k]=n;else delete q[k];LSW(QK,q)}
 /* ---- view state lives in the #hash only (#f=miss, #cols=4), never in ?query ---- */
 const HS=()=>/^#restore=/.test(location.hash)?new URLSearchParams():new URLSearchParams(location.hash.slice(1));
-function writeHash(){const h=new URLSearchParams();if(f!='all')h.set('f',f);if(cols==4)h.set('cols','4');const s=h.toString();try{history.replaceState(null,'',location.pathname+location.search+(s?'#'+s:''))}catch(_){}}
-function readHash(){const h=HS(),nf=h.get('f');f=['miss','own','shop'].includes(nf)?nf:'all';cols=h.get('cols')=='4'?4:3}
+function writeHash(){const h=new URLSearchParams();if(f!='all')h.set('f',f);if(cols==5)h.set('cols','5');const s=h.toString();try{history.replaceState(null,'',location.pathname+location.search+(s?'#'+s:''))}catch(_){}}
+function readHash(){const h=HS(),nf=h.get('f');f=['miss','own','shop'].includes(nf)?nf:'all';cols=['4','5'].includes(h.get('cols'))?5:3}
 readHash();
 loadOwn();ISP.onChange=()=>{loadOwn();render()};
 function counts(){let o=0,om=0,left=0;for(const c of C){const h=own.has(c.k);if(h)o++;if(c.m){if(h)om++;else left+=c.p||0}}return{o,om,left}}
@@ -409,21 +599,21 @@ function slotHTML(c,i){const o=own.has(c.k),t=tier(c.r);
  <span class="tick" role="button" aria-label="${o?'Mark not owned':'Mark owned'}: ${esc(c.name)}"></span>${o?'':`<span class="pname">${esc(c.name)}</span>`}<span class="no">${esc(pad(c))}</span>${c.p?`<span class="pr">$${money(c.p)}</span>`:''}${c.buy.length&&!o?'<span class="badge">In stock</span>':''}</button>`}
 function wireImgs(root){root.querySelectorAll('.card.sk img').forEach(im=>{const d=()=>{im.parentNode.classList.remove('sk');im.parentNode.classList.add('ld')};if(im.complete&&im.naturalWidth)d();else{im.onload=d;im.onerror=()=>{im.parentNode.classList.remove('sk')}}})}
 function render(){g.dataset.cols=cols;const list=C.filter(c=>{const o=own.has(c.k);return !(f=='miss'&&o||f=='own'&&!o||f=='shop'&&!c.buy.length)});
- g.innerHTML=list.length?list.map(slotHTML).join(''):`<div class="empty">${f=='own'?'No cards yet. Tap the circle on a card, or open it and tap “I have this card”.':'Nothing here.'}</div>`;wireImgs(g);stat()}
-function selTabs(){document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.f==f))}
+ g.innerHTML=list.length?list.map(slotHTML).join(''):`<div class="empty">${f=='own'?'No cards yet. Tap the circle on a card, or open it and drag the strip to tear it in.':'Nothing here.'}</div>`;wireImgs(g);stat()}
+function selTabs(){document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.f==f));const sm=$('showmiss');if(sm){sm.textContent=f=='miss'?'Show all cards':'Show missing';sm.setAttribute('aria-pressed',f=='miss')}}
 function setFilter(nf){f=nf;selTabs();movePill();writeHash();
  if(document.startViewTransition&&!RM)document.startViewTransition(render);else render()}
 function movePill(){const b=document.querySelector('#tabs button[aria-selected=true]'),p=$('pill');p.style.left=b.offsetLeft+'px';p.style.width=b.offsetWidth+'px'}
-document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>setFilter(b.dataset.f));addEventListener('resize',movePill);
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>setFilter(b.dataset.f));$('showmiss').onclick=()=>{setFilter(f=='miss'?'all':'miss');document.querySelector('.bar').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})};addEventListener('resize',movePill);
 g.addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;if(e.target.closest('.tick')){e.preventDefault();e.stopPropagation();quickTick(byK[s.dataset.k],s);return}openCard(byK[s.dataset.k],s)});
 /* one-tap quick tick on the pocket corner (the sheet button + tear strip do the same) */
 function quickTick(c,el){const was=own.has(c.k);if(was)own.delete(c.k);else own.add(c.k);save();
  if((f=='miss'&&!was)||(f=='own'&&was)){el.remove();if(!g.querySelector('.slot'))render()}
  else{const tmp=document.createElement('div');tmp.innerHTML=slotHTML(c,parseInt(el.style.getPropertyValue('--i'))||0);const n=tmp.firstElementChild;n.style.animation='none';el.replaceWith(n);wireImgs(n);
   if(!was&&!RM){n.classList.add('pop');setTimeout(()=>n.classList.remove('pop'),900)}}
- stat();if(!was){snd('chime');buzz(12)}toast(was?`${c.name} removed`:`${c.name} added · ${counts().om}/${CFG.main}`)}
-function setCols(n){cols=n;g.dataset.cols=n;$('cols').setAttribute('aria-pressed',n==4);$('cols').setAttribute('aria-label',n==4?'Larger cards (3 per row)':'Denser grid (4 per row)')}
-$('cols').onclick=()=>{setCols(cols==4?3:4);writeHash()};
+ stat();if(!was){snd('chime');buzz(12);milestone(counts().om-(c.m?1:0))}toast(was?`${c.name} removed`:`${c.name} added · ${counts().om}/${CFG.main}`)}
+function setCols(n){cols=n;g.dataset.cols=n;$('cols').setAttribute('aria-pressed',n==5);$('cols').setAttribute('aria-label',n==5?'Larger cards (3 per row)':'Compact grid (5 per row)')}
+$('cols').onclick=()=>{setCols(cols==5?3:5);writeHash()};
 addEventListener('hashchange',()=>{if(/^#restore=/.test(location.hash))return;const pf=f,pc=cols;readHash();if(pf!=f){selTabs();render()}if(pc!=cols)setCols(cols)});
 /* ---- card hover: eased tilt + holo foil + pointer glare (own build; idea after PokéPastor's card hover) ----
  Pointer position is smoothed toward its target every frame; the card tilts within a fixed range, lifts out of its pocket,
@@ -443,8 +633,7 @@ function untilt(el){const s=FX.get(el);if(!s)return;s.tx=.5;s.ty=.5;s.ta=0;fxKic
 function showcase(el){if(RM)return;const s=fxFor(el,16),t0=performance.now(),D=1400;el.classList.add('tl');
  (function go(now){if(dragging||!el.isConnected){untilt(el);return}const p=Math.min(1,(now-t0)/D),w=Math.sin(p*Math.PI);
   s.tx=.5+Math.sin(p*Math.PI*2)*.42*w;s.ty=.5-Math.sin(p*Math.PI*4)*.22*w;s.ta=w;fxKick(s);if(p<1)requestAnimationFrame(go);else untilt(el)})(t0)}
-if(!RM&&FINE){let cur=null;g.addEventListener('pointermove',e=>{if(e.pointerType=='touch')return;const s=e.target.closest('.slot');if(cur&&cur!==s)untilt(cur);cur=s;if(s)tilt(s,e)});
- g.addEventListener('pointerleave',()=>{if(cur)untilt(cur);cur=null})}
+/* (app-feel) no grid hover tilt: the card tilts in the sheet only, max 9deg */
 /* ---- sound + haptics ---- */
 let AC=null,sound=localStorage.getItem(SK)!=='0';
 function snd(kind,p=1){if(!sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();const t=AC.currentTime;
@@ -470,9 +659,9 @@ function burst(x,y,power=1){if(RM)return;if(!fx){fx=document.createElement('canv
   if(P.length)fxRaf=requestAnimationFrame(step);else{fxRaf=0;ctx.clearRect(0,0,innerWidth,innerHeight)}})}
 function burstAt(el,power){const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,power)}
 /* ---- sheet ---- */
-function openSheet(html,label){lastFocus=document.activeElement;$('mb').innerHTML=html;$('sheet').setAttribute('aria-label',label||'Details');$('sheet').style.removeProperty('--dy');
+function openSheet(html,label){lastFocus=document.activeElement;$('sw-wrap').classList.toggle('dim',/id="pack"/.test(html));document.body.classList.add('sheet-open');$('mb').innerHTML=html;$('sheet').setAttribute('aria-label',label||'Details');$('sheet').style.removeProperty('--dy');
  const w=$('sw-wrap');w.classList.add('open');w.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';wireImgs($('mb'));setTimeout(()=>$('sheet').focus({preventScroll:true}),30)}
-function closeSheet(){const w=$('sw-wrap');w.classList.remove('open');w.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+function closeSheet(){const w=$('sw-wrap');w.classList.remove('open');document.body.classList.remove('sheet-open');w.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
 $('cx').onclick=closeSheet;$('scrim').onclick=closeSheet;addEventListener('keydown',e=>{if(e.key=='Escape')closeSheet()});
 (function dragDismiss(){const h=$('handle'),s=$('sheet');let y0=null;h.addEventListener('pointerdown',e=>{y0=e.clientY;h.setPointerCapture(e.pointerId);s.style.transition='none'});
  h.addEventListener('pointermove',e=>{if(y0==null)return;s.style.setProperty('--dy',Math.max(0,e.clientY-y0)+'px')});
@@ -484,8 +673,12 @@ function gcT(c,x){return CFG.set+' #'+c.id+' '+c.name+(x?' | '+x:'')}
 /* buy buttons: our TCGPlayer storefront first (its listed price, e.g. $0.01, is real + a "Shop deal" pill), eBay second with its own
    price. Links are the stock data's URLs untouched (storefront search: seller + card name, untagged). A condition shows only where
    that listing's own stock row states one (cond); never from 'printing', never in general copy. */
-function buyLinks(c){return c.buy.slice().sort((a,b)=>(b.pf=='tcgplayer')-(a.pf=='tcgplayer')).map(x=>{const tp=x.pf=='tcgplayer',sub=tp?(x.v||''):(x.l?x.t:'Single'+(x.v?' '+x.v:''));
- return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Buy from Iron &amp; Steel TCG on ${tp?'TCGPlayer':'eBay'}${x.pr?' · '+esc(x.pr):''}${sub||x.cond?`<span class="sub">${esc(sub)}${x.cond?`${sub?' · ':''}<span class="cond">${esc(x.cond)}</span>`:''}</span>`:''}</span>${tp?'<span class="deal">Shop deal</span>':''}<span aria-hidden="true">↗</span></a>`}).join('')}
+function buyLinks(c){const P=x=>{const v=parseFloat(String(x.pr||'').replace(/[^0-9.]/g,''));return isNaN(v)?Infinity:v},
+ L=c.buy.slice().sort((a,b)=>P(a)-P(b)||(b.pf=='tcgplayer')-(a.pf=='tcgplayer')),m=L[0],shop=x=>x.pf=='tcgplayer'?'TCGPlayer':'eBay',
+ sub=x=>x.pf=='tcgplayer'?(x.v||''):(x.l?x.t:'Single'+(x.v?' '+x.v:'')),cond=x=>x.cond?`<span class="cond">${esc(x.cond)}</span>`:'',
+ at=x=>`target="_blank" rel="noopener" data-gc-event="${esc(gcBuy(x))}" data-gc-title="${esc(gcT(c,x.t))}" href="${esc(x.u)}"`,tp=m.pf=='tcgplayer',s=sub(m);
+ return `<a class="btn ${tp?'btn--tcg':'btn--shop'}" ${at(m)}><span class="ico">${tp?'TP':'eB'}</span><span class="txt">Buy from Iron &amp; Steel TCG${m.pr?' · '+esc(m.pr):''} on ${shop(m)}${s||m.cond?`<span class="sub">${esc(s)}${m.cond?(s?' · ':'')+cond(m):''}</span>`:''}</span>${tp&&P(m)<=0.01?'<span class="deal">Shop deal</span>':''}<span aria-hidden="true">↗</span></a>`+
+ L.slice(1).map(x=>{const s=sub(x);return `<a class="btn btn--also${x.pf=='tcgplayer'?' btn--tcg':''}" ${at(x)}><span>Also on ${shop(x)}${x.pr?' · '+esc(x.pr):''}${s&&s!='Single'?` <span class="asub">${esc(s)}</span>`:''}${x.cond?' · '+cond(x):''}</span><span aria-hidden="true">↗</span></a>`}).join('')}
 function shopHTML(c){if(c.buy.length)return `<div class="sect">In stock with us</div><div class="stack">${buyLinks(c)}</div>`;
  return `<div class="sect">We don't have this one yet</div><div class="stack">`+(c.aff?`<a class="btn btn--tcg" target="_blank" rel="noopener sponsored" data-gc-event="out-affiliate/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(c.aff)}"><span class="ico">TP</span><span class="txt">Find it on TCGplayer</span><span>↗</span></a><p class="note">Affiliate link: we may earn a small commission.</p>`:'')+
  `<a class="btn btn--ghost" target="_blank" rel="noopener" data-gc-event="out-ebay-search/${esc(CFG.slug)}" data-gc-title="${esc(gcT(c))}" href="${esc(ebaySearch(c))}"><span class="ico">eB</span><span class="txt">Search eBay</span><span>↗</span></a></div>`}
@@ -495,7 +688,7 @@ function wireBigTilt(){const s=$('bigslot');if(!s||RM)return;if(FINE){s.addEvent
    Every value comes from the page's own data (C / CFG), the same data as the static card table. */
 function openCard(c,fromEl){const o=own.has(c.k),nb=c.buy.length,TABS=[['price','Price'],['details','Details'],['variants','Variants']];
  const pricePane=`<div class="pricerow"><span>Market price</span>${c.p?`<b>$${money(c.p)}</b>`:'<i>No market price yet</i>'}</div>`+
-  (o?'<button class="btn btn--ghost" id="tg">Remove from my binder</button>':`<button class="btn btn--gold btn--own" id="own">✓ I have this card</button><p class="ortear">or drag the strip to tear it in</p>${tearHTML('Tear to add')}`)+(o?'':shopHTML(c));
+  (o?`<div class="ostep"><span>Number owned</span><div class="stepper"><button type="button" id="tg" aria-label="${qty(c.k)>1?'Remove one copy':'Remove from my binder'}">−</button><output id="qn" aria-live="polite">${qty(c.k)}</output><button type="button" id="tq" aria-label="Add another copy">+</button></div></div>`:tearHTML('Drag to tear it in'))+(o?'':shopHTML(c));
  const rel=CFG.release?new Date(CFG.release+'T12:00').toLocaleDateString(undefined,{month:'short',year:'numeric'}):'';
  const details=`<dl class="dl"><dt>Set</dt><dd>${esc(CFG.set)}</dd><dt>Number</dt><dd>#${esc(pad(c))}${c.m?' / '+CFG.main:''}</dd><dt>Rarity</dt><dd>${esc(rarityLabel(c))}</dd><dt>Counts toward</dt><dd>${c.m?'Main set and full set':'Full set (beyond the main-set number)'}</dd>${rel?`<dt>Released</dt><dd>${esc(rel)}</dd>`:''}<dt>In your binder</dt><dd>${o?'Yes':'Not yet'}</dd><dt>In stock with us</dt><dd>${nb?nb+' listing'+(nb>1?'s':''):'Not right now'}</dd></dl>`;
  const variants=`<ul class="vl"><li><span>${esc(rarityLabel(c))}</span>${c.p?`<b>$${money(c.p)}</b>`:'<span>No price</span>'}</li><li${c.rh?'':' class="na"'}><span>Reverse holo</span>${c.rh?`<b>$${money(c.rh)}</b>`:'<span>No price</span>'}</li></ul><p class="note" style="margin-top:10px">TCGPlayer market estimates. The binder tracks one copy per card number.</p>`;
@@ -507,24 +700,60 @@ function openCard(c,fromEl){const o=own.has(c.k),nb=c.buy.length,TABS=[['price',
  const tabs=[...document.querySelectorAll('#mb .stabs button')],sel=b=>{tabs.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$('p-'+x.dataset.t).hidden=!on})};
  tabs.forEach((b,i)=>{b.onclick=()=>sel(b);b.onkeydown=e=>{if(e.key=='ArrowRight'||e.key=='ArrowLeft'){const n=tabs[(i+(e.key=='ArrowRight'?1:tabs.length-1))%tabs.length];sel(n);n.focus();e.preventDefault()}}});
  wireBigTilt();
- if(o)$('tg').onclick=()=>{own.delete(c.k);save();closeSheet();render();toast('Removed from your binder')};
- else{$('own').onclick=()=>{const b=$('own');b.disabled=true;if(!RM)b.classList.add('pop');snd('rip');buzz([18,40,30]);setTimeout(()=>rip(c),RM?0:160)};wireTear(()=>rip(c))}}
+ if(o){const upd=()=>{const n=qty(c.k);$('qn').textContent=n;$('tg').setAttribute('aria-label',n>1?'Remove one copy':'Remove from my binder')};
+  $('tg').onclick=()=>{const n=qty(c.k);if(n>1){setQty(c.k,n-1);upd();return}setQty(c.k,0);own.delete(c.k);save();closeSheet();render();toast('Removed from your binder')};
+  $('tq').onclick=()=>{setQty(c.k,Math.min(99,qty(c.k)+1));upd();snd('tick',.6)}}
+ else wireTear(()=>rip(c),tier(c.r))}
 /* ---- tear strip ---- */
-function tearHTML(lbl){return `<div class="tear" id="tear"><div class="slit"></div><div class="lbl">${esc(lbl)} →</div><div class="knob" id="kn" tabindex="0" role="slider" aria-label="Drag right to tear and add this card" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">⟫</div></div>`}
-function wireTear(onDone){const r=$('tear'),k=$('kn');if(!r)return;let d=false,x0=0,done=false,last=0,step=0;
- const max=()=>r.clientWidth-k.offsetWidth-8;
- const set=m=>{const p=Math.max(0,Math.min(1,m/max()));k.style.setProperty('--kx',m+'px');r.style.setProperty('--p',p.toFixed(3));k.setAttribute('aria-valuenow',Math.round(p*100));
-  const st=Math.floor(p*10);if(st>step){step=st;snd('tick',p);if(st%2==0)buzz(6)}else if(st<step)step=st};
- const finish=()=>{if(done)return;done=true;d=false;dragging=false;set(max());r.classList.add('done');snd('rip');buzz([18,40,30]);setTimeout(onDone,RM?0:180)};
- k.addEventListener('pointerdown',e=>{if(done)return;d=true;dragging=true;for(const s of [...FX.values()])untilt(s.el);x0=e.clientX-(parseFloat(k.style.getPropertyValue('--kx'))||0);k.style.transition='none';try{k.setPointerCapture(e.pointerId)}catch(_){};e.preventDefault()});
- k.addEventListener('pointermove',e=>{if(!d)return;const m=Math.max(0,Math.min(max(),e.clientX-x0));set(m);if(m>=max()-3)finish()});
- const up=()=>{dragging=false;if(!d)return;d=false;const m=parseFloat(k.style.getPropertyValue('--kx'))||0;if(m>=max()*.85)finish();else{k.style.transition='transform .3s var(--ease-spring)';r.style.transition='--p .3s';set(0);step=0}};
- k.addEventListener('pointerup',up);k.addEventListener('pointercancel',up);
+/* Tear strip = the only add path in the card sheet (and the daily pack).
+   (c) touch-action:none on .tear (CSS) + drag starts on pointerdown with setPointerCapture, so a diagonal swipe never scrolls the sheet.
+   (b) a tap without a drag nudges the knob ~30% right and back over 300ms and pulses the label.
+   (d) completes at 60% of the travel: navigator.vibrate(15), rarity glow on the strip, then rip() (card pop + rarity burst).
+       Reduced motion: no nudge/hint/glow animation, the add still completes. Fallbacks: Enter/Space/ArrowRight/End on the knob,
+       press-and-hold 650ms (switch / screen-reader long-press), or an assistive-tech click on the knob. */
+const TEAR_AT=.6,TEAR_HOLD=650;
+function tearHTML(lbl){return `<div class="tear" id="tear"><div class="slit"></div><div class="lbl">${esc(lbl)} <span class="hint" aria-hidden="true">→</span></div><div class="knob" id="kn" tabindex="0" role="slider" aria-label="${esc(lbl)}: drag the handle right, press Enter or Space, or press and hold to add" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">⟫</div></div>`}
+function wireTear(onDone,pw=1){const r=$('tear'),k=$('kn');if(!r)return;let d=false,x0=0,sx=0,sy=0,moved=false,done=false,step=0,hold=0,nt=0;
+ const max=()=>r.clientWidth-k.offsetWidth-8,cur=()=>parseFloat(k.style.getPropertyValue('--kx'))||0;
+ const set=(m,q)=>{const p=Math.max(0,Math.min(1,m/max()));k.style.setProperty('--kx',m+'px');r.style.setProperty('--p',p.toFixed(3));k.setAttribute('aria-valuenow',Math.round(p*100));
+  if(q)return;const st=Math.floor(p*10);if(st>step){step=st;snd('tick',p);if(st%2==0)buzz(6)}else if(st<step)step=st};
+ const back=()=>{k.style.transition='transform .3s var(--ease-spring)';r.style.transition='--p .3s';set(0,1);step=0};
+ const nudge=()=>{if(RM)return;clearTimeout(nt);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');
+  k.style.transition='transform .15s var(--ease-out)';set(max()*.3,1);nt=setTimeout(()=>{k.style.transition='transform .15s ease-in';set(0,1)},150)};
+ /* press-and-hold completes while the finger is still down; the sheet closes before release, so swallow that release's click
+    (otherwise it would land on the grid pocket underneath and reopen the card) */
+ const eatClick=()=>{const eat=ev=>{ev.stopPropagation();ev.preventDefault()},off=()=>document.removeEventListener('click',eat,true);
+  document.addEventListener('click',eat,true);document.addEventListener('pointerup',()=>setTimeout(off,400),{capture:true,once:true});setTimeout(off,4000)};
+ const finish=()=>{if(done)return;done=true;d=false;dragging=false;clearTimeout(hold);clearTimeout(nt);set(max(),1);r.classList.add('done','g'+Math.min(5,Math.max(1,pw|0)));
+  if(navigator.vibrate)navigator.vibrate(15);snd('rip');setTimeout(onDone,RM?0:180)};
+ r.addEventListener('pointerdown',e=>{if(done||e.button>0)return;d=true;moved=false;dragging=true;r.classList.add('used');for(const s of [...FX.values()])untilt(s.el);
+  sx=e.clientX;sy=e.clientY;x0=e.clientX-cur();k.style.transition='none';r.style.transition='none';try{r.setPointerCapture(e.pointerId)}catch(_){}
+  clearTimeout(hold);hold=setTimeout(()=>{if(d&&!moved){eatClick();finish()}},TEAR_HOLD);e.preventDefault()});
+ r.addEventListener('pointermove',e=>{if(!d)return;if(Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6){moved=true;clearTimeout(hold)}
+  if(!moved)return;const m=Math.max(0,Math.min(max(),e.clientX-x0));set(m);if(m>=max()-3)finish()});
+ const up=e=>{dragging=false;clearTimeout(hold);if(!d)return;d=false;if(done)return;if(!moved){if(e.type=='pointerup')nudge();return}
+  if(cur()>=max()*TEAR_AT)finish();else back()};
+ r.addEventListener('pointerup',up);r.addEventListener('pointercancel',up);
+ k.addEventListener('click',e=>{if(e.detail===0)finish()});
  k.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '||e.key=='ArrowRight'||e.key=='End'){e.preventDefault();finish()}})}
-function rip(c){own.add(c.k);save();closeSheet();const t=tier(c.r);
- const go=()=>{render();const el=g.querySelector(`.slot[data-k="${CSS.escape(c.k)}"]`);if(el){el.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'});el.classList.add('pop');
-  setTimeout(()=>{burstAt(el,t);snd('chime')},RM?0:260);setTimeout(()=>el.classList.remove('pop'),1000)}else{burst(innerWidth/2,innerHeight/2,t);snd('chime')}
-  toast(`${c.name} added · ${counts().om}/${CFG.main}`)};
+/* dim stage: the torn-in card on #0b1020cc with its rarity ring + glow, then the grid pocket pops. Skipped under reduced motion. */
+function stage(c,t,done){const s=document.createElement('div');s.className='stage r'+t;s.setAttribute('aria-hidden','true');
+ s.innerHTML=`<div class="sc"><img src="${esc(c.big||c.img)}" width="245" height="342" alt=""></div><div class="cap">${esc(c.name)} · into your binder</div>`;document.body.appendChild(s);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('on')));setTimeout(()=>{burst(innerWidth/2,innerHeight/2,t);snd('chime')},260);
+ setTimeout(()=>s.classList.remove('on'),1050);setTimeout(()=>{s.remove();done()},1300)}
+/* milestones: 25/50/75/100% of the main set, once each per set (localStorage), dismissed by tap / Esc */
+const MS_SVG='<svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="msg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ffcff"/><stop offset="1" stop-color="#b06bff"/></linearGradient></defs><rect x="22" y="14" width="76" height="92" rx="12" fill="url(#msg)"/><rect x="22" y="14" width="18" height="92" rx="8" fill="#ffffff59"/><circle cx="31" cy="36" r="3.5" fill="#24123f"/><circle cx="31" cy="60" r="3.5" fill="#24123f"/><circle cx="31" cy="84" r="3.5" fill="#24123f"/><path d="M69 38l6.2 12.6 13.8 2-10 9.8 2.4 13.8L69 69.7l-12.4 6.5 2.4-13.8-10-9.8 13.8-2z" fill="#fff"/></svg>';
+function milestone(before){if(!CFG.main)return;const now=counts(),seen=LSJ(MK,[]),hit=[25,50,75,100].filter(m=>before*100<m*CFG.main&&now.om*100>=m*CFG.main&&!seen.includes(m));if(!hit.length)return;
+ LSW(MK,seen.concat(hit));const m=hit[hit.length-1],prev=document.activeElement,w=document.createElement('div');w.className='msw';w.id='msw';w.tabIndex=-1;
+ w.setAttribute('role','dialog');w.setAttribute('aria-modal','true');w.setAttribute('aria-labelledby','ms-h');
+ w.innerHTML=`<div class="mb"><div class="rib" id="ms-h">${m==100?'Main set complete!':m+'% of the main set!'}</div>${MS_SVG}<div class="ml">${m==100?'Every main-set card is in your binder':`<b>$${money(now.left)}</b> left to finish`}</div><div class="tp">Tap to keep going</div></div>`;
+ const close=()=>{w.remove();removeEventListener('keydown',kd,true);if(prev&&prev.focus)prev.focus({preventScroll:true})},kd=e=>{if(e.key=='Escape'||e.key=='Enter'||e.key==' '){e.preventDefault();e.stopPropagation();close()}};
+ w.onclick=close;addEventListener('keydown',kd,true);document.body.appendChild(w);w.focus({preventScroll:true});snd('chime');if(navigator.vibrate)navigator.vibrate(15)}
+function rip(c){const before=counts().om;own.add(c.k);save();closeSheet();const t=tier(c.r);
+ const go=()=>{render();const el=g.querySelector(`.slot[data-k="${CSS.escape(c.k)}"]`);if(el)el.scrollIntoView({block:'center',behavior:'auto'});
+  toast(`${c.name} added · ${counts().om}/${CFG.main}`);
+  if(RM){if(el)el.classList.add('pop');snd('chime');milestone(before);return}
+  stage(c,t,()=>{if(el&&el.isConnected){el.classList.add('pop');setTimeout(()=>el.classList.remove('pop'),1000)}milestone(before)})};
  if(f=='miss'){f='all';selTabs();movePill();writeHash()}go()}
 let tt=0;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
 /* ---- free daily rip ---- */
