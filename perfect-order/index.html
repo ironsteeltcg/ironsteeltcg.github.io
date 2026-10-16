@@ -43,10 +43,9 @@ a{color:inherit}button{font:inherit;color:inherit}
 .chip b{color:var(--ink-50)}
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.02em;background:var(--gold-400);color:var(--on-gold)}
 .badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--on-gold)}
-/* ===== Hero: set accent surface + faded set name behind the art ===== */
+/* ===== Hero: set accent surface ===== */
 .hero{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;padding:12px max(20px,calc((100% - 1160px)/2)) 16px;display:grid;grid-template-columns:auto 1fr auto;gap:14px 20px;align-items:center;
  background:linear-gradient(180deg,var(--acc-bg) 0%,var(--acc-bg) 55%,var(--ink-900) 100%)}
-.hero::before{content:attr(data-ghost);position:absolute;z-index:-1;left:-.04em;top:34px;font-size:clamp(72px,13vw,190px);line-height:.9;font-weight:900;letter-spacing:-.04em;white-space:nowrap;color:var(--acc);opacity:.16;pointer-events:none}
 .hero.nologo{grid-template-columns:1fr auto}
 .top{grid-column:1/-1;display:flex;align-items:center;gap:8px}.top .brand{display:inline-flex;align-items:center;flex:0 0 auto;min-height:44px}.top .mark{height:44px;width:auto}
 .back,.cmpl{font-size:14px;color:var(--ink-50);text-decoration:none;display:inline-flex;gap:6px;align-items:center;min-height:44px;padding:0 10px;border-radius:999px}.back:hover,.cmpl:hover{background:#ffffff14}
@@ -196,7 +195,6 @@ footer{font-size:12px;color:var(--ink-300);padding:20px;text-align:center;max-wi
 @media (max-width:600px){
  body>.about{order:1}body>.seo,body>.bk,body>footer{order:2}
  .hero{grid-template-columns:1fr auto;gap:10px 12px;padding:6px 12px 12px}
- .hero::before{top:44px;font-size:96px}
  .logo{grid-column:1/-1;height:34px;justify-self:start;margin-bottom:-4px}
  .top .mark{height:36px}.back,.cmpl{font-size:13px;padding:0 8px}
  .htxt h1{font-size:22px}.htxt p{font-size:13px;margin:2px 0 0}
@@ -278,7 +276,8 @@ h1,h2,h3{font-weight:800}
 @media print{.tabbar{display:none!important}}
 /* ----- set page (binder) ----- */
 .hero{background:linear-gradient(180deg,#d5e0fd,#aad5f8);color:var(--ink)}
-.hero::before{opacity:.13}
+.hero .about{grid-column:1/-1;max-width:none;width:100%;margin:0;padding:0;gap:6px}
+.hero .intro,.hero .pnote{color:#1f2a3a}
 .htxt p{color:var(--ink-2)}
 .back{min-height:48px;padding:0 16px;background:#fff;color:var(--ink);font-weight:700;box-shadow:var(--sh-1)}.back:hover{background:#fff}
 .ibtn,.pbtn{background:#fff;border:0;color:var(--ink);box-shadow:var(--sh-1);font-weight:700}
@@ -541,7 +540,7 @@ body{background:#fff!important;font-size:9pt;display:block!important}
 body>*:not(.hero):not(.seo):not(footer):not(.about){display:none!important}
 .about{display:block!important;padding:0!important;margin:0 0 4pt!important;max-width:none!important}.about>*:not(.pnote){display:none!important}.hero::before{display:none!important}
 .hero{display:block!important;padding:0!important;margin:0 0 4pt!important;max-width:none!important}
-.hero>*:not(.htxt){display:none!important}.htxt>*:not(h1):not(#sub):not(.ponly){display:none!important}
+.hero>*:not(.htxt):not(.about){display:none!important}.htxt>*:not(h1):not(#sub):not(.ponly){display:none!important}
 .htxt h1{font-size:15pt!important;margin:0!important}.htxt p,#sub{font-size:8.5pt!important;margin:1pt 0!important}.pnote{margin:0 0 4pt!important;font-size:8pt!important}
 .seo{display:block!important;padding:0!important;margin:0!important;max-width:none!important}.seo>*:not(details.cl){display:none!important}
 details.cl{border:0!important;padding:0!important;margin:0!important}details.cl>summary{display:none!important}details.cl .note{font-size:7.5pt!important;margin:3pt 0 0!important}
@@ -551,7 +550,7 @@ a{text-decoration:none!important}
 thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:avoid}table[data-ptable]{width:100%;border-collapse:collapse;font-size:8.5pt;line-height:1.25}table[data-ptable] th,table[data-ptable] td{padding:1.6pt 4pt;border:0;border-bottom:.5pt solid #999;text-align:left;white-space:normal;font-weight:400}table[data-ptable] th{font-weight:700;font-size:7.5pt;text-transform:uppercase;letter-spacing:.03em;border-bottom:1pt solid #000}td.pown,th.pown{width:14mm;text-align:center!important}td.pown span{display:inline-block;position:relative;width:8pt;height:8pt;border:.8pt solid #000;vertical-align:middle}td.pown.have span::after{content:"";position:absolute;left:2.2pt;top:-.6pt;width:2.4pt;height:5.4pt;border:solid #000;border-width:0 1.4pt 1.4pt 0;transform:rotate(45deg)}.ponly{display:block!important;font-size:8pt;margin:2pt 0 6pt}
 }
 </style></head><body style="--acc:#3aa0ff;--acc-bg:#1f4874">
-<header class="hero" data-ghost="Perfect Order">
+<header class="hero">
  <div class="top"><a class="brand" href="../" aria-label="Iron &amp; Steel TCG home"><img class="mark" src="../assets/logo-160.webp" width="191" height="160" alt="Iron &amp; Steel TCG" decoding="async"></a><a class="back" href="../">← All binders</a><span class="acts">
   <button class="ibtn ico" id="cols" aria-pressed="false" aria-label="Compact grid (5 per row)" title="Compact grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg></button>
   <button class="ibtn ico" id="share" data-gc-event="ui-share" data-gc-title="Share progress image" aria-label="Share progress image" title="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg></button>
@@ -563,11 +562,12 @@ thead{display:table-header-group}tr,td,th{break-inside:avoid;page-break-inside:a
  <div class="ring" role="img" id="ring"><svg width="104" height="104" viewBox="0 0 104 104"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ffd166"/><stop offset=".5" stop-color="#ff5d8f"/><stop offset="1" stop-color="#47d7ff"/></linearGradient></defs>
  <circle class="trk" cx="52" cy="52" r="44" fill="none" stroke-width="9"/><circle class="val" id="rv" cx="52" cy="52" r="44" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg>
  <div class="pct"><div><span id="pc">0%</span><small id="pcs">main set</small></div></div></div>
+ <div class="about"><p class="intro">Perfect Order (released March 27, 2026) has 124 cards. Buying one of each costs about $455.38 at TCGPlayer market prices; the 88-card main set is about $15.61. Full card list with prices and FAQ below; tap a card to add it to your binder.</p>
+ <p class="pnote">Prices: TCGPlayer market estimates via TCGCSV (mid price where a card has no market price), as of October 15, 2026.</p></div>
  <div class="prog" id="chips"><div class="stats"><div class="st"><b id="so">0</b><span>Owned</span></div><div class="st"><b id="sl">88</b><span>Left in set</span></div><div class="st"><b id="sf">$15.61</b><span>to finish</span></div></div><div class="bars"><div class="brow"><span>Set</span><b id="pm">0/88</b></div><progress id="bm" max="88" value="0">0/88</progress><div class="brow"><span>Full set</span><b id="pf">0/124</b></div><progress id="bf" max="124" value="0">0/124</progress></div><p class="costs">Full set <b>$455.38</b> · master <b>$473.42</b></p></div>
  <p class="prow"><button type="button" class="pbtn" id="prt" aria-label="Print checklist" data-gc-event="ui-print" data-gc-title="Print checklist: Perfect Order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7z"/></svg>Print checklist</button><button class="ibtn hot" id="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12l-1 4H7zM7 7h10v14H7z"/><path d="M10 12h4"/></svg>Daily rip</button><button type="button" class="btn btn--primary" id="showmiss" aria-pressed="false" aria-controls="g">Show missing</button></p>
 </header>
-<div class="about"><p class="intro">Perfect Order (released March 27, 2026) has 124 cards. Buying one of each costs about $455.38 at TCGPlayer market prices; the 88-card main set is about $15.61. Full card list with prices and FAQ below; tap a card to add it to your binder.</p>
- <p class="pnote">Prices: TCGPlayer market estimates via TCGCSV (mid price where a card has no market price), as of October 15, 2026.</p></div>
+
 <div class="bar"><div class="in">
  <div class="tabs" role="tablist" id="tabs" aria-label="Show cards"><span class="pill" id="pill"></span>
   <button role="tab" data-f="all" aria-selected="true">All <span class="n" id="n-all"></span></button><button role="tab" data-f="miss" aria-selected="false">Missing <span class="n" id="n-miss"></span></button><button role="tab" data-f="own" aria-selected="false">Owned <span class="n" id="n-own"></span></button><button role="tab" data-f="shop" aria-selected="false">In stock <span class="n" id="n-shop"></span></button></div>
