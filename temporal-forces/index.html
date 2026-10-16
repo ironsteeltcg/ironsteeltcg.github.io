@@ -770,7 +770,35 @@ function showcase(el){if(RM)return;const s=fxFor(el,16),t0=performance.now(),D=1
 /* (app-feel) no grid hover tilt: the card tilts in the sheet only, max 9deg */
 /* ---- sound + haptics ---- */
 let AC=null,sound=localStorage.getItem(SK)!=='0';
-function snd(kind,p=1){if(!sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();const t=AC.currentTime;
+// Prime Web Audio inside a real gesture, before swipe/animation callbacks need it.
+function resumeAudio(){
+ if(!sound)return null;
+ try{
+  AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+  if(AC.state!=='running')return AC.resume().catch(()=>{});
+ }catch(_){}
+ return null;
+}
+function unlockAudio(){
+ if(!sound)return;
+ resumeAudio();
+ try{
+  // A zero-filled buffer unlocks the iOS audio output without an audible effect.
+  const s=AC.createBufferSource();s.buffer=AC.createBuffer(1,1,AC.sampleRate);
+  s.connect(AC.destination);s.onended=()=>s.disconnect();s.start(0);
+ }catch(_){}
+}
+['pointerdown','touchstart','touchend','click'].forEach(type=>{
+ document.addEventListener(type,unlockAudio,{once:true,capture:true,passive:true});
+ document.addEventListener(type,resumeAudio,{capture:true,passive:true});
+});
+// Also cover pointerup-driven swipe completion and keyboard activation.
+['pointerup','keydown'].forEach(type=>document.addEventListener(type,unlockAudio,{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&AC)resumeAudio()});
+function snd(kind,p=1){if(!sound)return;try{
+ const pending=resumeAudio();if(!AC)return;
+ if(AC.state!=='running'){if(pending)pending.then(()=>{if(sound&&AC.state==='running')snd(kind,p)});return}
+ const t=AC.currentTime;
  if(kind=='chime'){[880,1318.5,1760].forEach((fq,i)=>{const o=AC.createOscillator(),gn=AC.createGain();o.type='triangle';o.frequency.value=fq;gn.gain.setValueAtTime(0,t+i*.07);gn.gain.linearRampToValueAtTime(.12,t+i*.07+.01);gn.gain.exponentialRampToValueAtTime(.0001,t+i*.07+.5);o.connect(gn).connect(AC.destination);o.start(t+i*.07);o.stop(t+i*.07+.55)});return}
  const dur=kind=='rip'?.32:.035,len=Math.ceil(AC.sampleRate*dur),b=AC.createBuffer(1,len,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,kind=='rip'?1.5:3);
  const s=AC.createBufferSource(),bp=AC.createBiquadFilter(),gn=AC.createGain();s.buffer=b;bp.type='bandpass';bp.Q.value=.9;bp.frequency.setValueAtTime(kind=='rip'?1800:1200+p*2600,t);if(kind=='rip')bp.frequency.exponentialRampToValueAtTime(5200,t+dur);
