@@ -8,13 +8,13 @@
   "printed": null,
   "mixed": true,
   "main_n": 20,
-  "main": 82.97,
+  "main": 87.14,
   "full_n": 20,
-  "full": 82.97,
+  "full": 87.14,
   "rh_n": 0,
   "rh": 0,
-  "master": 82.97,
-  "under25": 4,
+  "master": 87.14,
+  "under25": 5,
   "missing_main": 0,
   "top": [
    [
@@ -25,15 +25,15 @@
    [
     2,
     "Latios",
-    29.14
+    33.06
    ],
    [
     6,
     "Pikachu",
-    6.91
+    7.24
    ]
   ],
-  "median_main": 0.48,
+  "median_main": 0.46,
   "no_full_arts": null
  },
  "EX Trainer Kit 2: Plusle & Minun": {
@@ -45,24 +45,24 @@
   "printed": null,
   "mixed": true,
   "main_n": 24,
-  "main": 67.36,
+  "main": 68.87,
   "full_n": 24,
-  "full": 67.36,
+  "full": 68.87,
   "rh_n": 0,
   "rh": 0,
-  "master": 67.36,
+  "master": 68.87,
   "under25": 2,
   "missing_main": 0,
   "top": [
    [
     6,
     "Minun",
-    22.91
+    24.42
    ],
    [
     6,
     "Plusle",
-    22.4
+    22.33
    ],
    [
     1,
@@ -70,7 +70,7 @@
     6.78
    ]
   ],
-  "median_main": 0.53,
+  "median_main": 0.55,
   "no_full_arts": null
  },
  "Trick or Trade BOOster Bundle": {
@@ -82,32 +82,32 @@
   "printed": null,
   "mixed": true,
   "main_n": 30,
-  "main": 9.19,
+  "main": 8.72,
   "full_n": 30,
-  "full": 9.19,
+  "full": 8.72,
   "rh_n": 0,
   "rh": 0,
-  "master": 9.19,
+  "master": 8.72,
   "under25": 19,
   "missing_main": 0,
   "top": [
    [
     57,
     "Gengar (2021 Copyright Date)",
-    1.43
+    1.35
    ],
    [
     56,
     "Mewtwo",
-    0.9
+    0.78
    ],
    [
     81,
     "Mimikyu",
-    0.64
+    0.6
    ]
   ],
-  "median_main": 0.22,
+  "median_main": 0.21,
   "no_full_arts": null
  },
  "Stormfront": {
@@ -119,12 +119,12 @@
   "printed": 100,
   "mixed": false,
   "main_n": 100,
-  "main": 1056.85,
+  "main": 1069.13,
   "full_n": 103,
-  "full": 2070.46,
+  "full": 2082.74,
   "rh_n": 95,
-  "rh": 1312.53,
-  "master": 3382.99,
+  "rh": 1333.69,
+  "master": 3416.43,
   "under25": 1,
   "missing_main": 0,
   "top": [
@@ -144,7 +144,7 @@
     187.84
    ]
   ],
-  "median_main": 1.21,
+  "median_main": 1.25,
   "no_full_arts": null
  },
  "XY - Steam Siege": {
@@ -156,36 +156,36 @@
   "printed": 114,
   "mixed": false,
   "main_n": 114,
-  "main": 285.56,
+  "main": 286.13,
   "full_n": 116,
-  "full": 430.93,
+  "full": 431.72,
   "rh_n": 93,
-  "rh": 83.87,
-  "master": 514.8,
-  "under25": 40,
+  "rh": 84.3,
+  "master": 516.02,
+  "under25": 46,
   "missing_main": 0,
   "top": [
    [
     116,
     "Gardevoir EX (Secret)",
-    109.77
+    110.21
    ],
    [
     112,
     "M Gardevoir EX (Full Art)",
-    57.74
+    58.52
    ],
    [
     115,
     "Volcanion EX (Secret)",
-    35.6
+    35.38
    ]
   ],
-  "median_main": 0.29,
+  "median_main": 0.28,
   "no_full_arts": {
    "cutoff": 106,
    "count": 106,
-   "cost": 115.17
+   "cost": 114.77
   }
  },
  "SWSH01: Sword & Shield Base Set": {
@@ -197,36 +197,36 @@
   "printed": 202,
   "mixed": false,
   "main_n": 202,
-  "main": 269.6,
+  "main": 271.13,
   "full_n": 216,
-  "full": 527.23,
+  "full": 528.91,
   "rh_n": 165,
-  "rh": 102.87,
-  "master": 630.1,
-  "under25": 105,
+  "rh": 103.67,
+  "master": 632.58,
+  "under25": 108,
   "missing_main": 0,
   "top": [
    [
     206,
     "Snorlax VMAX (Secret)",
-    107.55
+    107.97
    ],
    [
     142,
     "Snorlax VMAX",
-    45.7
+    45.6
    ],
    [
     200,
     "Marnie (Full Art)",
-    34.74
+    35.11
    ]
   ],
   "median_main": 0.23,
   "no_full_arts": {
    "cutoff": 186,
    "count": 186,
-   "cost": 128.94
+   "cost": 129.96
   }
  },
  "SWSH03: Darkness Ablaze": {
@@ -238,36 +238,36 @@
   "printed": 189,
   "mixed": false,
   "main_n": 189,
-  "main": 159.72,
+  "main": 158.21,
   "full_n": 201,
-  "full": 246.09,
+  "full": 245.62,
   "rh_n": 155,
-  "rh": 70.01,
-  "master": 316.1,
+  "rh": 69.9,
+  "master": 315.52,
   "under25": 105,
   "missing_main": 0,
   "top": [
    [
     20,
     "Charizard VMAX",
-    39.2
+    39.29
    ],
    [
     190,
     "Butterfree VMAX (Secret)",
-    17.15
+    16.81
    ],
    [
     194,
     "Salamence VMAX (Secret)",
-    14.66
+    14.52
    ]
   ],
   "median_main": 0.19,
   "no_full_arts": {
    "cutoff": 176,
    "count": 176,
-   "cost": 120.56
+   "cost": 119.34
   }
  },
  "Shining Fates": {
@@ -279,36 +279,36 @@
   "printed": 72,
   "mixed": false,
   "main_n": 72,
-  "main": 71.61,
+  "main": 72.08,
   "full_n": 73,
-  "full": 75.52,
+  "full": 76.16,
   "rh_n": 46,
-  "rh": 12.95,
-  "master": 88.47,
+  "rh": 12.98,
+  "master": 89.14,
   "under25": 37,
   "missing_main": 0,
   "top": [
    [
     70,
     "Poke Kid (Full Art)",
-    9.36
+    9.23
    ],
    [
     72,
     "Skyla (Full Art)",
-    8.64
+    8.59
    ],
    [
     64,
     "Alcremie V (Full Art)",
-    5.53
+    5.48
    ]
   ],
   "median_main": 0.23,
   "no_full_arts": {
    "cutoff": 63,
    "count": 63,
-   "cost": 36.91
+   "cost": 37.95
   }
  },
  "SWSH05: Battle Styles": {
@@ -320,19 +320,19 @@
   "printed": 163,
   "mixed": false,
   "main_n": 163,
-  "main": 515.51,
+  "main": 518.45,
   "full_n": 183,
-  "full": 779.85,
+  "full": 784.96,
   "rh_n": 123,
-  "rh": 36.46,
-  "master": 816.31,
-  "under25": 101,
+  "rh": 36.34,
+  "master": 821.3,
+  "under25": 103,
   "missing_main": 0,
   "top": [
    [
     155,
     "Tyranitar V (Alternate Full Art)",
-    225.14
+    229.93
    ],
    [
     170,
@@ -342,14 +342,14 @@
    [
     146,
     "Empoleon V (Alternate Full Art)",
-    61.89
+    61.94
    ]
   ],
-  "median_main": 0.19,
+  "median_main": 0.2,
   "no_full_arts": {
    "cutoff": 141,
    "count": 141,
-   "cost": 49.02
+   "cost": 47.66
   }
  },
  "SWSH06: Chilling Reign": {
@@ -361,24 +361,24 @@
   "printed": 198,
   "mixed": false,
   "main_n": 198,
-  "main": 1082.23,
+  "main": 1084.93,
   "full_n": 233,
-  "full": 1991.6,
+  "full": 1997.79,
   "rh_n": 136,
-  "rh": 50.85,
-  "master": 2042.45,
-  "under25": 95,
+  "rh": 50.48,
+  "master": 2048.27,
+  "under25": 98,
   "missing_main": 0,
   "top": [
    [
     201,
     "Blaziken VMAX (Alternate Art Secret)",
-    378.66
+    378.75
    ],
    [
     177,
     "Galarian Moltres V (Alternate Full Art)",
-    229.33
+    234.37
    ],
    [
     224,
@@ -386,11 +386,11 @@
     144.72
    ]
   ],
-  "median_main": 0.26,
+  "median_main": 0.25,
   "no_full_arts": {
    "cutoff": 159,
    "count": 159,
-   "cost": 67.77
+   "cost": 66.13
   }
  },
  "SWSH07: Evolving Skies": {
@@ -402,19 +402,19 @@
   "printed": 203,
   "mixed": false,
   "main_n": 203,
-  "main": 2803.33,
+  "main": 2810.79,
   "full_n": 237,
-  "full": 7932.91,
+  "full": 7831.86,
   "rh_n": 132,
-  "rh": 41.51,
-  "master": 7974.42,
+  "rh": 41.33,
+  "master": 7873.19,
   "under25": 107,
   "missing_main": 0,
   "top": [
    [
     215,
     "Umbreon VMAX (Alternate Art Secret)",
-    2298.95
+    2209.75
    ],
    [
     218,
@@ -422,16 +422,16 @@
     1241.76
    ],
    [
-    194,
-    "Rayquaza V (Alternate Full Art)",
-    465.41
+    192,
+    "Dragonite V (Alternate Full Art)",
+    478.56
    ]
   ],
   "median_main": 0.22,
   "no_full_arts": {
    "cutoff": 165,
    "count": 165,
-   "cost": 210.42
+   "cost": 209.52
   }
  },
  "SWSH08: Fusion Strike": {
@@ -443,36 +443,36 @@
   "printed": 264,
   "mixed": false,
   "main_n": 264,
-  "main": 429.02,
+  "main": 426.7,
   "full_n": 284,
-  "full": 2235.3,
+  "full": 2220.18,
   "rh_n": 217,
-  "rh": 75.43,
-  "master": 2310.73,
+  "rh": 76.34,
+  "master": 2296.52,
   "under25": 181,
   "missing_main": 0,
   "top": [
    [
     271,
     "Gengar VMAX (Alternate Art Secret)",
-    1032.52
+    1026.1
    ],
    [
     270,
     "Espeon VMAX (Alternate Art Secret)",
-    340.99
+    338.25
    ],
    [
     269,
     "Mew VMAX (Alternate Art Secret)",
-    234.23
+    229.17
    ]
   ],
   "median_main": 0.18,
   "no_full_arts": {
    "cutoff": 244,
    "count": 244,
-   "cost": 143.22
+   "cost": 143.23
   }
  },
  "SWSH09: Brilliant Stars": {
@@ -484,36 +484,36 @@
   "printed": 172,
   "mixed": false,
   "main_n": 172,
-  "main": 554.73,
+  "main": 558.36,
   "full_n": 186,
-  "full": 739.85,
+  "full": 745.01,
   "rh_n": 124,
-  "rh": 32.96,
-  "master": 772.81,
-  "under25": 109,
+  "rh": 33.33,
+  "master": 778.34,
+  "under25": 108,
   "missing_main": 0,
   "top": [
    [
     154,
     "Charizard V (Alternate Full Art)",
-    266.93
+    270.66
    ],
    [
     166,
     "Arceus V (Alternate Full Art)",
-    59.54
+    59.45
    ],
    [
     174,
     "Charizard VSTAR (Secret)",
-    58.87
+    57.53
    ]
   ],
   "median_main": 0.18,
   "no_full_arts": {
    "cutoff": 151,
    "count": 151,
-   "cost": 90.37
+   "cost": 89.6
   }
  },
  "SWSH10: Astral Radiance": {
@@ -525,36 +525,36 @@
   "printed": 189,
   "mixed": false,
   "main_n": 189,
-  "main": 665.03,
+  "main": 661.77,
   "full_n": 216,
-  "full": 880.73,
+  "full": 881.14,
   "rh_n": 128,
-  "rh": 42.47,
-  "master": 923.2,
-  "under25": 93,
+  "rh": 42.75,
+  "master": 923.89,
+  "under25": 96,
   "missing_main": 0,
   "top": [
    [
     172,
     "Machamp V (Alternate Full Art)",
-    190.78
+    189.29
    ],
    [
     167,
     "Origin Forme Palkia V (Alternate Full Art)",
-    87.35
+    86.91
    ],
    [
     161,
     "Beedrill V (Alternate Full Art)",
-    70.62
+    70.52
    ]
   ],
-  "median_main": 0.25,
+  "median_main": 0.23,
   "no_full_arts": {
    "cutoff": 159,
    "count": 159,
-   "cost": 73.22
+   "cost": 73.66
   }
  },
  "Pokemon GO": {
@@ -566,36 +566,36 @@
   "printed": 78,
   "mixed": false,
   "main_n": 78,
-  "main": 176.17,
+  "main": 177.53,
   "full_n": 88,
-  "full": 355.94,
+  "full": 356.37,
   "rh_n": 57,
-  "rh": 39.53,
-  "master": 395.47,
-  "under25": 37,
+  "rh": 39.58,
+  "master": 395.95,
+  "under25": 36,
   "missing_main": 0,
   "top": [
    [
     72,
     "Mewtwo V (Alternate Full Art)",
-    54.25
+    54.39
    ],
    [
     79,
     "Mewtwo VSTAR (79) (Secret)",
-    49.78
+    49.59
    ],
    [
     81,
     "Dragonite VSTAR (Secret)",
-    43.4
+    42.55
    ]
   ],
-  "median_main": 0.26,
+  "median_main": 0.27,
   "no_full_arts": {
    "cutoff": 70,
    "count": 70,
-   "cost": 92.78
+   "cost": 93.95
   }
  },
  "SWSH11: Lost Origin": {
@@ -607,36 +607,36 @@
   "printed": 196,
   "mixed": false,
   "main_n": 196,
-  "main": 1234.99,
+  "main": 1201.26,
   "full_n": 217,
-  "full": 1380.71,
+  "full": 1350.3,
   "rh_n": 149,
-  "rh": 62.61,
-  "master": 1443.32,
-  "under25": 124,
+  "rh": 63.12,
+  "master": 1413.42,
+  "under25": 123,
   "missing_main": 0,
   "top": [
    [
     186,
     "Giratina V (Alternate Full Art)",
-    855.17
+    822.09
    ],
    [
     180,
     "Aerodactyl V (Alternate Full Art)",
-    202.67
+    201.09
    ],
    [
     177,
     "Rotom V (Alternate Full Art)",
-    26.51
+    26.88
    ]
   ],
-  "median_main": 0.19,
+  "median_main": 0.2,
   "no_full_arts": {
    "cutoff": 171,
    "count": 171,
-   "cost": 59.23
+   "cost": 59.7
   }
  },
  "SWSH12: Silver Tempest": {
@@ -648,36 +648,36 @@
   "printed": 195,
   "mixed": false,
   "main_n": 195,
-  "main": 716.41,
+  "main": 708.76,
   "full_n": 215,
-  "full": 907.0,
+  "full": 901.94,
   "rh_n": 142,
-  "rh": 45.81,
-  "master": 952.81,
-  "under25": 128,
+  "rh": 47.13,
+  "master": 949.07,
+  "under25": 124,
   "missing_main": 0,
   "top": [
    [
     186,
     "Lugia V (Alternate Full Art)",
-    469.66
+    461.76
    ],
    [
     202,
     "Lugia VSTAR (Secret) (202)",
-    38.87
+    38.77
    ],
    [
     177,
     "Unown V (Alternate Full Art)",
-    29.35
+    29.28
    ]
   ],
   "median_main": 0.18,
   "no_full_arts": {
    "cutoff": 169,
    "count": 169,
-   "cost": 72.95
+   "cost": 72.35
   }
  },
  "SWSH: Crown Zenith": {
@@ -689,36 +689,36 @@
   "printed": 159,
   "mixed": false,
   "main_n": 159,
-  "main": 186.56,
+  "main": 183.13,
   "full_n": 160,
-  "full": 223.81,
+  "full": 220.25,
   "rh_n": 112,
-  "rh": 61.79,
-  "master": 285.6,
-  "under25": 85,
+  "rh": 61.71,
+  "master": 281.96,
+  "under25": 84,
   "missing_main": 0,
   "top": [
    [
     160,
     "Pikachu (Secret)",
-    37.25
+    37.12
    ],
    [
     147,
     "Elesa's Sparkle (Full Art)",
-    14.88
+    14.78
    ],
    [
     20,
     "Radiant Charizard",
-    11.86
+    11.85
    ]
   ],
-  "median_main": 0.22,
+  "median_main": 0.21,
   "no_full_arts": {
    "cutoff": 146,
    "count": 146,
-   "cost": 129.01
+   "cost": 126.12
   }
  },
  "SV01: Scarlet & Violet Base Set": {
@@ -730,29 +730,29 @@
   "printed": 198,
   "mixed": false,
   "main_n": 198,
-  "main": 36.92,
+  "main": 36.54,
   "full_n": 258,
-  "full": 679.66,
+  "full": 679.73,
   "rh_n": 186,
-  "rh": 49.2,
-  "master": 728.86,
-  "under25": 177,
+  "rh": 48.57,
+  "master": 728.3,
+  "under25": 178,
   "missing_main": 0,
   "top": [
    [
     245,
     "Gardevoir ex - 245/198",
-    67.9
+    68.02
    ],
    [
     210,
     "Drowzee - 210/198",
-    45.67
+    47.72
    ],
    [
     204,
     "Slowpoke - 204/198",
-    37.3
+    37.37
    ]
   ],
   "median_main": 0.14,
@@ -767,29 +767,29 @@
   "printed": 193,
   "mixed": false,
   "main_n": 193,
-  "main": 44.13,
+  "main": 43.62,
   "full_n": 279,
-  "full": 1731.87,
+  "full": 1707.96,
   "rh_n": 176,
-  "rh": 42.29,
-  "master": 1774.16,
-  "under25": 158,
+  "rh": 42.87,
+  "master": 1750.83,
+  "under25": 162,
   "missing_main": 0,
   "top": [
    [
     203,
     "Magikarp - 203/193",
-    311.34
+    289.43
    ],
    [
     211,
     "Raichu - 211/193",
-    93.03
+    92.5
    ],
    [
     226,
     "Maushold - 226/193",
-    82.48
+    80.91
    ]
   ],
   "median_main": 0.14,
@@ -804,32 +804,32 @@
   "printed": 197,
   "mixed": false,
   "main_n": 197,
-  "main": 57.03,
+  "main": 55.46,
   "full_n": 230,
-  "full": 415.96,
+  "full": 405.52,
   "rh_n": 176,
-  "rh": 50.48,
-  "master": 466.44,
+  "rh": 50.31,
+  "master": 455.83,
   "under25": 164,
   "missing_main": 0,
   "top": [
    [
     223,
     "Charizard ex - 223/197",
-    89.04
+    86.71
    ],
    [
     228,
     "Charizard ex - 228/197",
-    35.45
+    34.12
    ],
    [
     202,
     "Cleffa - 202/197",
-    34.78
+    33.38
    ]
   ],
-  "median_main": 0.17,
+  "median_main": 0.16,
   "no_full_arts": null
  },
  "SV: Scarlet & Violet 151": {
@@ -841,32 +841,32 @@
   "printed": 165,
   "mixed": false,
   "main_n": 165,
-  "main": 74.02,
+  "main": 66.34,
   "full_n": 207,
-  "full": 1584.45,
+  "full": 1571.25,
   "rh_n": 153,
-  "rh": 120.3,
-  "master": 1704.75,
-  "under25": 107,
+  "rh": 116.59,
+  "master": 1687.84,
+  "under25": 123,
   "missing_main": 0,
   "top": [
    [
     199,
     "Charizard ex - 199/165",
-    294.42
+    300.53
    ],
    [
     200,
     "Blastoise ex - 200/165",
-    106.88
+    109.2
    ],
    [
     198,
     "Venusaur ex - 198/165",
-    88.62
+    87.75
    ]
   ],
-  "median_main": 0.22,
+  "median_main": 0.2,
   "no_full_arts": null
  },
  "SV04: Paradox Rift": {
@@ -878,32 +878,32 @@
   "printed": 182,
   "mixed": false,
   "main_n": 182,
-  "main": 40.64,
+  "main": 40.23,
   "full_n": 266,
-  "full": 1098.9,
+  "full": 1101.55,
   "rh_n": 162,
-  "rh": 37.83,
-  "master": 1136.73,
-  "under25": 155,
+  "rh": 37.58,
+  "master": 1139.13,
+  "under25": 156,
   "missing_main": 0,
   "top": [
    [
     199,
     "Groudon - 199/182",
-    92.12
+    92.64
    ],
    [
     206,
     "Morpeko - 206/182",
-    61.24
+    60.01
    ],
    [
     194,
     "Minun - 194/182",
-    44.57
+    44.75
    ]
   ],
-  "median_main": 0.16,
+  "median_main": 0.15,
   "no_full_arts": null
  },
  "SV: Paldean Fates": {
@@ -915,29 +915,29 @@
   "printed": 91,
   "mixed": false,
   "main_n": 91,
-  "main": 20.72,
+  "main": 20.12,
   "full_n": 245,
-  "full": 2467.55,
+  "full": 2462.63,
   "rh_n": 81,
-  "rh": 19.71,
-  "master": 2487.26,
-  "under25": 71,
+  "rh": 19.75,
+  "master": 2482.38,
+  "under25": 75,
   "missing_main": 0,
   "top": [
    [
     232,
     "Mew ex - 232/091",
-    853.37
+    843.07
    ],
    [
     234,
     "Charizard ex - 234/091",
-    256.52
+    260.72
    ],
    [
     233,
     "Gardevoir ex - 233/091",
-    162.4
+    161.26
    ]
   ],
   "median_main": 0.13,
@@ -952,29 +952,29 @@
   "printed": 162,
   "mixed": false,
   "main_n": 162,
-  "main": 85.88,
+  "main": 84.61,
   "full_n": 218,
-  "full": 1129.12,
+  "full": 1132.53,
   "rh_n": 140,
-  "rh": 44.19,
-  "master": 1173.31,
-  "under25": 130,
+  "rh": 44.95,
+  "master": 1177.48,
+  "under25": 129,
   "missing_main": 0,
   "top": [
    [
     177,
     "Gastly - 177/162",
-    88.04
+    87.54
    ],
    [
     208,
     "Raging Bolt ex - 208/162",
-    60.34
+    59.97
    ],
    [
     193,
     "Gengar ex - 193/162",
-    51.77
+    51.75
    ]
   ],
   "median_main": 0.16,
@@ -989,29 +989,29 @@
   "printed": 167,
   "mixed": false,
   "main_n": 167,
-  "main": 64.63,
+  "main": 62.65,
   "full_n": 226,
-  "full": 1116.54,
+  "full": 1102.78,
   "rh_n": 147,
-  "rh": 44.13,
-  "master": 1160.67,
-  "under25": 129,
+  "rh": 42.89,
+  "master": 1145.67,
+  "under25": 134,
   "missing_main": 0,
   "top": [
    [
     214,
     "Greninja ex - 214/167",
-    255.69
+    251.67
    ],
    [
     220,
     "Perrin - 220/167",
-    145.17
+    143.63
    ],
    [
     188,
     "Eevee - 188/167",
-    69.6
+    69.44
    ]
   ],
   "median_main": 0.18,
@@ -1026,29 +1026,29 @@
   "printed": 64,
   "mixed": false,
   "main_n": 64,
-  "main": 25.18,
+  "main": 25.61,
   "full_n": 99,
-  "full": 787.18,
+  "full": 782.2,
   "rh_n": 55,
-  "rh": 15.28,
-  "master": 802.46,
-  "under25": 50,
+  "rh": 15.53,
+  "master": 797.73,
+  "under25": 51,
   "missing_main": 0,
   "top": [
    [
     78,
     "Persian - 078/064",
-    65.2
-   ],
-   [
-    98,
-    "Basic Darkness Energy",
-    56.86
+    64.5
    ],
    [
     66,
     "Houndoom - 066/064",
-    56.34
+    56.05
+   ],
+   [
+    98,
+    "Basic Darkness Energy",
+    54.23
    ]
   ],
   "median_main": 0.15,
@@ -1063,29 +1063,29 @@
   "printed": 142,
   "mixed": false,
   "main_n": 142,
-  "main": 41.04,
+  "main": 41.38,
   "full_n": 175,
-  "full": 557.78,
+  "full": 558.66,
   "rh_n": 125,
-  "rh": 39.51,
-  "master": 597.29,
-  "under25": 110,
+  "rh": 39.45,
+  "master": 598.11,
+  "under25": 111,
   "missing_main": 0,
   "top": [
    [
     148,
     "Squirtle",
-    97.71
+    96.06
    ],
    [
     143,
     "Bulbasaur",
-    88.02
+    88.53
    ],
    [
     169,
     "Dachsbun ex - 169/142",
-    68.76
+    69.01
    ]
   ],
   "median_main": 0.18,
@@ -1100,32 +1100,32 @@
   "printed": 191,
   "mixed": false,
   "main_n": 191,
-  "main": 53.98,
+  "main": 54.1,
   "full_n": 252,
-  "full": 1094.79,
+  "full": 1073.8,
   "rh_n": 165,
-  "rh": 41.71,
-  "master": 1136.5,
-  "under25": 158,
+  "rh": 42.13,
+  "master": 1115.93,
+  "under25": 162,
   "missing_main": 0,
   "top": [
    [
     238,
     "Pikachu ex - 238/191",
-    256.63
+    251.03
    ],
    [
     239,
     "Latias ex - 239/191",
-    169.78
+    167.72
    ],
    [
     237,
     "Milotic ex - 237/191",
-    104.4
+    102.93
    ]
   ],
-  "median_main": 0.14,
+  "median_main": 0.15,
   "no_full_arts": null
  },
  "SV: Prismatic Evolutions": {
@@ -1137,29 +1137,29 @@
   "printed": 131,
   "mixed": false,
   "main_n": 131,
-  "main": 75.52,
+  "main": 70.51,
   "full_n": 180,
-  "full": 4133.33,
+  "full": 4067.99,
   "rh_n": 100,
-  "rh": 22.93,
-  "master": 4156.26,
-  "under25": 85,
+  "rh": 23.14,
+  "master": 4091.13,
+  "under25": 89,
   "missing_main": 0,
   "top": [
    [
     161,
     "Umbreon ex - 161/131",
-    1198.39
+    1137.17
    ],
    [
     156,
     "Sylveon ex - 156/131",
-    390.8
+    403.58
    ],
    [
     144,
     "Leafeon ex - 144/131",
-    299.85
+    295.98
    ]
   ],
   "median_main": 0.18,
@@ -1174,29 +1174,29 @@
   "printed": 159,
   "mixed": false,
   "main_n": 159,
-  "main": 37.89,
+  "main": 35.76,
   "full_n": 190,
-  "full": 372.87,
+  "full": 364.38,
   "rh_n": 143,
-  "rh": 45.86,
-  "master": 418.73,
+  "rh": 45.42,
+  "master": 409.8,
   "under25": 135,
   "missing_main": 0,
   "top": [
    [
     184,
     "Lillie's Clefairy ex - 184/159",
-    79.95
+    75.7
    ],
    [
     187,
     "Salamence ex - 187/159",
-    42.09
+    41.98
    ],
    [
     185,
     "N's Zoroark ex - 185/159",
-    34.01
+    34.77
    ]
   ],
   "median_main": 0.17,
@@ -1211,32 +1211,32 @@
   "printed": 182,
   "mixed": false,
   "main_n": 182,
-  "main": 42.03,
+  "main": 38.62,
   "full_n": 244,
-  "full": 1343.13,
+  "full": 1309.49,
   "rh_n": 165,
-  "rh": 49.57,
-  "master": 1392.7,
-  "under25": 149,
+  "rh": 48.62,
+  "master": 1358.11,
+  "under25": 155,
   "missing_main": 0,
   "top": [
    [
     231,
     "Team Rocket's Mewtwo ex - 231/182",
-    335.3
+    327.7
    ],
    [
     232,
     "Cynthia's Garchomp ex - 232/182",
-    169.86
+    163.79
    ],
    [
     230,
     "Ethan's Ho-Oh ex - 230/182",
-    135.59
+    132.13
    ]
   ],
-  "median_main": 0.19,
+  "median_main": 0.17,
   "no_full_arts": null
  },
  "SV: Black Bolt": {
@@ -1248,29 +1248,29 @@
   "printed": 86,
   "mixed": false,
   "main_n": 86,
-  "main": 15.5,
+  "main": 15.65,
   "full_n": 172,
-  "full": 3174.78,
+  "full": 3134.68,
   "rh_n": 80,
-  "rh": 19.1,
-  "master": 3193.88,
+  "rh": 18.87,
+  "master": 3153.55,
   "under25": 77,
   "missing_main": 0,
   "top": [
    [
     171,
     "Victini - 171/086",
-    623.46
+    615.61
    ],
    [
     172,
     "Zekrom ex - 172/086",
-    595.79
+    587.53
    ],
    [
     166,
     "Zekrom ex - 166/086",
-    245.34
+    236.89
    ]
   ],
   "median_main": 0.15,
@@ -1285,29 +1285,29 @@
   "printed": 86,
   "mixed": false,
   "main_n": 86,
-  "main": 15.66,
+  "main": 15.13,
   "full_n": 173,
-  "full": 2815.5,
+  "full": 2774.21,
   "rh_n": 80,
-  "rh": 21.35,
-  "master": 2836.85,
+  "rh": 21.08,
+  "master": 2795.29,
   "under25": 76,
   "missing_main": 0,
   "top": [
    [
     172,
     "Victini - 172/086",
-    541.16
+    532.52
    ],
    [
     173,
     "Reshiram ex - 173/086",
-    468.09
+    462.26
    ],
    [
     166,
     "Reshiram ex - 166/086",
-    165.57
+    158.62
    ]
   ],
   "median_main": 0.15,
@@ -1322,29 +1322,29 @@
   "printed": 132,
   "mixed": false,
   "main_n": 132,
-  "main": 25.13,
+  "main": 24.78,
   "full_n": 188,
-  "full": 1328.94,
+  "full": 1296.2,
   "rh_n": 122,
-  "rh": 30.52,
-  "master": 1359.46,
-  "under25": 113,
+  "rh": 29.94,
+  "master": 1326.14,
+  "under25": 115,
   "missing_main": 0,
   "top": [
    [
     188,
     "Mega Lucario ex - 188/132",
-    212.23
+    206.35
    ],
    [
     178,
     "Mega Gardevoir ex - 178/132",
-    168.0
+    163.88
    ],
    [
     179,
     "Mega Lucario ex - 179/132",
-    162.98
+    163.66
    ]
   ],
   "median_main": 0.14,
@@ -1359,32 +1359,32 @@
   "printed": 94,
   "mixed": false,
   "main_n": 94,
-  "main": 23.42,
+  "main": 21.96,
   "full_n": 130,
-  "full": 979.41,
+  "full": 949.45,
   "rh_n": 84,
-  "rh": 18.14,
-  "master": 997.55,
-  "under25": 77,
+  "rh": 17.14,
+  "master": 966.59,
+  "under25": 82,
   "missing_main": 0,
   "top": [
    [
     125,
     "Mega Charizard X ex - 125/094",
-    597.98
+    582.91
    ],
    [
     130,
     "Mega Charizard X ex - 130/094",
-    194.13
+    183.42
    ],
    [
     109,
     "Mega Charizard X ex - 109/094",
-    20.92
+    21.99
    ]
   ],
-  "median_main": 0.14,
+  "median_main": 0.13,
   "no_full_arts": null
  },
  "ME: Ascended Heroes": {
@@ -1396,32 +1396,32 @@
   "printed": 217,
   "mixed": false,
   "main_n": 217,
-  "main": 80.51,
+  "main": 72.5,
   "full_n": 295,
-  "full": 3898.2,
+  "full": 3744.48,
   "rh_n": 178,
-  "rh": 52.84,
-  "master": 3951.04,
-  "under25": 163,
+  "rh": 50.15,
+  "master": 3794.63,
+  "under25": 165,
   "missing_main": 0,
   "top": [
    [
     284,
     "Mega Gengar ex - 284/217",
-    736.25
+    712.64
    ],
    [
     276,
     "Pikachu ex - 276/217",
-    639.71
+    612.81
    ],
    [
     290,
     "Mega Dragonite ex - 290/217",
-    445.32
+    437.02
    ]
   ],
-  "median_main": 0.19,
+  "median_main": 0.18,
   "no_full_arts": null
  },
  "ME03: Perfect Order": {
@@ -1433,32 +1433,32 @@
   "printed": 88,
   "mixed": false,
   "main_n": 88,
-  "main": 16.93,
+  "main": 16.65,
   "full_n": 124,
-  "full": 454.2,
+  "full": 441.24,
   "rh_n": 79,
-  "rh": 17.31,
-  "master": 471.51,
-  "under25": 73,
+  "rh": 18.04,
+  "master": 459.28,
+  "under25": 75,
   "missing_main": 0,
   "top": [
    [
     124,
     "Mega Zygarde ex - 124/088",
-    88.08
+    84.5
    ],
    [
     121,
     "Meowth ex - 121/088",
-    85.03
+    83.19
    ],
    [
     120,
     "Mega Zygarde ex - 120/088",
-    39.97
+    40.88
    ]
   ],
-  "median_main": 0.11,
+  "median_main": 0.14,
   "no_full_arts": null
  },
  "ME04: Chaos Rising": {
@@ -1470,29 +1470,29 @@
   "printed": 86,
   "mixed": false,
   "main_n": 86,
-  "main": 15.27,
+  "main": 15.32,
   "full_n": 122,
-  "full": 435.74,
+  "full": 432.61,
   "rh_n": 76,
-  "rh": 18.39,
-  "master": 454.13,
-  "under25": 76,
+  "rh": 17.21,
+  "master": 449.82,
+  "under25": 75,
   "missing_main": 0,
   "top": [
    [
     122,
     "Mega Greninja ex - 122/086",
-    114.2
+    112.87
    ],
    [
     116,
     "Mega Greninja ex - 116/086",
-    111.41
+    111.83
    ],
    [
     119,
     "Cinccino ex - 119/086",
-    38.09
+    35.87
    ]
   ],
   "median_main": 0.14,
@@ -1509,30 +1509,30 @@
   "main_n": 84,
   "main": 17.14,
   "full_n": 120,
-  "full": 548.64,
+  "full": 542.45,
   "rh_n": 74,
-  "rh": 19.17,
-  "master": 567.81,
-  "under25": 74,
+  "rh": 16.73,
+  "master": 559.18,
+  "under25": 72,
   "missing_main": 0,
   "top": [
    [
     116,
     "Mega Darkrai ex - 116/084",
-    143.91
+    138.73
    ],
    [
     120,
     "Mega Darkrai ex - 120/084",
-    125.65
+    123.62
    ],
    [
     117,
     "Morpeko ex - 117/084",
-    57.2
+    58.79
    ]
   ],
-  "median_main": 0.16,
+  "median_main": 0.17,
   "no_full_arts": null
  },
  "ME: 30th Celebration": {
@@ -1544,32 +1544,32 @@
   "printed": 128,
   "mixed": false,
   "main_n": 128,
-  "main": 54.73,
+  "main": 56.15,
   "full_n": 158,
-  "full": 642.21,
+  "full": 616.63,
   "rh_n": 0,
   "rh": 0,
-  "master": 642.21,
-  "under25": 77,
+  "master": 616.63,
+  "under25": 72,
   "missing_main": 0,
   "top": [
    [
     152,
     "Mew ex - 152/128",
-    84.5
+    77.02
    ],
    [
     154,
     "Gengar ex - 154/128",
-    64.88
+    66.63
    ],
    [
     150,
     "Pikachu ex - 150/128",
-    59.74
+    58.04
    ]
   ],
-  "median_main": 0.21,
+  "median_main": 0.23,
   "no_full_arts": null
  }
 }
